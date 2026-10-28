@@ -1,0 +1,2535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="logo.png">
+  <title>Green Cabin | Sri Lanka's Foremost Baker & Caterer Since 1884</title>
+  
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ==========================================================================
+       GREEN CABIN - OFFICIAL BRAND PALETTE & COCON REGULAR FONT
+       Modeled after Perera & Sons (P&S) Luxury Bakery Architecture
+       ========================================================================== */
+
+    /* 1. OFFICIAL FONT: COCON REGULAR */
+    @font-face {
+      font-family: 'Cocon Regular';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Cocon Regular'), local('Cocon-Regular'), local('Cocon'),
+           url('https://fonts.cdnfonts.com/s/68254/CoconRegularFont.woff') format('woff'),
+           url('fonts/Cocon-Regular.woff2') format('woff2'),
+           url('fonts/Cocon-Regular.woff') format('woff'),
+           url('fonts/Cocon-Regular.ttf') format('truetype');
+      font-display: swap;
+    }
+
+    :root {
+      /* Green Cabin Official Pantone Brand Colors */
+      --primary-color: #006f5b;        /* Pantone 3298 C (R0 G111 B91) */
+      --primary-dark: #003b31;         /* Pantone 3305 C (R0 G59 B49) */
+      --primary-hover: #005646;
+      --secondary-color: #81caa5;      /* Pantone 2246 C (R129 G202 B165) */
+      --mint-light: #eef7f2;
+      --accent-color: #d9381e;         /* Warm Bakery Accent */
+      --text-dark: #0b1f1a;
+      --text-muted: #527368;
+      --bg-cream: #fbfdfc;
+      --card-bg: #ffffff;
+      --border-color: #e3ece8;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --shadow-sm: 0 4px 14px rgba(0, 59, 49, 0.05);
+      --shadow-md: 0 10px 30px rgba(0, 59, 49, 0.09);
+      --shadow-lg: 0 20px 45px rgba(0, 59, 49, 0.16);
+      --font-brand: 'Cocon Regular', 'Cocon', 'Nunito', sans-serif;
+      --font-body: 'Cocon Regular', 'Cocon', 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-cream);
+      color: var(--text-dark);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* TOP ANNOUNCEMENT BAR */
+    .top-bar {
+      background: var(--primary-dark);
+      color: #e2ede8;
+      font-size: 12.5px;
+      padding: 8px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      border-bottom: 1px solid rgba(129, 202, 165, 0.2);
+    }
+    .top-bar a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .top-bar .info-group {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .top-bar .info-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    /* P&S STYLE LUXURY HEADER */
+    .site-header {
+      background: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 59, 49, 0.06);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .header-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    /* BRAND LOGO */
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      cursor: pointer;
+      min-width: fit-content;
+    }
+    .brand-logo-img {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      border-radius: 50%;
+      box-shadow: 0 4px 14px rgba(0, 59, 49, 0.18);
+      border: 2px solid var(--secondary-color);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      background: #ffffff;
+      flex-shrink: 0;
+    }
+    .brand-logo:hover .brand-logo-img {
+      transform: scale(1.06) rotate(3deg);
+      box-shadow: 0 6px 18px rgba(0, 111, 91, 0.3);
+    }
+    .logo-badge {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      font-size: 22px;
+      box-shadow: 0 6px 16px rgba(0, 59, 49, 0.2);
+    }
+    .brand-title-wrap h1 {
+      font-family: var(--font-brand);
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: 0.5px;
+      color: var(--primary-dark);
+    }
+    .brand-title-wrap span {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--primary-color);
+      font-weight: 800;
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* P&S NAVIGATION LINKS */
+    .nav-links-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-link-btn {
+      background: transparent;
+      border: none;
+      font-family: var(--font-brand);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-dark);
+      padding: 8px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-link-btn:hover, .nav-link-btn.active {
+      color: var(--primary-color);
+      background: var(--mint-light);
+    }
+
+    /* SEARCH BAR */
+    .search-wrap {
+      flex: 1;
+      max-width: 380px;
+      position: relative;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: #f4f8f6;
+      border: 1.5px solid var(--border-color);
+      border-radius: 30px;
+      padding: 6px 16px;
+      transition: all 0.2s ease;
+    }
+    .search-box:focus-within {
+      background: #ffffff;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(129, 202, 165, 0.25);
+    }
+    .search-box input {
+      border: none;
+      background: transparent;
+      outline: none;
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 13.5px;
+      color: var(--text-dark);
+    }
+    .search-box i {
+      color: var(--primary-color);
+      font-size: 15px;
+      margin-right: 8px;
+    }
+
+    /* HEADER RIGHT ACTIONS */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-cart-nav {
+      background: var(--primary-color);
+      color: #ffffff;
+      border: none;
+      padding: 9px 20px;
+      border-radius: 30px;
+      font-family: var(--font-brand);
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 14px rgba(0, 111, 91, 0.28);
+      transition: all 0.2s ease;
+    }
+    .btn-cart-nav:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(0, 59, 49, 0.35);
+    }
+    .cart-badge-pill {
+      background: var(--secondary-color);
+      color: var(--primary-dark);
+      font-size: 11.5px;
+      font-weight: 900;
+      min-width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4px;
+    }
+
+    /* ==========================================================================
+       P&S CINEMATIC HERO SECTION
+       ========================================================================== */
+    .hero-cinematic {
+      position: relative;
+      background: linear-gradient(135deg, #002b23 0%, #004d3e 50%, #006f5b 100%);
+      color: #ffffff;
+      padding: 64px 24px 72px;
+      overflow: hidden;
+    }
+    .hero-cinematic::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1600&q=80') center/cover;
+      opacity: 0.18;
+      mix-blend-mode: overlay;
+    }
+    .hero-container {
+      max-width: 1320px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 40px;
+    }
+    .hero-tag-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(129, 202, 165, 0.18);
+      color: var(--secondary-color);
+      border: 1px solid rgba(129, 202, 165, 0.4);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .hero-title-main {
+      font-family: var(--font-brand);
+      font-size: 46px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      color: #ffffff;
+    }
+    .hero-title-main span {
+      color: var(--secondary-color);
+    }
+    .hero-desc {
+      font-size: 16px;
+      color: #d1e5dd;
+      max-width: 560px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .hero-btn-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-hero-primary {
+      background: var(--secondary-color);
+      color: var(--primary-dark);
+      font-family: var(--font-brand);
+      font-size: 15px;
+      font-weight: 800;
+      padding: 13px 30px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 20px rgba(129, 202, 165, 0.4);
+      text-decoration: none;
+    }
+    .btn-hero-primary:hover {
+      background: #9ee0bf;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(129, 202, 165, 0.55);
+    }
+    .btn-hero-outline {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      font-family: var(--font-brand);
+      font-size: 14.5px;
+      font-weight: 700;
+      padding: 12px 26px;
+      border-radius: 30px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-hero-outline:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: #ffffff;
+    }
+    .hero-visual-card {
+      position: relative;
+    }
+    .hero-food-img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      border: 2px solid rgba(129, 202, 165, 0.3);
+    }
+    .hero-badge-float {
+      position: absolute;
+      bottom: -15px;
+      left: -15px;
+      background: var(--primary-dark);
+      border: 2px solid var(--secondary-color);
+      border-radius: var(--radius-md);
+      padding: 12px 18px;
+      color: #ffffff;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-badge-float i {
+      font-size: 26px;
+      color: var(--secondary-color);
+    }
+    .hero-badge-float strong {
+      display: block;
+      font-size: 14px;
+      font-family: var(--font-brand);
+    }
+    .hero-badge-float span {
+      font-size: 11px;
+      color: #cbd5e1;
+    }
+
+    /* P&S MARQUEE TICKER STRIP */
+    .marquee-strip {
+      background: #00251f;
+      color: #81caa5;
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      border-bottom: 1px solid rgba(129, 202, 165, 0.15);
+    }
+    .marquee-track {
+      display: inline-block;
+      animation: marquee 35s linear infinite;
+    }
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 24px;
+    }
+    .marquee-item i {
+      color: var(--secondary-color);
+      font-size: 11px;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ==========================================================================
+       P&S SIGNATURE CATEGORY TILES (8-CATEGORY GRID EXACTLY LIKE P&S)
+       ========================================================================== */
+    .section-pns {
+      max-width: 1320px;
+      margin: 48px auto;
+      padding: 0 24px;
+    }
+    .pns-section-head {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .pns-eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 800;
+      color: var(--primary-color);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .pns-title {
+      font-family: var(--font-brand);
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      line-height: 1.2;
+    }
+    .pns-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 620px;
+      margin: 8px auto 0;
+    }
+
+    /* P&S 4-COLUMN TILE GRID */
+    .pns-category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      margin-bottom: 48px;
+    }
+    .pns-cat-card {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 4 / 4.4;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      background: #00221c;
+      text-decoration: none;
+    }
+    .pns-cat-card:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow-lg);
+    }
+    .pns-cat-media {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+    }
+    .pns-cat-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+    .pns-cat-card:hover .pns-cat-media img {
+      transform: scale(1.08);
+    }
+    .pns-cat-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 35%, rgba(0, 34, 28, 0.92) 85%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 22px;
+      color: #ffffff;
+    }
+    .pns-cat-overlay h3 {
+      font-family: var(--font-brand);
+      font-size: 20px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+    .pns-cat-overlay p {
+      font-size: 12.5px;
+      color: #d1e5dd;
+      line-height: 1.4;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.3s ease;
+    }
+    .pns-cat-card:hover .pns-cat-overlay p {
+      max-height: 60px;
+      opacity: 1;
+      margin-top: 4px;
+    }
+    .pns-cat-arrow {
+      margin-top: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--secondary-color);
+    }
+
+    /* ==========================================================================
+       P&S STICKY CATEGORY FILTER PILLS BAR
+       ========================================================================== */
+    .filter-pills-wrapper {
+      position: sticky;
+      top: 77px;
+      z-index: 950;
+      background: rgba(251, 253, 252, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 32px;
+    }
+    .filter-pills-bar {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .filter-pills-bar::-webkit-scrollbar {
+      display: none;
+    }
+    .pill-filter-btn {
+      flex: 0 0 auto;
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
+      color: var(--text-dark);
+      font-family: var(--font-brand);
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 6px rgba(0, 59, 49, 0.04);
+    }
+    .pill-filter-btn:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+      transform: translateY(-1px);
+    }
+    .pill-filter-btn.active {
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(0, 111, 91, 0.3);
+    }
+
+    /* ==========================================================================
+       P&S MODERN PRODUCT CARDS (WITH DIETARY DOT & DIRECT CART ADD)
+       ========================================================================== */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .product-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--secondary-color);
+    }
+    .card-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background: #f1f5f3;
+    }
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+    .product-card:hover .card-img-wrap img {
+      transform: scale(1.05);
+    }
+    .badge-float {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--accent-color);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      z-index: 2;
+    }
+    .card-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .diet-and-cat {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .diet-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      border: 1.5px solid #2e7d32;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .diet-dot::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #2e7d32;
+    }
+    .diet-dot.non-veg {
+      border-color: #c62828;
+    }
+    .diet-dot.non-veg::after {
+      background: #c62828;
+    }
+    .card-cat-name {
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      font-weight: 800;
+    }
+    .card-title {
+      font-family: var(--font-brand);
+      font-size: 16.5px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .card-desc {
+      font-size: 12.5px;
+      color: #64748b;
+      line-height: 1.45;
+      margin-bottom: 14px;
+      flex: 1;
+    }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid #f1f5f3;
+    }
+    .price-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+    .price-main {
+      font-family: var(--font-brand);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--primary-color);
+      line-height: 1;
+    }
+    .price-old {
+      font-size: 12px;
+      color: #94a3b8;
+      text-decoration: line-through;
+      margin-top: 2px;
+    }
+    .btn-add-pns {
+      background: #ffffff;
+      color: var(--primary-color);
+      border: 1.5px solid var(--primary-color);
+      padding: 8px 18px;
+      border-radius: 25px;
+      font-family: var(--font-brand);
+      font-size: 13.5px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-add-pns:hover {
+      background: var(--primary-color);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 111, 91, 0.3);
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================================
+       SLIDE-OUT CART DRAWER & WOOCOMMERCE CHECKOUT BRIDGE
+       ========================================================================== */
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 10000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .cart-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 400px;
+      max-width: 90vw;
+      height: 100vh;
+      background: #ffffff;
+      z-index: 10001;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -8px 0 30px rgba(0, 0, 0, 0.2);
+      transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cart-drawer.active {
+      right: 0;
+    }
+    .cart-drawer-header {
+      background: var(--primary-dark);
+      color: #ffffff;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cart-drawer-header h3 {
+      font-family: var(--font-brand);
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cart-close-btn {
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      font-size: 26px;
+      cursor: pointer;
+    }
+    .cart-items-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 20px;
+    }
+    .cart-item-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .cart-item-thumb {
+      width: 54px;
+      height: 54px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+    .cart-item-details {
+      flex: 1;
+    }
+    .cart-item-title {
+      font-family: var(--font-brand);
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 2px;
+    }
+    .cart-item-price {
+      font-size: 13px;
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+    .cart-qty-ctrl {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      margin-top: 6px;
+      background: #f8faf9;
+    }
+    .qty-btn {
+      background: transparent;
+      border: none;
+      width: 26px;
+      height: 26px;
+      cursor: pointer;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+    .qty-num {
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 0 8px;
+    }
+    .cart-drawer-footer {
+      padding: 20px 24px;
+      background: #f8faf9;
+      border-top: 1px solid var(--border-color);
+    }
+    .cart-total-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      font-size: 16px;
+      font-weight: 800;
+      font-family: var(--font-brand);
+      color: var(--primary-dark);
+    }
+    .cart-total-amount {
+      font-size: 22px;
+      color: var(--primary-color);
+    }
+    .btn-checkout-woo {
+      width: 100%;
+      background: var(--primary-color);
+      color: #ffffff;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 30px;
+      font-family: var(--font-brand);
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 4px 16px rgba(0, 111, 91, 0.35);
+      transition: all 0.2s ease;
+      margin-bottom: 10px;
+    }
+    .btn-checkout-woo:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 59, 49, 0.45);
+    }
+    .btn-checkout-wa {
+      width: 100%;
+      background: #25d366;
+      color: #ffffff;
+      border: none;
+      padding: 11px 20px;
+      border-radius: 30px;
+      font-family: var(--font-brand);
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+    .btn-checkout-wa:hover {
+      background: #1eb954;
+    }
+
+    /* FOOTER (P&S STYLE DEEP GREEN) */
+    footer {
+      background: #00221c;
+      color: #cbd5e1;
+      padding: 60px 24px 30px;
+      margin-top: 60px;
+      border-top: 3px solid var(--secondary-color);
+    }
+    .footer-grid {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 36px;
+      margin-bottom: 40px;
+    }
+    .footer-col h4 {
+      font-family: var(--font-brand);
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 18px;
+      letter-spacing: 0.5px;
+    }
+    .footer-col p {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: #94a3b8;
+      margin-bottom: 14px;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+    .footer-col ul li a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 13.5px;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+    .footer-col ul li a:hover {
+      color: var(--secondary-color);
+    }
+    .footer-social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .social-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .social-btn:hover {
+      background: var(--secondary-color);
+      color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    .footer-bottom {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12.5px;
+      color: #64748b;
+    }
+
+    /* RESPONSIVE BREAKPOINTS */
+    @media (max-width: 1024px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-desc {
+        margin: 0 auto 28px;
+      }
+      .hero-btn-row {
+        justify-content: center;
+      }
+      .hero-visual-card {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      .pns-category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 768px) {
+      .nav-links-wrap {
+        display: none;
+      }
+      .search-wrap {
+        display: none;
+      }
+      .hero-title-main {
+        font-size: 32px;
+      }
+      .pns-category-grid {
+        grid-template-columns: 1fr;
+      }
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+      .card-img-wrap {
+        height: 140px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  
+    /* ==========================================================================
+       TAB VIEWS ARCHITECTURE & ANIMATION (FIXED DISPLAY LOGIC)
+       ========================================================================== */
+    .tab-view {
+      display: none !important;
+      animation: tabFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .tab-view.active {
+      display: block !important;
+    }
+    @keyframes tabFadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* MOBILE / TABLET SUB NAVIGATION BAR */
+    .mobile-sub-nav {
+      display: none;
+      background: #00251e;
+      padding: 9px 16px;
+      overflow-x: auto;
+      white-space: nowrap;
+      border-bottom: 1.5px solid rgba(129, 202, 165, 0.25);
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      position: sticky;
+      top: 76px;
+      z-index: 990;
+    }
+    .mobile-sub-nav::-webkit-scrollbar {
+      display: none;
+    }
+    .mobile-sub-nav-inner {
+      display: flex;
+      gap: 8px;
+    }
+    .mob-nav-btn {
+      background: rgba(255, 255, 255, 0.08);
+      color: #e2ede8;
+      border: 1px solid rgba(129, 202, 165, 0.3);
+      padding: 7px 15px;
+      border-radius: 20px;
+      font-family: var(--font-brand);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+    .mob-nav-btn:hover, .mob-nav-btn.active {
+      background: var(--secondary-color);
+      color: var(--primary-dark);
+      border-color: var(--secondary-color);
+      font-weight: 800;
+    }
+
+    /* ==========================================================================
+       HERO MULTI-PHOTO AUTO-SLIDER
+       ========================================================================== */
+    .hero-slider-wrap {
+      position: relative;
+      width: 100%;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      border: 2px solid rgba(129, 202, 165, 0.35);
+      background: #001f19;
+      user-select: none;
+    }
+    .hero-slides-viewport {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+    }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: scale(1.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+      z-index: 1;
+    }
+    .hero-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .slider-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(0, 37, 31, 0.8);
+      backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(129, 202, 165, 0.55);
+      color: #ffffff;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+    }
+    .slider-nav-btn:hover {
+      background: var(--secondary-color);
+      color: var(--primary-dark);
+      border-color: var(--secondary-color);
+      transform: translateY(-50%) scale(1.1);
+    }
+    .slider-nav-btn.prev {
+      left: 14px;
+    }
+    .slider-nav-btn.next {
+      right: 14px;
+    }
+    .slider-dots {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      z-index: 5;
+      background: rgba(0, 20, 16, 0.65);
+      padding: 6px 14px;
+      border-radius: 20px;
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    .slider-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.45);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+    }
+    .slider-dot.active {
+      width: 24px;
+      border-radius: 10px;
+      background: var(--secondary-color);
+      box-shadow: 0 0 10px rgba(129, 202, 165, 0.7);
+    }
+    @media (max-width: 900px) {
+      .mobile-sub-nav {
+        display: block;
+      }
+      .hero-slides-viewport {
+        height: 300px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- TOP HOTLINE BAR -->
+  <div class="top-bar">
+    <div class="info-group">
+      <div class="info-item"><i class="fa-solid fa-phone"></i> Hotline: <a id="tb-phone" href="tel:+94112588811">+94 11 258 8811</a></div>
+      <div class="info-item"><i class="fa-brands fa-whatsapp"></i> WhatsApp: <a id="tb-whatsapp" href="https://wa.me/94771234567" target="_blank">+94 77 123 4567</a></div>
+    </div>
+    <div class="info-group">
+      <div class="info-item"><i class="fa-solid fa-truck-fast"></i> <span id="tb-delivery-notice">Colombo & Suburbs Delivery Available</span></div>
+      <div class="info-item"><i class="fa-solid fa-clock"></i> <span id="tb-hours-notice">8:00 AM - 9:00 PM Daily</span></div>
+    </div>
+  </div>
+
+  <!-- P&S STYLE LUXURY STICKY HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- LOGO -->
+      <a class="brand-logo" onclick="switchSiteTab('home')" title="Green Cabin - Serving Since 1884">
+        <img src="logo.png" class="brand-logo-img" id="hdr-logo-img" alt="Green Cabin Logo">
+        <div class="brand-title-wrap">
+          <h1 id="hdr-brand-title">GREEN CABIN</h1>
+          <span id="hdr-brand-sub">SERVING SINCE 1884</span>
+        </div>
+      </a>
+
+      <!-- NAVIGATION TABS -->
+      <nav class="nav-links-wrap">
+        <button class="nav-link-btn active" id="tab-nav-home" onclick="switchSiteTab('home')">Home</button>
+        <button class="nav-link-btn" id="tab-nav-menus" onclick="switchSiteTab('menus')">Bakery Menus</button>
+        <button class="nav-link-btn" id="tab-nav-catering" onclick="switchSiteTab('catering')">Catering</button>
+        <button class="nav-link-btn" id="tab-nav-events" onclick="switchSiteTab('events')">Platters</button>
+        <button class="nav-link-btn" id="tab-nav-outlets" onclick="switchSiteTab('outlets')">Outlets</button>
+        <button class="nav-link-btn" id="tab-nav-about" onclick="switchSiteTab('about')">Heritage</button>
+      </nav>
+
+      <!-- LIVE SEARCH -->
+      <div class="search-wrap">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="search-input" placeholder="Search pies, savouries, cakes, lamprais..." oninput="handleSearch()">
+        </div>
+      </div>
+
+      <!-- CART & HOTLINE -->
+      <div class="header-actions">
+        <button class="btn-cart-nav" onclick="toggleCart(true)">
+          <i class="fa-solid fa-basket-shopping"></i>
+          <span>Cart</span>
+          <span class="cart-badge-pill" id="cart-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       VIEW: HOME (PERERA & SONS LUXURY STOREFRONT)
+       ========================================================================== -->
+  <div id="view-home" class="tab-view active">
+
+    <!-- P&S CINEMATIC HERO SECTION WITH MULTI-PHOTO AUTO-SLIDER -->
+    <section class="hero-cinematic" id="hero-slider-section" onmouseenter="pauseHeroSlider()" onmouseleave="resumeHeroSlider()">
+      <div class="hero-container">
+        <!-- LEFT: TEXT INFO (TRANSITIONS SMOOTHLY WITH SLIDES) -->
+        <div class="hero-text-wrap">
+          <span class="hero-tag-chip" id="hero-tag"><i class="fa-solid fa-medal"></i> <span id="hero-tag-text">Est. 1884 · Ceylon's Foremost Baker & Caterer</span></span>
+          <h2 class="hero-title-main" id="hero-title">Sri Lanka's <span>Iconic Taste</span> Since 1884</h2>
+          <p class="hero-desc" id="hero-sub">Freshly baked traditional meat pies, flaky savouries, celebratory gateaux, and authentic Dutch lamprais delivered right to your doorstep.</p>
+          <div class="hero-btn-row">
+            <button class="btn-hero-primary" id="hero-btn-primary" onclick="scrollToProducts()"><i class="fa-solid fa-basket-shopping"></i> <span id="hero-btn-text">Order Online</span></button>
+            <a class="btn-hero-outline" id="hero-whatsapp-btn" href="https://wa.me/94771234567" target="_blank"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+            <button class="btn-hero-outline" onclick="switchSiteTab('catering')"><i class="fa-solid fa-bell-concierge"></i> Catering Inquiry</button>
+          </div>
+        </div>
+
+        <!-- RIGHT: MULTI-PHOTO SLIDER WITH AUTO-SLIDE -->
+        <div class="hero-visual-card">
+          <div class="hero-slider-wrap">
+            <div class="hero-slides-viewport" id="hero-slides-container">
+              <!-- Slides injected dynamically -->
+            </div>
+            
+            <!-- PREV / NEXT ARROW BUTTONS -->
+            <button class="slider-nav-btn prev" onclick="changeHeroSlide(-1)" aria-label="Previous Slide"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="slider-nav-btn next" onclick="changeHeroSlide(1)" aria-label="Next Slide"><i class="fa-solid fa-chevron-right"></i></button>
+
+            <!-- SLIDE DOTS INDICATOR -->
+            <div class="slider-dots" id="hero-slider-dots">
+              <!-- Dots injected dynamically -->
+            </div>
+          </div>
+
+          <!-- FLOATING HERITAGE BADGE -->
+          <div class="hero-badge-float" id="hero-slide-badge">
+            <i class="fa-solid fa-crown"></i>
+            <div>
+              <strong id="hero-badge-title">Over 140 Years of Heritage</strong>
+              <span id="hero-badge-sub">Preserving original family recipes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- P&S RUNNING TICKER STRIP -->
+    <div class="marquee-strip">
+      <div class="marquee-track">
+        <span class="marquee-item"><i class="fa-solid fa-circle"></i> <b>140+</b> Years of Ceylon Heritage</span>
+        <span class="marquee-item"><i class="fa-solid fa-circle"></i> <b>Legendary</b> Puff Pastry Meat Pies</span>
+        <span class="marquee-item"><i class="fa-solid fa-circle"></i> <b>Authentic</b> Dutch Lamprais</span>
+        <span class="marquee-item"><i class="fa-solid fa-circle"></i> <b>Celebration</b> Ribbon Cakes & Gateaux</span>
+        <span class="marquee-item"><i class="fa-solid fa-circle"></i> <b>Islandwide</b> Outdoor Catering Services</span>
+        <span class="marquee-item"><i class="fa-solid fa-circle"></i> <b>5+</b> Locations across Colombo</span>
+        <span class="marquee-item"><i class="fa-solid fa-circle"></i> <b>140+</b> Years of Ceylon Heritage</span>
+        <span class="marquee-item"><i class="fa-solid fa-circle"></i> <b>Legendary</b> Puff Pastry Meat Pies</span>
+        <span class="marquee-item"><i class="fa-solid fa-circle"></i> <b>Authentic</b> Dutch Lamprais</span>
+        <span class="marquee-item"><i class="fa-solid fa-circle"></i> <b>Celebration</b> Ribbon Cakes & Gateaux</span>
+      </div>
+    </div>
+
+    <!-- P&S 8-CATEGORY TILES SECTION (EXACTLY LIKE PERERA & SONS HOME PAGE) -->
+    <section class="section-pns">
+      <div class="pns-section-head">
+        <span class="pns-eyebrow">Our Delicacies</span>
+        <h2 class="pns-title">There's Always Something Special</h2>
+        <p class="pns-subtitle">Piping hot and packed with authentic Ceylon flavour — the finest bakery array, perfect for quick short eats or a feast spread.</p>
+      </div>
+
+      <div class="pns-category-grid">
+        <!-- 1. Legendary Meat Pies -->
+        <div class="pns-cat-card" onclick="selectCategory('pies')">
+          <div class="pns-cat-media"><img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=600&q=80" alt="Legendary Meat Pies"></div>
+          <div class="pns-cat-overlay">
+            <h3>Meat Pies</h3>
+            <p>Golden flaky puff pastry stuffed with slow-cooked spiced chicken and beef fillings.</p>
+            <span class="pns-cat-arrow">Explore Pies <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <!-- 2. Savouries & Short Eats -->
+        <div class="pns-cat-card" onclick="selectCategory('savouries')">
+          <div class="pns-cat-media"><img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80" alt="Savouries & Short Eats"></div>
+          <div class="pns-cat-overlay">
+            <h3>Savouries & Short Eats</h3>
+            <p>Crispy beef Chinese rolls, spicy fish patties, and savoury puff pastries.</p>
+            <span class="pns-cat-arrow">Explore Savouries <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <!-- 3. Cakes & Gateaux -->
+        <div class="pns-cat-card" onclick="selectCategory('cakes')">
+          <div class="pns-cat-media"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" alt="Cakes & Gateaux"></div>
+          <div class="pns-cat-overlay">
+            <h3>Cakes & Gateaux</h3>
+            <p>Signature rich ribbon cakes, chocolate mud slices, and pineapple gateaux.</p>
+            <span class="pns-cat-arrow">Explore Cakes <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <!-- 4. Dutch Lamprais & Meals -->
+        <div class="pns-cat-card" onclick="selectCategory('traditional')">
+          <div class="pns-cat-media"><img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80" alt="Dutch Lamprais"></div>
+          <div class="pns-cat-overlay">
+            <h3>Dutch Lamprais</h3>
+            <p>Steamed in banana leaf with mixed meat curry, frikkadel, blachan, and brinjal moju.</p>
+            <span class="pns-cat-arrow">Explore Meals <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <!-- 5. Desserts & Sweets -->
+        <div class="pns-cat-card" onclick="selectCategory('sweets')">
+          <div class="pns-cat-media"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" alt="Desserts & Sweets"></div>
+          <div class="pns-cat-overlay">
+            <h3>Desserts & Swiss Rolls</h3>
+            <p>Malted Milo swiss rolls, lemon meringue tarts, and freshly baked muffins.</p>
+            <span class="pns-cat-arrow">Explore Sweets <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <!-- 6. Party Platters -->
+        <div class="pns-cat-card" onclick="switchSiteTab('events')">
+          <div class="pns-cat-media"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Party Platters"></div>
+          <div class="pns-cat-overlay">
+            <h3>Cocktail Platters</h3>
+            <p>Artisanal bite-sized short eat platters crafted for home parties and corporate events.</p>
+            <span class="pns-cat-arrow">Explore Platters <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <!-- 7. Catering Services -->
+        <div class="pns-cat-card" onclick="switchSiteTab('catering')">
+          <div class="pns-cat-media"><img src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=600&q=80" alt="Catering Services"></div>
+          <div class="pns-cat-overlay">
+            <h3>Outdoor Catering</h3>
+            <p>Customized buffet setups, family gatherings, and wedding banquets.</p>
+            <span class="pns-cat-arrow">View Packages <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <!-- 8. Our Outlets -->
+        <div class="pns-cat-card" onclick="switchSiteTab('outlets')">
+          <div class="pns-cat-media"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80" alt="Outlets"></div>
+          <div class="pns-cat-overlay">
+            <h3>Cabin Outlets</h3>
+            <p>Visit us at Bambalapitiya, Nawala, Delkanda, and One Galle Face.</p>
+            <span class="pns-cat-arrow">Find an Outlet <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STICKY FILTER PILLS & LIVE PRODUCT ORDERING SECTION -->
+    <div class="filter-pills-wrapper" id="products-section">
+      <div class="filter-pills-bar" id="quick-categories">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+
+    <!-- PRODUCT CARDS SECTION -->
+    <section class="section-pns" style="margin-top: 10px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+        <h3 id="products-heading" style="font-family:var(--font-brand); font-size:24px; font-weight:800; color:var(--primary-dark);">
+          Popular Items
+        </h3>
+        <span id="product-count-label" style="font-size:13px; font-weight:700; color:var(--text-muted);">Showing all items</span>
+      </div>
+
+      <div class="product-grid" id="product-grid">
+        <!-- Products injected via JavaScript -->
+      </div>
+    </section>
+  </div>
+
+  <!-- ==========================================================================
+       TAB 2: FULL MENUS
+       ========================================================================== -->
+  <div id="view-menus" class="tab-view">
+    <section class="section-pns">
+      <div class="pns-section-head">
+        <span class="pns-eyebrow">Our Full Heritage Menu</span>
+        <h2 class="pns-title">Cabin Short Eats, Savouries & Gateaux</h2>
+        <p class="pns-subtitle">Browse through our time-honoured savoury delights, handmade pastries, celebration gateaux and Dutch lamprais.</p>
+      </div>
+
+      <!-- FILTER PILLS IN MENUS TAB -->
+      <div class="filter-pills-bar" id="menu-categories-filter" style="justify-content:center; margin-bottom:32px;"></div>
+
+      <div class="product-grid" id="menu-full-grid"></div>
+    </section>
+  </div>
+
+  <!-- ==========================================================================
+       TAB 3: CATERING SERVICES
+       ========================================================================== -->
+  <div id="view-catering" class="tab-view">
+    <section class="section-pns">
+      <div class="pns-section-head">
+        <span class="pns-eyebrow">Events & Celebrations</span>
+        <h2 class="pns-title">Iconic Ceylon Catering Services</h2>
+        <p class="pns-subtitle">From intimate family gatherings to grand banquet catering, let Green Cabin treat your guests to timeless Sri Lankan flavours.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:24px; margin-bottom:48px;" id="catering-packages-container"></div>
+      
+      <!-- INQUIRY FORM -->
+      <div style="max-width:760px; margin:0 auto; background:#ffffff; border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:36px; box-shadow:var(--shadow-md);" id="catering-inquiry-section">
+        <h3 style="font-family:var(--font-brand); font-size:22px; font-weight:800; color:var(--primary-dark); margin-bottom:8px;">Instant Catering Quotation Request</h3>
+        <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:20px;">Submit your requirements and our Catering Director will reach out with the customized menu options.</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+          <div><label style="font-size:12.5px; font-weight:700;">Your Name</label><input type="text" id="inq-name" style="width:100%; padding:10px; border:1.5px solid var(--border-color); border-radius:8px;" placeholder="Kasun Rodrigo"></div>
+          <div><label style="font-size:12.5px; font-weight:700;">Contact Phone</label><input type="text" id="inq-phone" style="width:100%; padding:10px; border:1.5px solid var(--border-color); border-radius:8px;" placeholder="+94 77 123 4567"></div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+          <div><label style="font-size:12.5px; font-weight:700;">Event Date</label><input type="date" id="inq-date" style="width:100%; padding:10px; border:1.5px solid var(--border-color); border-radius:8px;"></div>
+          <div><label style="font-size:12.5px; font-weight:700;">Estimated Guests</label><input type="number" id="inq-guests" style="width:100%; padding:10px; border:1.5px solid var(--border-color); border-radius:8px;" placeholder="50"></div>
+        </div>
+        <div style="margin-bottom:16px;"><label style="font-size:12.5px; font-weight:700;">Package</label><input type="text" id="inq-package" style="width:100%; padding:10px; border:1.5px solid var(--border-color); border-radius:8px;" value="Traditional Ceylon Buffet"></div>
+        <div style="margin-bottom:20px;"><label style="font-size:12.5px; font-weight:700;">Event Location / Notes</label><input type="text" id="inq-location" style="width:100%; padding:10px; border:1.5px solid var(--border-color); border-radius:8px;" placeholder="Colombo 07 / Remarks"></div>
+        <button class="btn-hero-primary" style="width:100%; justify-content:center;" onclick="submitCateringInquiry()"><i class="fa-brands fa-whatsapp"></i> Submit Catering Inquiry via WhatsApp</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==========================================================================
+       TAB 4: PLATTERS
+       ========================================================================== -->
+  <div id="view-events" class="tab-view">
+    <section class="section-pns">
+      <div class="pns-section-head">
+        <span class="pns-eyebrow">Party & Cocktail Bites</span>
+        <h2 class="pns-title">Savouries, Cocktail Platters & Snack Boxes</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:24px;" id="events-platters-container"></div>
+    </section>
+  </div>
+
+  <!-- ==========================================================================
+       TAB 5: OUTLETS
+       ========================================================================== -->
+  <div id="view-outlets" class="tab-view">
+    <section class="section-pns">
+      <div class="pns-section-head">
+        <span class="pns-eyebrow">Locations & Hours</span>
+        <h2 class="pns-title">Visit Our Cabins Across Colombo</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px;" id="outlets-container"></div>
+    </section>
+  </div>
+
+  <!-- ==========================================================================
+       TAB 6: HERITAGE (SINCE 1884)
+       ========================================================================== -->
+  <div id="view-about" class="tab-view">
+    <section class="section-pns">
+      <div style="max-width:880px; margin:0 auto; background:#ffffff; border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:48px 36px; box-shadow:var(--shadow-md);">
+        <span class="pns-eyebrow">Our Story Since 1884</span>
+        <h2 class="pns-title" id="about-title" style="margin-bottom:20px;">Over 140 Years of Authentic Ceylon Culinary Excellence</h2>
+        <p id="about-text-1" style="font-size:15px; color:#475569; line-height:1.7; margin-bottom:16px;">
+          Green Cabin, managed under the proud stewardship of Cyril Rodrigo Restaurants, traces its illustrious heritage back to 1884 when it first began as the Ceylon Tea Kiosk at the Colombo Harbour. Over generations, Green Cabin has evolved into a household name, cherished for its legendary puff pastry meat pies, short eats, festive ribbon cakes, and authentic Sri Lankan flavours.
+        </p>
+        <p id="about-text-2" style="font-size:15px; color:#475569; line-height:1.7;">
+          From historic banquet catering to daily morning savouries, our master bakers and chefs preserve the secret family spice blends and traditional recipes that have delighted generations of Sri Lankans and international visitors alike.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==========================================================================
+       CART DRAWER
+       ========================================================================== -->
+  <div class="cart-overlay" id="cart-overlay" onclick="toggleCart(false)"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3><i class="fa-solid fa-basket-shopping"></i> Your Selected Items</h3>
+      <button class="cart-close-btn" onclick="toggleCart(false)">&times;</button>
+    </div>
+    <div class="cart-items-scroll" id="cart-items-container">
+      <!-- Items dynamically populated -->
+    </div>
+    <div class="cart-drawer-footer">
+      <div class="cart-total-line">
+        <span>Order Total:</span>
+        <span class="cart-total-amount" id="cart-total-price">Rs. 0</span>
+      </div>
+      <button class="btn-checkout-woo" onclick="checkoutWooCommerce()">
+        <i class="fa-solid fa-lock"></i> Proceed to Checkout (Online Order)
+      </button>
+      <button class="btn-checkout-wa" onclick="checkoutWhatsApp()">
+        <i class="fa-brands fa-whatsapp"></i> Order via WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       P&S STYLE LUXURY FOOTER
+       ========================================================================== -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+          <img src="logo.png" id="ft-logo-img" style="width:48px; height:48px; border-radius:50%; border:2px solid var(--secondary-color); background:#fff;" alt="Green Cabin Logo">
+          <h4 id="ft-brand-title" style="margin-bottom:0;">GREEN CABIN</h4>
+        </div>
+        <p id="ft-brand-desc">Carrying on the culinary legacy of Cyril Rodrigo Restaurants since 1884. Iconic Sri Lankan taste, authentic recipes, and warm hospitality.</p>
+        <p id="ft-address"><i class="fa-solid fa-location-dot" style="color:var(--secondary-color);"></i> 400 Galle Road, Colombo 03, Sri Lanka</p>
+        <div class="footer-social-links">
+          <a href="https://facebook.com" target="_blank" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://instagram.com" target="_blank" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://wa.me/94771234567" target="_blank" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a onclick="switchSiteTab('home')">Home / Bakery Shop</a></li>
+          <li><a onclick="switchSiteTab('menus')">Bakery Menus & Pies</a></li>
+          <li><a onclick="switchSiteTab('catering')">Outdoor Catering</a></li>
+          <li><a onclick="switchSiteTab('events')">Cocktail Platters</a></li>
+          <li><a onclick="switchSiteTab('outlets')">Cabin Outlets</a></li>
+          <li><a onclick="switchSiteTab('about')">Our Heritage (Since 1884)</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Our Outlets</h4>
+        <ul id="ft-outlets-list">
+          <li><a onclick="switchSiteTab('outlets')">Bambalapitiya Flagship</a></li>
+          <li><a onclick="switchSiteTab('outlets')">Nawala Outlet</a></li>
+          <li><a onclick="switchSiteTab('outlets')">Delkanda Outlet</a></li>
+          <li><a onclick="switchSiteTab('outlets')">One Galle Face Outlet</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Customer Care</h4>
+        <ul>
+          <li><i class="fa-solid fa-phone" style="color:var(--secondary-color); margin-right:8px;"></i> <span id="ft-phone">+94 11 258 8811</span></li>
+          <li><i class="fa-brands fa-whatsapp" style="color:var(--secondary-color); margin-right:8px;"></i> <span id="ft-whatsapp">+94 77 123 4567</span></li>
+          <li><i class="fa-solid fa-envelope" style="color:var(--secondary-color); margin-right:8px;"></i> <span id="ft-email">orders@greencabin.lk</span></li>
+          <li><i class="fa-solid fa-clock" style="color:var(--secondary-color); margin-right:8px;"></i> <span id="ft-hours">8:00 AM - 9:00 PM Daily</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; <span id="current-year"></span> <span id="ft-copyright-text">Green Cabin (Cyril Rodrigo Restaurants). All Rights Reserved.</span></div>
+      <div>Designed with Cocon Regular & Pantone 3298 C</div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       COMPLETE JAVASCRIPT & WOOCOMMERCE CHECKOUT LOGIC
+       ========================================================================== -->
+  <script>
+    const DEFAULT_STORE_DATA = {
+      settings: {
+        brandName: "GREEN CABIN",
+        brandSub: "SERVING SINCE 1884",
+        logoImage: "logo.png",
+        phone: "+94 11 258 8811",
+        whatsapp: "+94 77 123 4567",
+        email: "orders@greencabin.lk",
+        address: "400 Galle Road, Colombo 03, Sri Lanka",
+        deliveryNotice: "Colombo & Islandwide Delivery Available",
+        hoursNotice: "8:00 AM - 9:00 PM Daily",
+        currency: "Rs.",
+        wooUrl: "https://ordernow.greencabin.lk",
+        primaryColor: "#006f5b",
+        secondaryColor: "#81caa5",
+        darkColor: "#003b31",
+        accentColor: "#d9381e",
+        fontHeading: "'Cocon Regular', 'Cocon', 'Nunito', sans-serif",
+        fontBody: "'Cocon Regular', 'Cocon', 'Plus Jakarta Sans', sans-serif",
+        heroTag: "Est. 1884 · Ceylon's Foremost Baker & Caterer",
+        heroTitle: "Sri Lanka's Iconic Taste Since 1884",
+        heroSub: "Freshly baked traditional meat pies, flaky savouries, celebratory gateaux, and authentic Dutch lamprais delivered right to your doorstep.",
+        heroInterval: 4500,
+        heroSlides: [
+          {
+            id: "s1",
+            image: "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=1400&q=80",
+            tag: "Est. 1884 · Ceylon's Foremost Baker & Caterer",
+            title: "Sri Lanka's <span>Iconic Taste</span> Since 1884",
+            desc: "Freshly baked traditional meat pies, flaky savouries, celebratory gateaux, and authentic Dutch lamprais delivered right to your doorstep.",
+            btnText: "Order Online",
+            btnAction: "scrollToProducts()",
+            badgeTitle: "Over 140 Years of Heritage",
+            badgeSub: "Preserving original family recipes"
+          },
+          {
+            id: "s2",
+            image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=1400&q=80",
+            tag: "Authentic Dutch Burgher Recipe",
+            title: "Traditional <span>Dutch Lamprais</span> Feasts",
+            desc: "Steamed slow in fresh banana leaf with samba rice, four-meat curry, frikkadel meatballs, spicy blachan, and seeni sambol.",
+            btnText: "Order Lamprais Now",
+            btnAction: "selectCategory('traditional')",
+            badgeTitle: "Authentic Dutch Lamprais",
+            badgeSub: "Slow-steamed in banana leaf"
+          },
+          {
+            id: "s3",
+            image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1400&q=80",
+            tag: "Sweet Delights & Celebrations",
+            title: "Handcrafted <span>Ribbon Cakes & Gateaux</span>",
+            desc: "Celebrate special milestones with our signature multi-layered ribbon cakes, decadent chocolate fudge, and fresh gateaux.",
+            btnText: "Explore Celebration Cakes",
+            btnAction: "selectCategory('cakes')",
+            badgeTitle: "Freshly Baked Daily",
+            badgeSub: "Signature cakes & swiss rolls"
+          },
+          {
+            id: "s4",
+            image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1400&q=80",
+            tag: "Crispy & Flaky Short Eats",
+            title: "Legendary <span>Chinese Rolls & Savouries</span>",
+            desc: "Crispy beef Chinese rolls, spicy fish patties, and savoury mutton pastries — Ceylon's favourite teatime snack since 1884.",
+            btnText: "Order Savouries & Short Eats",
+            btnAction: "selectCategory('savouries')",
+            badgeTitle: "Piping Hot Short Eats",
+            badgeSub: "Ceylon's favourite teatime snacks"
+          },
+          {
+            id: "s5",
+            image: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1400&q=80",
+            tag: "Outdoor Catering & Banquets",
+            title: "Premier <span>Outdoor Catering</span> Across Colombo",
+            desc: "From intimate family functions to grand corporate cocktail gatherings, let Green Cabin take care of the culinary magic.",
+            btnText: "Catering Quotation",
+            btnAction: "switchSiteTab('catering')",
+            badgeTitle: "Islandwide Catering",
+            badgeSub: "Full buffet setup & service"
+          }
+        ],
+        aboutTitle: "Over 140 Years of Authentic Ceylon Culinary Excellence",
+        aboutText1: "Green Cabin, managed under the proud stewardship of Cyril Rodrigo Restaurants, traces its illustrious heritage back to 1884 when it first began as the Ceylon Tea Kiosk at the Colombo Harbour. Over generations, Green Cabin has evolved into a household name, cherished for its legendary puff pastry meat pies, short eats, festive ribbon cakes, and authentic Sri Lankan flavours.",
+        aboutText2: "From historic banquet catering to daily morning savouries, our master bakers and chefs preserve the secret family spice blends and traditional recipes that have delighted generations of Sri Lankans and international visitors alike.",
+        footerAbout: "Carrying on the culinary legacy of Cyril Rodrigo Restaurants since 1884. Iconic Sri Lankan taste, authentic recipes, and warm hospitality."
+      },
+      categories: [
+        { id: "all", name: "All Delicacies", icon: "fa-utensils" },
+        { id: "pies", name: "Meat Pies", icon: "fa-bread-slice" },
+        { id: "savouries", name: "Savouries & Rolls", icon: "fa-cookie-bite" },
+        { id: "cakes", name: "Cakes & Gateaux", icon: "fa-cake-candles" },
+        { id: "traditional", name: "Dutch Lamprais", icon: "fa-bowl-rice" },
+        { id: "sweets", name: "Desserts & Sweets", icon: "fa-cookie" }
+      ],
+      products: [
+        {
+          id: "p1",
+          wooId: "20772",
+          name: "Traditional Dutch Mixed Meat Lamprais",
+          category: "traditional",
+          price: 1650,
+          oldPrice: 1800,
+          badge: "Bestseller",
+          veg: false,
+          desc: "Steamed in fragrant banana leaf with samba rice, mixed meat curry, frikkadel meat ball, blachan, and brinjal moju.",
+          image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          id: "p2",
+          wooId: "22772",
+          name: "Crispy Beef Chinese Roll",
+          category: "savouries",
+          price: 280,
+          oldPrice: null,
+          badge: "Hot",
+          veg: false,
+          desc: "Iconic crumbed golden crepe roll filled with tender spiced beef and potato filling.",
+          image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          id: "p3",
+          wooId: "22746",
+          name: "Bento Celebration Ribbon Cake",
+          category: "cakes",
+          price: 2100,
+          oldPrice: 2400,
+          badge: "Special",
+          veg: true,
+          desc: "Moist multi-layered colourful butter sponge layered with traditional sweet icing.",
+          image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          id: "p4",
+          wooId: "35590",
+          name: "Milo Swiss Roll",
+          category: "sweets",
+          price: 1850,
+          oldPrice: null,
+          badge: "New",
+          veg: true,
+          desc: "Fluffy cocoa sponge cake rolled with rich malted Milo cream filling.",
+          image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          id: "p5",
+          wooId: "22786",
+          name: "Pineapple Gateaux Slice",
+          category: "cakes",
+          price: 420,
+          oldPrice: 480,
+          badge: "Classic",
+          veg: true,
+          desc: "Light vanilla sponge infused with real Ceylon pineapple compote and fresh dairy cream.",
+          image: "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          id: "p6",
+          wooId: "20747",
+          name: "Signature Chocolate Fudge Gateau (1 Lb)",
+          category: "cakes",
+          price: 2950,
+          oldPrice: 3200,
+          badge: "Signature",
+          veg: true,
+          desc: "Rich dark cocoa sponge layered with molten chocolate ganache and chocolate curls.",
+          image: "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          id: "p7",
+          wooId: "22783",
+          name: "Lemon Meringue Tart (Small)",
+          category: "sweets",
+          price: 380,
+          oldPrice: null,
+          badge: "Favourite",
+          veg: true,
+          desc: "Buttery shortcrust tartlet filled with zesty lemon curd and crowned with torched meringue.",
+          image: "https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+          id: "p8",
+          wooId: "22781",
+          name: "Chocolate Chips Muffin",
+          category: "sweets",
+          price: 320,
+          oldPrice: null,
+          badge: "Fresh",
+          veg: true,
+          desc: "Moist bakery muffin bursting with premium chocolate chips.",
+          image: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=600&q=80"
+        }
+      ],
+      cateringPackages: [
+        {
+          id: "c1",
+          name: "Traditional Ceylon Feast",
+          priceTag: "From Rs. 2,250 / Person",
+          minGuests: "25 Guests minimum",
+          desc: "Authentic Sri Lankan buffet with fragrant yellow rice, chicken curry, ambulthiyal, cashew curry, dhal, and watalappan.",
+          features: ["Complete Buffet Setup", "Chafing Dishes & Service Staff", "Clay Pots Presentation", "Traditional Desserts Bar"],
+          img: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=500&q=80"
+        },
+        {
+          id: "c2",
+          name: "Cabinet Short Eats Party Spread",
+          priceTag: "From Rs. 1,650 / Person",
+          minGuests: "20 Guests minimum",
+          desc: "Perfect for tea parties, birthdays and gatherings. A rich assortment of short eats, pastries, meat pies, sandwiches, and iced coffee.",
+          features: ["Famous Meat & Fish Pies", "Beef & Veg Chinese Rolls", "Ribbon & Gateau Cake Slices", "Ceylon Spiced Iced Coffee"],
+          img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80"
+        }
+      ],
+      eventsPlatters: [
+        {
+          id: "pl1",
+          name: "Executive Savouries Platter (30 Pcs)",
+          price: "Rs. 6,800",
+          desc: "Includes 10x Mini Chicken Pies, 10x Fish Pastries, and 10x Beef Chinese Rolls.",
+          img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80"
+        },
+        {
+          id: "pl2",
+          name: "Sweet Delights Cocktail Platter (24 Pcs)",
+          price: "Rs. 5,400",
+          desc: "Includes 8x Lemon Meringue Tarts, 8x Milo Roll Slices, and 8x Chocolate Brownie Bites.",
+          img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=500&q=80"
+        }
+      ],
+      outlets: [
+        {
+          id: "o1",
+          name: "Bambalapitiya Flagship",
+          address: "400 Galle Road, Colombo 03",
+          phone: "+94 11 258 8811",
+          hours: "7:30 AM - 9:00 PM Daily",
+          mapLink: "https://maps.google.com"
+        },
+        {
+          id: "o2",
+          name: "Nawala Cabin",
+          address: "182 Nawala Road, Nugegoda",
+          phone: "+94 11 280 5500",
+          hours: "8:00 AM - 8:30 PM Daily",
+          mapLink: "https://maps.google.com"
+        },
+        {
+          id: "o3",
+          name: "Delkanda Cabin",
+          address: "High Level Road, Delkanda",
+          phone: "+94 11 282 3344",
+          hours: "8:00 AM - 8:00 PM Daily",
+          mapLink: "https://maps.google.com"
+        }
+      ]
+    };
+
+    let storeData = DEFAULT_STORE_DATA;
+    let currentCategory = 'all';
+    let cart = [];
+
+    function init() {
+      loadSavedData();
+      applySettings();
+      initHeroSlider();
+      renderQuickCategories();
+      renderProducts();
+      renderFullMenus();
+      renderCatering();
+      renderEvents();
+      renderOutlets();
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+    }
+
+    function loadSavedData() {
+      const saved = localStorage.getItem('greencabin_store_data');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (parsed && parsed.products) storeData = parsed;
+        } catch(e) {}
+      }
+    }
+
+    function applySettings() {
+      const s = storeData.settings;
+      if (!s) return;
+      if (s.logoImage) {
+        const hLogo = document.getElementById('hdr-logo-img');
+        if (hLogo) hLogo.src = s.logoImage;
+        const fLogo = document.getElementById('ft-logo-img');
+        if (fLogo) fLogo.src = s.logoImage;
+      }
+      document.documentElement.style.setProperty('--primary-color', s.primaryColor || '#006f5b');
+      document.documentElement.style.setProperty('--primary-dark', s.darkColor || '#003b31');
+      document.documentElement.style.setProperty('--secondary-color', s.secondaryColor || '#81caa5');
+      if (s.phone) {
+        document.getElementById('tb-phone').textContent = s.phone;
+        document.getElementById('tb-phone').href = 'tel:' + s.phone.replace(/[^0-9+]/g, '');
+        document.getElementById('ft-phone').textContent = s.phone;
+      }
+      if (s.whatsapp) {
+        document.getElementById('tb-whatsapp').textContent = s.whatsapp;
+        document.getElementById('tb-whatsapp').href = 'https://wa.me/' + s.whatsapp.replace(/[^0-9]/g, '');
+        document.getElementById('hero-whatsapp-btn').href = 'https://wa.me/' + s.whatsapp.replace(/[^0-9]/g, '');
+        document.getElementById('ft-whatsapp').textContent = s.whatsapp;
+      }
+      if (s.brandName) {
+        document.getElementById('hdr-brand-title').textContent = s.brandName;
+        document.getElementById('ft-brand-title').textContent = s.brandName;
+      }
+      if (s.brandSub) document.getElementById('hdr-brand-sub').textContent = s.brandSub;
+      if (s.heroTag) document.getElementById('hero-tag').textContent = s.heroTag;
+      if (s.heroTitle) document.getElementById('hero-title').textContent = s.heroTitle;
+      if (s.heroSub) document.getElementById('hero-sub').textContent = s.heroSub;
+      if (s.heroImage) document.getElementById('hero-banner-img').src = s.heroImage;
+    }
+
+    // ==========================================================================
+    // SITE TAB NAVIGATION & SUB BUTTONS (ROCK-SOLID ACTIVE SWITCHING)
+    // ==========================================================================
+    function switchSiteTab(tabName, shouldScrollTop = true) {
+      // 1. Remove active from all tab-views
+      document.querySelectorAll('.tab-view').forEach(v => {
+        v.classList.remove('active');
+        v.style.display = 'none';
+      });
+
+      // 2. Remove active from desktop nav buttons
+      document.querySelectorAll('.nav-link-btn').forEach(b => b.classList.remove('active'));
+
+      // 3. Remove active from mobile nav buttons
+      document.querySelectorAll('.mob-nav-btn').forEach(b => b.classList.remove('active'));
+
+      // 4. Activate target view
+      const target = document.getElementById('view-' + tabName);
+      if (target) {
+        target.classList.add('active');
+        target.style.display = 'block';
+      }
+
+      // 5. Activate desktop nav button
+      const btn = document.getElementById('tab-nav-' + tabName);
+      if (btn) btn.classList.add('active');
+
+      // 6. Activate mobile nav button
+      const mobBtn = document.getElementById('mob-nav-' + tabName);
+      if (mobBtn) mobBtn.classList.add('active');
+
+      // 7. Scroll smoothly to top if requested
+      if (shouldScrollTop) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function scrollToProducts() {
+      // Ensure we are on home view without forcing top scroll
+      switchSiteTab('home', false);
+      setTimeout(() => {
+        const el = document.getElementById('products-section');
+        if (el) {
+          const yOffset = -90; // offset for sticky header
+          const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }, 50);
+    }
+
+    function selectCategory(catId) {
+      currentCategory = catId;
+      renderQuickCategories();
+      renderProducts();
+      scrollToProducts();
+    }
+
+    // ==========================================================================
+    // MULTI-PHOTO HERO BANNER AUTO-SLIDER CONTROLLER
+    // ==========================================================================
+    let currentSlideIndex = 0;
+    let heroSliderTimer = null;
+    let isHeroSliderPaused = false;
+
+    function getHeroSlides() {
+      if (storeData.settings && Array.isArray(storeData.settings.heroSlides) && storeData.settings.heroSlides.length > 0) {
+        return storeData.settings.heroSlides;
+      }
+      if (DEFAULT_STORE_DATA.settings && Array.isArray(DEFAULT_STORE_DATA.settings.heroSlides)) {
+        return DEFAULT_STORE_DATA.settings.heroSlides;
+      }
+      return [];
+    }
+
+    function initHeroSlider() {
+      const slides = getHeroSlides();
+      const container = document.getElementById('hero-slides-container');
+      const dotsContainer = document.getElementById('hero-slider-dots');
+      if (!container || slides.length === 0) return;
+
+      container.innerHTML = slides.map((s, idx) => `
+        <div class="hero-slide ${idx === 0 ? 'active' : ''}" data-index="${idx}">
+          <img src="${s.image}" alt="${(s.title || 'Green Cabin').replace(/<[^>]*>/g, '')}" loading="${idx === 0 ? 'eager' : 'lazy'}">
+        </div>
+      `).join('');
+
+      if (dotsContainer) {
+        dotsContainer.innerHTML = slides.map((_, idx) => `
+          <button class="slider-dot ${idx === 0 ? 'active' : ''}" onclick="goToHeroSlide(${idx})" aria-label="Slide ${idx + 1}"></button>
+        `).join('');
+      }
+
+      currentSlideIndex = 0;
+      updateHeroSlideContent(0);
+      startHeroSliderTimer();
+      setupHeroTouchSwipe();
+    }
+
+    function updateHeroSlideContent(index) {
+      const slides = getHeroSlides();
+      if (!slides || slides.length === 0) return;
+      const slide = slides[index];
+      if (!slide) return;
+
+      // Update slide active class
+      const slideEls = document.querySelectorAll('.hero-slide');
+      slideEls.forEach((el, idx) => {
+        el.classList.toggle('active', idx === index);
+      });
+
+      // Update dots
+      const dotEls = document.querySelectorAll('.slider-dot');
+      dotEls.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === index);
+      });
+
+      // Update text elements smoothly
+      const tagTextEl = document.getElementById('hero-tag-text');
+      const titleEl = document.getElementById('hero-title');
+      const subEl = document.getElementById('hero-sub');
+      const btnTextEl = document.getElementById('hero-btn-text');
+      const btnEl = document.getElementById('hero-btn-primary');
+      const badgeTitleEl = document.getElementById('hero-badge-title');
+      const badgeSubEl = document.getElementById('hero-badge-sub');
+
+      if (tagTextEl && slide.tag) tagTextEl.textContent = slide.tag;
+      if (titleEl && slide.title) titleEl.innerHTML = slide.title;
+      if (subEl && slide.desc) subEl.textContent = slide.desc;
+      if (btnTextEl && slide.btnText) btnTextEl.textContent = slide.btnText;
+      if (btnEl && slide.btnAction) btnEl.setAttribute('onclick', slide.btnAction);
+      if (badgeTitleEl && slide.badgeTitle) badgeTitleEl.textContent = slide.badgeTitle;
+      if (badgeSubEl && slide.badgeSub) badgeSubEl.textContent = slide.badgeSub;
+    }
+
+    function goToHeroSlide(index) {
+      const slides = getHeroSlides();
+      if (!slides || slides.length === 0) return;
+      currentSlideIndex = (index + slides.length) % slides.length;
+      updateHeroSlideContent(currentSlideIndex);
+      resetHeroSliderTimer();
+    }
+
+    function changeHeroSlide(delta) {
+      goToHeroSlide(currentSlideIndex + delta);
+    }
+
+    function startHeroSliderTimer() {
+      stopHeroSliderTimer();
+      const interval = (storeData.settings && storeData.settings.heroInterval) || 4500;
+      if (interval <= 0) return;
+      heroSliderTimer = setInterval(() => {
+        if (!isHeroSliderPaused) {
+          const slides = getHeroSlides();
+          if (slides && slides.length > 1) {
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            updateHeroSlideContent(currentSlideIndex);
+          }
+        }
+      }, interval);
+    }
+
+    function stopHeroSliderTimer() {
+      if (heroSliderTimer) {
+        clearInterval(heroSliderTimer);
+        heroSliderTimer = null;
+      }
+    }
+
+    function resetHeroSliderTimer() {
+      startHeroSliderTimer();
+    }
+
+    function pauseHeroSlider() {
+      isHeroSliderPaused = true;
+    }
+
+    function resumeHeroSlider() {
+      isHeroSliderPaused = false;
+    }
+
+    function setupHeroTouchSwipe() {
+      const el = document.getElementById('hero-slider-section');
+      if (!el) return;
+      let startX = 0;
+      el.addEventListener('touchstart', e => {
+        if (e.touches && e.touches[0]) startX = e.touches[0].clientX;
+      }, { passive: true });
+      el.addEventListener('touchend', e => {
+        if (e.changedTouches && e.changedTouches[0]) {
+          const diffX = startX - e.changedTouches[0].clientX;
+          if (Math.abs(diffX) > 40) {
+            changeHeroSlide(diffX > 0 ? 1 : -1);
+          }
+        }
+      }, { passive: true });
+    }
+
+    // P&S STICKY FILTER PILLS
+    function renderQuickCategories() {
+      const container = document.getElementById('quick-categories');
+      container.innerHTML = storeData.categories.map(c => `
+        <button class="pill-filter-btn ${currentCategory === c.id ? 'active' : ''}" onclick="selectCategory('${c.id}')">
+          <i class="fa-solid ${c.icon || 'fa-utensils'}"></i>
+          <span>${c.name}</span>
+        </button>
+      `).join('');
+    }
+
+    function selectCategory(catId) {
+      switchSiteTab('home');
+      currentCategory = catId;
+      renderQuickCategories();
+      renderProducts();
+      scrollToProducts();
+    }
+
+    function scrollToProducts() {
+      switchSiteTab('home');
+      document.getElementById('products-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // P&S PRODUCT CARDS
+    function renderProducts(filteredList = null) {
+      const grid = document.getElementById('product-grid');
+      const list = filteredList !== null ? filteredList : (
+        currentCategory === 'all' 
+          ? storeData.products 
+          : storeData.products.filter(p => p.category === currentCategory)
+      );
+
+      document.getElementById('product-count-label').textContent = `Showing ${list.length} item(s)`;
+
+      if (list.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 48px; color: #64748b;">
+            <i class="fa-solid fa-cookie-bite" style="font-size: 40px; margin-bottom: 12px; color: var(--secondary-color);"></i>
+            <h3>No items in this category right now</h3>
+            <p>Please select another category above!</p>
+          </div>
+        `;
+        return;
+      }
+
+      const curr = storeData.settings.currency || 'Rs.';
+
+      grid.innerHTML = list.map(item => `
+        <div class="product-card">
+          ${item.badge ? `<span class="badge-float">${item.badge}</span>` : ''}
+          <div class="card-img-wrap">
+            <img src="${item.image || 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=600&q=80'}" alt="${item.name}" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="diet-and-cat">
+              <span class="diet-dot ${item.veg ? '' : 'non-veg'}" title="${item.veg ? 'Vegetarian' : 'Non-Vegetarian'}"></span>
+              <span class="card-cat-name">${getCatName(item.category)}</span>
+            </div>
+            <h3 class="card-title">${item.name}</h3>
+            <p class="card-desc">${item.desc || ''}</p>
+            <div class="card-footer">
+              <div class="price-wrap">
+                <span class="price-main">${curr} ${Number(item.price).toLocaleString()}</span>
+                ${item.oldPrice ? `<span class="price-old">${curr} ${Number(item.oldPrice).toLocaleString()}</span>` : ''}
+              </div>
+              <button class="btn-add-pns" onclick="addToCart('${item.id}')">
+                <i class="fa-solid fa-plus"></i> ADD
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    let currentMenuCategory = 'all';
+
+    
+    function selectMenuCategory(catId) {
+      currentMenuCategory = catId;
+      renderFullMenus();
+    }
+
+    function renderFullMenus(filtered = null) {
+      const grid = document.getElementById('menu-full-grid');
+      const filterBar = document.getElementById('menu-categories-filter');
+      const curr = storeData.settings.currency || 'Rs.';
+
+      if (filterBar) {
+        filterBar.innerHTML = storeData.categories.map(c => `
+          <button class="pill-filter-btn ${currentMenuCategory === c.id ? 'active' : ''}" onclick="selectMenuCategory('${c.id}')">
+            <i class="fa-solid ${c.icon || 'fa-utensils'}"></i>
+            <span>${c.name}</span>
+          </button>
+        `).join('');
+      }
+
+      const list = filtered !== null ? filtered : (
+        currentMenuCategory === 'all'
+          ? storeData.products
+          : storeData.products.filter(p => p.category === currentMenuCategory)
+      );
+
+      grid.innerHTML = list.map(item => `
+        <div class="product-card">
+          ${item.badge ? `<span class="badge-float">${item.badge}</span>` : ''}
+          <div class="card-img-wrap">
+            <img src="${item.image || 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=600&q=80'}" alt="${item.name}" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="diet-and-cat">
+              <span class="diet-dot ${item.veg ? '' : 'non-veg'}"></span>
+              <span class="card-cat-name">${getCatName(item.category)}</span>
+            </div>
+            <h3 class="card-title">${item.name}</h3>
+            <p class="card-desc">${item.desc || ''}</p>
+            <div class="card-footer">
+              <div class="price-wrap">
+                <span class="price-main">${curr} ${Number(item.price).toLocaleString()}</span>
+              </div>
+              <button class="btn-add-pns" onclick="addToCart('${item.id}')">
+                <i class="fa-solid fa-plus"></i> ADD
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderCatering() {
+      const container = document.getElementById('catering-packages-container');
+      const pkgs = storeData.cateringPackages || DEFAULT_STORE_DATA.cateringPackages;
+      container.innerHTML = pkgs.map(pkg => `
+        <div style="background:#fff; border:1px solid var(--border-color); border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-sm); display:flex; flex-direction:column;">
+          <img src="${pkg.img}" style="width:100%; height:200px; object-fit:cover;" alt="${pkg.name}">
+          <div style="padding:22px; display:flex; flex-direction:column; flex:1;">
+            <h3 style="font-family:var(--font-brand); font-size:20px; font-weight:800; color:var(--primary-dark); margin-bottom:4px;">${pkg.name}</h3>
+            <div style="font-weight:800; color:var(--primary-color); font-size:15px; margin-bottom:12px;">${pkg.priceTag} • <span style="color:var(--text-muted); font-size:12px;">${pkg.minGuests}</span></div>
+            <p style="font-size:13.5px; color:#64748b; line-height:1.5; margin-bottom:16px;">${pkg.desc}</p>
+            <ul style="list-style:none; margin-bottom:20px; flex:1;">
+              ${(pkg.features || []).map(f => `<li style="font-size:12.5px; color:#334155; margin-bottom:6px;"><i class="fa-solid fa-circle-check" style="color:var(--primary-color); margin-right:6px;"></i> ${f}</li>`).join('')}
+            </ul>
+            <button class="btn-hero-primary" style="width:100%; justify-content:center;" onclick="prefillCatering('${pkg.name}')">
+              <i class="fa-solid fa-calendar-check"></i> Select Package
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderEvents() {
+      const container = document.getElementById('events-platters-container');
+      const platters = storeData.eventsPlatters || DEFAULT_STORE_DATA.eventsPlatters;
+      container.innerHTML = platters.map(p => `
+        <div style="background:#fff; border:1px solid var(--border-color); border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-sm); display:flex; flex-direction:column;">
+          <img src="${p.img}" style="width:100%; height:200px; object-fit:cover;" alt="${p.name}">
+          <div style="padding:22px; display:flex; flex-direction:column; flex:1;">
+            <h3 style="font-family:var(--font-brand); font-size:19px; font-weight:800; color:var(--primary-dark); margin-bottom:4px;">${p.name}</h3>
+            <div style="font-weight:800; color:var(--primary-color); font-size:17px; margin-bottom:8px;">${p.price}</div>
+            <p style="font-size:13.5px; color:#64748b; line-height:1.5; margin-bottom:18px; flex:1;">${p.desc}</p>
+            <button class="btn-hero-primary" style="width:100%; justify-content:center;" onclick="orderPlatterDirect('${p.name}', '${p.price}')">
+              <i class="fa-brands fa-whatsapp"></i> Order Platter via WhatsApp
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderOutlets() {
+      const container = document.getElementById('outlets-container');
+      const ftList = document.getElementById('ft-outlets-list');
+      const outlets = storeData.outlets || DEFAULT_STORE_DATA.outlets;
+
+      container.innerHTML = outlets.map(o => `
+        <div style="background:#fff; border:1px solid var(--border-color); border-radius:var(--radius-md); padding:22px; box-shadow:var(--shadow-sm);">
+          <h4 style="font-family:var(--font-brand); font-size:18px; font-weight:800; color:var(--primary-dark); margin-bottom:12px;"><i class="fa-solid fa-store" style="color:var(--primary-color); margin-right:8px;"></i> ${o.name}</h4>
+          <div style="font-size:13px; color:#475569; margin-bottom:8px;"><i class="fa-solid fa-location-dot" style="color:var(--primary-color); margin-right:8px;"></i> ${o.address}</div>
+          <div style="font-size:13px; color:#475569; margin-bottom:8px;"><i class="fa-solid fa-phone" style="color:var(--primary-color); margin-right:8px;"></i> <a href="tel:${o.phone.replace(/[^0-9+]/g,'')}" style="color:var(--primary-color); font-weight:700; text-decoration:none;">${o.phone}</a></div>
+          <div style="font-size:13px; color:#475569; margin-bottom:16px;"><i class="fa-solid fa-clock" style="color:var(--primary-color); margin-right:8px;"></i> ${o.hours}</div>
+          <div style="display:flex; gap:10px;">
+            <a href="${o.mapLink || '#'}" target="_blank" class="btn-hero-primary" style="font-size:12px; padding:8px 16px;">Map View</a>
+            <a href="tel:${o.phone.replace(/[^0-9+]/g,'')}" class="btn-hero-outline" style="color:var(--primary-dark); border-color:var(--primary-dark); font-size:12px; padding:8px 14px;">Call</a>
+          </div>
+        </div>
+      `).join('');
+
+      ftList.innerHTML = outlets.map(o => `
+        <li><a onclick="switchSiteTab('outlets')">${o.name}</a></li>
+      `).join('');
+    }
+
+    function getCatName(catId) {
+      const found = storeData.categories.find(c => c.id === catId);
+      return found ? found.name : catId;
+    }
+
+    function handleSearch() {
+      switchSiteTab('home');
+      const query = document.getElementById('search-input').value.toLowerCase().trim();
+      let filtered = storeData.products;
+      if (query) {
+        filtered = filtered.filter(p => 
+          p.name.toLowerCase().includes(query) || 
+          (p.desc && p.desc.toLowerCase().includes(query))
+        );
+      }
+      renderProducts(filtered);
+    }
+
+    function prefillCatering(packageName) {
+      document.getElementById('inq-package').value = packageName;
+      switchSiteTab('catering');
+      document.getElementById('catering-inquiry-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function submitCateringInquiry() {
+      const name = document.getElementById('inq-name').value.trim();
+      const phone = document.getElementById('inq-phone').value.trim();
+      const date = document.getElementById('inq-date').value;
+      const guests = document.getElementById('inq-guests').value;
+      const pkg = document.getElementById('inq-package').value;
+      const location = document.getElementById('inq-location').value.trim();
+
+      if (!name || !phone) return alert("Please enter your Name and Phone!");
+
+      const cleanWa = (storeData.settings.whatsapp || '94771234567').replace(/[^0-9]/g, '');
+      let msg = `*NEW CATERING INQUIRY - GREEN CABIN LK*\n----------------------------------\n👤 Name: ${name}\n📞 Phone: ${phone}\n📅 Date: ${date || 'Not specified'}\n👥 Guests: ${guests || 'Not specified'}\n🍱 Package: ${pkg}\n📍 Location: ${location || 'Not specified'}\n----------------------------------\nPlease send menu details and quotation.`;
+      window.open(`https://wa.me/${cleanWa}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function orderPlatterDirect(name, price) {
+      const cleanWa = (storeData.settings.whatsapp || '94771234567').replace(/[^0-9]/g, '');
+      const msg = `*PLATTER ORDER - GREEN CABIN LK*\n\nHello, I would like to order: *${name}* (${price}). Please let me know preparation time.`;
+      window.open(`https://wa.me/${cleanWa}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    // ==========================================================================
+    // CART & DIRECT WOOCOMMERCE CHECKOUT BRIDGE
+    // ==========================================================================
+    function toggleCart(show) {
+      document.getElementById('cart-overlay').classList.toggle('active', show);
+      document.getElementById('cart-drawer').classList.toggle('active', show);
+    }
+
+    function addToCart(productId) {
+      const prod = storeData.products.find(p => p.id === productId);
+      if (!prod) return;
+
+      const existing = cart.find(i => i.id === productId);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({
+          id: prod.id,
+          wooId: prod.wooId || prod.id,
+          name: prod.name,
+          price: prod.price,
+          image: prod.image,
+          qty: 1
+        });
+      }
+      updateCartUI();
+      toggleCart(true);
+    }
+
+    function changeQty(productId, delta) {
+      const item = cart.find(i => i.id === productId);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) cart = cart.filter(i => i.id !== productId);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const count = cart.reduce((sum, i) => sum + i.qty, 0);
+      document.getElementById('cart-badge').textContent = count;
+      const container = document.getElementById('cart-items-container');
+      const curr = storeData.settings.currency || 'Rs.';
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; padding:48px 16px; color:#94a3b8;">
+            <i class="fa-solid fa-basket-shopping" style="font-size:42px; margin-bottom:12px; color:var(--secondary-color);"></i>
+            <p>Your cart is empty.</p>
+          </div>
+        `;
+        document.getElementById('cart-total-price').textContent = `${curr} 0`;
+        return;
+      }
+
+      let subtotal = 0;
+      container.innerHTML = cart.map(item => {
+        const itemTot = item.price * item.qty;
+        subtotal += itemTot;
+        return `
+          <div class="cart-item-row">
+            <img src="${item.image || 'https://via.placeholder.com/80'}" class="cart-item-thumb" alt="${item.name}">
+            <div class="cart-item-details">
+              <div class="cart-item-title">${item.name}</div>
+              <div class="cart-item-price">${curr} ${Number(item.price).toLocaleString()}</div>
+              <div class="cart-qty-ctrl">
+                <button class="qty-btn" onclick="changeQty('${item.id}', -1)">-</button>
+                <span class="qty-num">${item.qty}</span>
+                <button class="qty-btn" onclick="changeQty('${item.id}', 1)">+</button>
+              </div>
+            </div>
+            <div style="font-weight:800; font-size:14px; margin-left:auto; color:var(--primary-dark);">
+              ${curr} ${itemTot.toLocaleString()}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('cart-total-price').textContent = `${curr} ${subtotal.toLocaleString()}`;
+    }
+
+    // DIRECT WOOCOMMERCE CHECKOUT BRIDGE
+    function checkoutWooCommerce() {
+      if (cart.length === 0) return alert("Your cart is empty!");
+
+      const itemsParam = cart.map(item => {
+        const prod = storeData.products.find(p => p.id === item.id);
+        const wId = (prod && prod.wooId) ? prod.wooId : item.wooId;
+        return `${wId}:${item.qty}`;
+      }).join(',');
+
+      const baseWooUrl = (storeData.settings && storeData.settings.wooUrl) || 'https://ordernow.greencabin.lk';
+      const checkoutUrl = `${baseWooUrl.replace(/\/+$/, '')}/?gc_checkout=1&items=${encodeURIComponent(itemsParam)}`;
+
+      window.open(checkoutUrl, '_blank');
+    }
+
+    function checkoutWhatsApp() {
+      if (cart.length === 0) return alert("Your cart is empty!");
+      const curr = storeData.settings.currency || 'Rs.';
+      let msg = "*NEW ORDER - GREEN CABIN LK*\n------------------------\n";
+      let total = 0;
+      cart.forEach((i, idx) => {
+        const tot = i.price * i.qty;
+        total += tot;
+        msg += `${idx + 1}. ${i.name} x ${i.qty} = ${curr} ${tot.toLocaleString()}\n`;
+      });
+      msg += `------------------------\n*Total: ${curr} ${total.toLocaleString()}*\n\nPlease confirm delivery.`;
+      const cleanWa = (storeData.settings.whatsapp || '94771234567').replace(/[^0-9]/g, '');
+      window.open(`https://wa.me/${cleanWa}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    window.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
