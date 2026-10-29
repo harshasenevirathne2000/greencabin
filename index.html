@@ -191,10 +191,33 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      text-decoration: none;
     }
     .nav-link-btn:hover, .nav-link-btn.active {
       color: var(--primary-color);
       background: var(--mint-light);
+    }
+    #tab-nav-restaurants {
+      background: rgba(0, 111, 91, 0.08);
+      color: var(--primary-color);
+      border: 1px solid rgba(129, 202, 165, 0.45);
+    }
+    #tab-nav-restaurants:hover {
+      background: var(--primary-color);
+      color: #ffffff;
+      border-color: var(--primary-color);
+    }
+    #tab-nav-restaurants:hover i {
+      color: #ffffff !important;
+    }
+    #mob-nav-restaurants {
+      background: rgba(129, 202, 165, 0.2);
+      border-color: var(--secondary-color);
+      color: var(--secondary-color);
+    }
+    #mob-nav-restaurants:hover {
+      background: var(--secondary-color);
+      color: var(--primary-dark);
     }
 
     /* SEARCH BAR */
@@ -1293,6 +1316,9 @@
         <button class="nav-link-btn" id="tab-nav-events" onclick="switchSiteTab('events')">Platters</button>
         <button class="nav-link-btn" id="tab-nav-outlets" onclick="switchSiteTab('outlets')">Outlets</button>
         <button class="nav-link-btn" id="tab-nav-about" onclick="switchSiteTab('about')">Heritage</button>
+        <a href="https://www.cyrilsgreencabin.com/" target="_blank" rel="noopener noreferrer" class="nav-link-btn" id="tab-nav-restaurants" title="Cyril's Green Cabin Restaurant (Opens in new tab)">
+          <i class="fa-solid fa-utensils" style="font-size:12px;"></i> Restaurants <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px; opacity:0.8;"></i>
+        </a>
       </nav>
 
       <!-- LIVE SEARCH -->
@@ -1313,6 +1339,19 @@
       </div>
     </div>
   </header>
+
+  <!-- MOBILE / TABLET SUB NAVIGATION BAR (STICKY BELOW HEADER) -->
+  <div class="mobile-sub-nav">
+    <div class="mobile-sub-nav-inner">
+      <button class="mob-nav-btn active" id="mob-nav-home" onclick="switchSiteTab('home')"><i class="fa-solid fa-house"></i> Home</button>
+      <button class="mob-nav-btn" id="mob-nav-menus" onclick="switchSiteTab('menus')"><i class="fa-solid fa-bread-slice"></i> Bakery Menus</button>
+      <button class="mob-nav-btn" id="mob-nav-catering" onclick="switchSiteTab('catering')"><i class="fa-solid fa-bell-concierge"></i> Catering</button>
+      <button class="mob-nav-btn" id="mob-nav-events" onclick="switchSiteTab('events')"><i class="fa-solid fa-layer-group"></i> Platters</button>
+      <button class="mob-nav-btn" id="mob-nav-outlets" onclick="switchSiteTab('outlets')"><i class="fa-solid fa-store"></i> Outlets</button>
+      <button class="mob-nav-btn" id="mob-nav-about" onclick="switchSiteTab('about')"><i class="fa-solid fa-landmark"></i> Heritage</button>
+      <a href="https://www.cyrilsgreencabin.com/" target="_blank" rel="noopener noreferrer" class="mob-nav-btn" id="mob-nav-restaurants"><i class="fa-solid fa-utensils"></i> Restaurants <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;"></i></a>
+    </div>
+  </div>
 
   <!-- ==========================================================================
        VIEW: HOME (PERERA & SONS LUXURY STOREFRONT)
@@ -1563,6 +1602,23 @@
         <span class="pns-eyebrow">Locations & Hours</span>
         <h2 class="pns-title">Visit Our Cabins Across Colombo</h2>
       </div>
+
+      <!-- CYRIL'S GREEN CABIN RESTAURANT FEATURE CARD -->
+      <div style="margin-bottom:28px; background:linear-gradient(135deg, #00221c 0%, #004d3f 100%); border-radius:var(--radius-lg); padding:28px 32px; color:#ffffff; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px; box-shadow:var(--shadow-md); border:1.5px solid rgba(129, 202, 165, 0.3);">
+        <div style="max-width:620px;">
+          <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(129, 202, 165, 0.15); border:1px solid rgba(129, 202, 165, 0.4); padding:4px 12px; border-radius:20px; font-size:11.5px; font-weight:800; letter-spacing:1px; color:var(--secondary-color); text-transform:uppercase; margin-bottom:10px;">
+            <i class="fa-solid fa-utensils"></i> Signature Dining Experience
+          </div>
+          <h3 style="font-family:var(--font-brand); font-size:24px; font-weight:800; color:#ffffff; margin-bottom:8px;">Cyril's Green Cabin Restaurant</h3>
+          <p style="font-size:14px; color:#d1e5dd; line-height:1.6; margin:0;">Experience our full à la carte dining, authentic heritage recipes, and relaxing dining ambience at Cyril's Green Cabin Restaurant.</p>
+        </div>
+        <div>
+          <a href="https://www.cyrilsgreencabin.com/" target="_blank" rel="noopener noreferrer" class="btn-hero-primary" style="padding:12px 24px; font-size:14px; text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Restaurant Website
+          </a>
+        </div>
+      </div>
+
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px;" id="outlets-container"></div>
     </section>
   </div>
@@ -1638,6 +1694,7 @@
           <li><a onclick="switchSiteTab('events')">Cocktail Platters</a></li>
           <li><a onclick="switchSiteTab('outlets')">Cabin Outlets</a></li>
           <li><a onclick="switchSiteTab('about')">Our Heritage (Since 1884)</a></li>
+          <li><a href="https://www.cyrilsgreencabin.com/" target="_blank" rel="noopener noreferrer" style="color:var(--secondary-color); font-weight:700;"><i class="fa-solid fa-utensils" style="margin-right:6px;"></i> Cyril's Green Cabin Restaurant <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px; margin-left:4px;"></i></a></li>
         </ul>
       </div>
       <div class="footer-col">
