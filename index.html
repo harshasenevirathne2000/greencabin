@@ -197,6 +197,30 @@
       color: var(--primary-color);
       background: var(--mint-light);
     }
+    
+    .nav-link-highlight {
+      background: rgba(0, 111, 91, 0.08) !important;
+      color: var(--primary-color) !important;
+      border: 1px solid rgba(129, 202, 165, 0.45) !important;
+    }
+    .nav-link-highlight:hover {
+      background: var(--primary-color) !important;
+      color: #ffffff !important;
+      border-color: var(--primary-color) !important;
+    }
+    .nav-link-highlight:hover i {
+      color: #ffffff !important;
+    }
+    .mob-nav-highlight {
+      background: rgba(129, 202, 165, 0.2) !important;
+      border-color: var(--secondary-color) !important;
+      color: var(--secondary-color) !important;
+    }
+    .mob-nav-highlight:hover {
+      background: var(--secondary-color) !important;
+      color: var(--primary-dark) !important;
+    }
+
     #tab-nav-restaurants {
       background: rgba(0, 111, 91, 0.08);
       color: var(--primary-color);
@@ -1309,7 +1333,7 @@
       </a>
 
       <!-- NAVIGATION TABS -->
-      <nav class="nav-links-wrap">
+      <nav class="nav-links-wrap" id="header-nav-wrap">
         <button class="nav-link-btn active" id="tab-nav-home" onclick="switchSiteTab('home')">Home</button>
         <button class="nav-link-btn" id="tab-nav-menus" onclick="switchSiteTab('menus')">Bakery Menus</button>
         <button class="nav-link-btn" id="tab-nav-catering" onclick="switchSiteTab('catering')">Catering</button>
@@ -1342,7 +1366,7 @@
 
   <!-- MOBILE / TABLET SUB NAVIGATION BAR (STICKY BELOW HEADER) -->
   <div class="mobile-sub-nav">
-    <div class="mobile-sub-nav-inner">
+    <div class="mobile-sub-nav-inner" id="mobile-sub-nav-wrap">
       <button class="mob-nav-btn active" id="mob-nav-home" onclick="switchSiteTab('home')"><i class="fa-solid fa-house"></i> Home</button>
       <button class="mob-nav-btn" id="mob-nav-menus" onclick="switchSiteTab('menus')"><i class="fa-solid fa-bread-slice"></i> Bakery Menus</button>
       <button class="mob-nav-btn" id="mob-nav-catering" onclick="switchSiteTab('catering')"><i class="fa-solid fa-bell-concierge"></i> Catering</button>
@@ -1748,7 +1772,17 @@
         heroTag: "Est. 1884 · Ceylon's Foremost Baker & Caterer",
         heroTitle: "Sri Lanka's Iconic Taste Since 1884",
         heroSub: "Freshly baked traditional meat pies, flaky savouries, celebratory gateaux, and authentic Dutch lamprais delivered right to your doorstep.",
+        
         heroInterval: 4500,
+        navigation: [
+          { id: "nav-home", label: "Home", type: "tab", target: "home", icon: "fa-house", active: true },
+          { id: "nav-menus", label: "Bakery Menus", type: "tab", target: "menus", icon: "fa-bread-slice", active: true },
+          { id: "nav-catering", label: "Catering", type: "tab", target: "catering", icon: "fa-bell-concierge", active: true },
+          { id: "nav-events", label: "Platters", type: "tab", target: "events", icon: "fa-layer-group", active: true },
+          { id: "nav-outlets", label: "Outlets", type: "tab", target: "outlets", icon: "fa-store", active: true },
+          { id: "nav-about", label: "Heritage", type: "tab", target: "about", icon: "fa-landmark", active: true },
+          { id: "nav-restaurants", label: "Restaurants", type: "link", url: "https://www.cyrilsgreencabin.com/", icon: "fa-utensils", newTab: true, isHighlight: true, active: true }
+        ],
         heroSlides: [
           {
             id: "s1",
@@ -1988,6 +2022,7 @@
     function init() {
       loadSavedData();
       applySettings();
+      renderNavigation();
       initHeroSlider();
       renderQuickCategories();
       renderProducts();
@@ -2045,7 +2080,68 @@
     // ==========================================================================
     // SITE TAB NAVIGATION & SUB BUTTONS (ROCK-SOLID ACTIVE SWITCHING)
     // ==========================================================================
+    
+    // ==========================================================================
+    // DYNAMIC HEADER & MOBILE NAVIGATION RENDERING
+    // ==========================================================================
+    let currentActiveTab = 'home';
+
+    function getNavItems() {
+      if (storeData.navigation && Array.isArray(storeData.navigation) && storeData.navigation.length > 0) {
+        return storeData.navigation;
+      }
+      if (DEFAULT_STORE_DATA.navigation && Array.isArray(DEFAULT_STORE_DATA.navigation)) {
+        return DEFAULT_STORE_DATA.navigation;
+      }
+      return [
+        { id: "nav-home", label: "Home", type: "tab", target: "home", icon: "fa-house", active: true },
+        { id: "nav-menus", label: "Bakery Menus", type: "tab", target: "menus", icon: "fa-bread-slice", active: true },
+        { id: "nav-catering", label: "Catering", type: "tab", target: "catering", icon: "fa-bell-concierge", active: true },
+        { id: "nav-events", label: "Platters", type: "tab", target: "events", icon: "fa-layer-group", active: true },
+        { id: "nav-outlets", label: "Outlets", type: "tab", target: "outlets", icon: "fa-store", active: true },
+        { id: "nav-about", label: "Heritage", type: "tab", target: "about", icon: "fa-landmark", active: true },
+        { id: "nav-restaurants", label: "Restaurants", type: "link", url: "https://www.cyrilsgreencabin.com/", icon: "fa-utensils", newTab: true, isHighlight: true, active: true }
+      ];
+    }
+
+    function renderNavigation() {
+      const items = getNavItems();
+      const desktopWrap = document.getElementById('header-nav-wrap');
+      const mobileWrap = document.getElementById('mobile-sub-nav-wrap');
+
+      if (desktopWrap) {
+        desktopWrap.innerHTML = items.filter(item => item.active !== false).map(item => {
+          const iconHtml = item.icon ? `<i class="fa-solid ${item.icon}" style="font-size:12px;"></i> ` : '';
+          if (item.type === 'link') {
+            const extIcon = item.newTab ? ' <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px; opacity:0.8;"></i>' : '';
+            const highlightClass = item.isHighlight ? ' nav-link-highlight' : '';
+            return `<a href="${item.url || '#'}" ${item.newTab ? 'target="_blank" rel="noopener noreferrer"' : ''} class="nav-link-btn${highlightClass}" id="${item.id}" title="${item.label}">${iconHtml}${item.label}${extIcon}</a>`;
+          } else {
+            const isActive = (item.target === currentActiveTab) ? ' active' : '';
+            const highlightClass = item.isHighlight ? ' nav-link-highlight' : '';
+            return `<button class="nav-link-btn${isActive}${highlightClass}" id="tab-nav-${item.target}" onclick="switchSiteTab('${item.target}')">${iconHtml}${item.label}</button>`;
+          }
+        }).join('');
+      }
+
+      if (mobileWrap) {
+        mobileWrap.innerHTML = items.filter(item => item.active !== false).map(item => {
+          const iconHtml = item.icon ? `<i class="fa-solid ${item.icon}"></i> ` : '';
+          if (item.type === 'link') {
+            const extIcon = item.newTab ? ' <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;"></i>' : '';
+            const highlightClass = item.isHighlight ? ' mob-nav-highlight' : '';
+            return `<a href="${item.url || '#'}" ${item.newTab ? 'target="_blank" rel="noopener noreferrer"' : ''} class="mob-nav-btn${highlightClass}" id="mob-${item.id}">${iconHtml}${item.label}${extIcon}</a>`;
+          } else {
+            const isActive = (item.target === currentActiveTab) ? ' active' : '';
+            const highlightClass = item.isHighlight ? ' mob-nav-highlight' : '';
+            return `<button class="mob-nav-btn${isActive}${highlightClass}" id="mob-nav-${item.target}" onclick="switchSiteTab('${item.target}')">${iconHtml}${item.label}</button>`;
+          }
+        }).join('');
+      }
+    }
+
     function switchSiteTab(tabName, shouldScrollTop = true) {
+      currentActiveTab = tabName;
       // 1. Remove active from all tab-views
       document.querySelectorAll('.tab-view').forEach(v => {
         v.classList.remove('active');
