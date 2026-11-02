@@ -5019,8 +5019,10 @@
           const parsed = JSON.parse(saved);
           if (parsed && parsed.products) {
             storeData = parsed;
-            if (!storeData.outlets || storeData.outlets.length < 12) {
+            // Force 12 official locations if old cache has fewer or dummy outlets
+            if (!storeData.outlets || storeData.outlets.length < 12 || (storeData.outlets[0] && storeData.outlets[0].name === "Bambalapitiya Flagship")) {
               storeData.outlets = DEFAULT_STORE_DATA.outlets;
+              try { localStorage.setItem('greencabin_store_data', JSON.stringify(storeData)); } catch(e){}
             }
           }
         } catch(e) {}
@@ -5071,21 +5073,33 @@
     let currentActiveTab = 'home';
 
     function getNavItems() {
-      if (storeData.navigation && Array.isArray(storeData.navigation) && storeData.navigation.length > 0) {
-        return storeData.navigation;
+      let items = null;
+      if (storeData.settings && storeData.settings.navigation && Array.isArray(storeData.settings.navigation) && storeData.settings.navigation.length > 0) {
+        items = storeData.settings.navigation;
+      } else if (storeData.navigation && Array.isArray(storeData.navigation) && storeData.navigation.length > 0) {
+        items = storeData.navigation;
+      } else if (DEFAULT_STORE_DATA.settings && DEFAULT_STORE_DATA.settings.navigation) {
+        items = DEFAULT_STORE_DATA.settings.navigation;
+      } else {
+        items = [
+          { id: "nav-home", label: "Home", type: "tab", target: "home", icon: "fa-house", active: true },
+          { id: "nav-menus", label: "Bakery Menus", type: "tab", target: "menus", icon: "fa-bread-slice", active: true },
+          { id: "nav-catering", label: "Catering", type: "tab", target: "catering", icon: "fa-bell-concierge", active: true },
+          { id: "nav-events", label: "Platters", type: "tab", target: "events", icon: "fa-layer-group", active: true },
+          { id: "nav-outlets", label: "Locations", type: "tab", target: "outlets", icon: "fa-location-dot", active: true },
+          { id: "nav-about", label: "Heritage", type: "tab", target: "about", icon: "fa-landmark", active: true },
+          { id: "nav-restaurants", label: "Restaurants", type: "link", url: "https://www.cyrilsgreencabin.com/", icon: "fa-utensils", newTab: true, isHighlight: true, active: true }
+        ];
       }
-      if (DEFAULT_STORE_DATA.navigation && Array.isArray(DEFAULT_STORE_DATA.navigation)) {
-        return DEFAULT_STORE_DATA.navigation;
-      }
-      return [
-        { id: "nav-home", label: "Home", type: "tab", target: "home", icon: "fa-house", active: true },
-        { id: "nav-menus", label: "Bakery Menus", type: "tab", target: "menus", icon: "fa-bread-slice", active: true },
-        { id: "nav-catering", label: "Catering", type: "tab", target: "catering", icon: "fa-bell-concierge", active: true },
-        { id: "nav-events", label: "Platters", type: "tab", target: "events", icon: "fa-layer-group", active: true },
-        { id: "nav-outlets", label: "Locations", type: "tab", target: "outlets", icon: "fa-store", active: true },
-        { id: "nav-about", label: "Heritage", type: "tab", target: "about", icon: "fa-landmark", active: true },
-        { id: "nav-restaurants", label: "Restaurants", type: "link", url: "https://www.cyrilsgreencabin.com/", icon: "fa-utensils", newTab: true, isHighlight: true, active: true }
-      ];
+
+      // Guarantee "Locations" label
+      items.forEach(item => {
+        if (item.target === 'outlets') {
+          item.label = "Locations";
+          item.icon = "fa-location-dot";
+        }
+      });
+      return items;
     }
 
     function renderNavigation() {
@@ -5490,7 +5504,12 @@
     function renderOutlets() {
       const container = document.getElementById('outlets-container');
       const ftList = document.getElementById('ft-outlets-list');
-      const outlets = storeData.outlets || DEFAULT_STORE_DATA.outlets;
+      
+      let outlets = (storeData && Array.isArray(storeData.outlets)) ? storeData.outlets : DEFAULT_STORE_DATA.outlets;
+      if (!outlets || outlets.length < 12 || (outlets[0] && outlets[0].name === "Bambalapitiya Flagship")) {
+        outlets = DEFAULT_STORE_DATA.outlets;
+        if (storeData) storeData.outlets = outlets;
+      }
 
       container.innerHTML = outlets.map(o => `
         <div style="background:#fff; border:1px solid var(--border-color); border-radius:var(--radius-md); padding:22px; box-shadow:var(--shadow-sm);">
