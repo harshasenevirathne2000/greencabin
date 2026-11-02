@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="theme-color" content="#003b31">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
   <link rel="icon" type="image/png" href="logo.png">
   <title>Green Cabin | Sri Lanka's Foremost Baker & Caterer Since 1884</title>
   
@@ -630,11 +634,18 @@
     .filter-pills-bar {
       max-width: 1320px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 4px 16px 14px;
       display: flex;
       gap: 10px;
       overflow-x: auto;
       scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      justify-content: flex-start;
+    }
+    @media (min-width: 1100px) {
+      .filter-pills-bar {
+        justify-content: center;
+      }
     }
     .filter-pills-bar::-webkit-scrollbar {
       display: none;
@@ -1304,6 +1315,524 @@
       }
     }
 
+  
+    /* ==========================================================================
+       MOBILE APP LUXURY STYLING (IPHONE iOS SAFARI & ANDROID CHROME OPTIMIZED)
+       ========================================================================== */
+    * {
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      overflow-x: hidden;
+      width: 100%;
+      position: relative;
+    }
+
+    /* Fixed Bottom App Navigation Bar */
+    .mobile-bottom-nav {
+      display: none;
+    }
+
+    /* Mobile Search Bar inside Bakery Menus and Outlets */
+    .menu-search-wrapper, .outlet-search-wrapper {
+      margin-bottom: 20px;
+    }
+    .mobile-search-box {
+      display: flex;
+      align-items: center;
+      background: #ffffff;
+      border: 1.5px solid rgba(0, 59, 49, 0.18);
+      border-radius: 30px;
+      padding: 6px 18px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+      transition: all 0.25s ease;
+      width: 100%;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+    .mobile-search-box:focus-within {
+      border-color: var(--secondary-color);
+      box-shadow: 0 4px 18px rgba(129, 202, 165, 0.35);
+    }
+    .mobile-search-box i {
+      color: var(--primary-color);
+      font-size: 15px;
+      margin-right: 10px;
+    }
+    .mobile-search-box input {
+      border: none;
+      outline: none;
+      background: transparent;
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 14.5px;
+      color: var(--text-dark);
+    }
+
+    /* Outlet Cards Styling */
+    .outlet-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .outlet-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--secondary-color);
+    }
+    .outlet-btn-map {
+      background: var(--primary-color);
+      color: #ffffff;
+      border: none;
+      padding: 9px 16px;
+      border-radius: 22px;
+      font-family: var(--font-brand);
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .outlet-btn-map:hover {
+      background: var(--primary-dark);
+      color: #ffffff;
+    }
+    .outlet-btn-call {
+      background: #ffffff;
+      color: var(--primary-dark);
+      border: 1.5px solid var(--primary-dark);
+      padding: 9px 16px;
+      border-radius: 22px;
+      font-family: var(--font-brand);
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .outlet-btn-call:hover {
+      background: var(--primary-dark);
+      color: #ffffff;
+    }
+
+    /* Enhanced Media Queries for Mobile Screens */
+    @media (max-width: 768px) {
+      body {
+        padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+      }
+
+      /* Compact Top Bar */
+      .top-bar {
+        padding: 5px 12px;
+        font-size: 11px;
+        justify-content: center;
+        gap: 10px;
+      }
+      .top-bar .info-group:nth-child(2) {
+        display: none !important;
+      }
+
+      /* Compact Header */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      }
+      .header-inner {
+        padding: 8px 14px;
+        min-height: 56px;
+      }
+      .brand-logo-img {
+        width: 38px;
+        height: 38px;
+      }
+      .brand-title-wrap h1 {
+        font-size: 17px;
+        letter-spacing: 0.5px;
+      }
+      .brand-title-wrap span {
+        font-size: 8px;
+        letter-spacing: 0.8px;
+      }
+      .btn-cart-nav {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+
+      /* Mobile Top Sub Nav (Horizontally scrollable) */
+      .mobile-sub-nav {
+        display: block !important;
+        position: sticky;
+        top: 56px;
+        z-index: 990;
+        background: rgba(0, 31, 25, 0.96);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 8px 12px;
+        border-bottom: 1.5px solid rgba(129, 202, 165, 0.25);
+      }
+      .mobile-sub-nav-inner {
+        display: flex;
+        gap: 6px;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        padding-right: 12px;
+      }
+      .mob-nav-btn {
+        padding: 6px 13px;
+        font-size: 12px;
+        border-radius: 18px;
+      }
+
+      /* Fixed Mobile Bottom App Bar (Native App Feel) */
+      .mobile-bottom-nav {
+        display: flex !important;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background: linear-gradient(180deg, rgba(0, 35, 28, 0.96) 0%, rgba(0, 20, 16, 0.98) 100%);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-top: 1.5px solid rgba(129, 202, 165, 0.35);
+        box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.4);
+        z-index: 9998;
+        padding: 6px 10px calc(6px + env(safe-area-inset-bottom, 0px));
+        justify-content: space-around;
+        align-items: center;
+        user-select: none;
+      }
+      .mobile-bottom-nav-item {
+        background: transparent;
+        border: none;
+        outline: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        color: #94a3b8;
+        font-family: var(--font-brand);
+        font-size: 10.5px;
+        font-weight: 700;
+        cursor: pointer;
+        padding: 6px 8px;
+        border-radius: 12px;
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        -webkit-tap-highlight-color: transparent;
+        position: relative;
+        flex: 1;
+        max-width: 72px;
+      }
+      .mobile-bottom-nav-item i {
+        font-size: 18px;
+        transition: transform 0.2s ease, color 0.2s ease;
+      }
+      .mobile-bottom-nav-item.active {
+        color: var(--secondary-color) !important;
+        font-weight: 800;
+      }
+      .mobile-bottom-nav-item.active i {
+        transform: translateY(-2px);
+        color: var(--secondary-color) !important;
+        filter: drop-shadow(0 2px 8px rgba(129, 202, 165, 0.7));
+      }
+      .mobile-bottom-nav-item:active {
+        transform: scale(0.92);
+      }
+      .mob-cart-icon-wrap {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .mobile-cart-badge {
+        position: absolute;
+        top: -6px;
+        right: -10px;
+        background: var(--accent-color);
+        color: #ffffff;
+        font-size: 9.5px;
+        font-weight: 800;
+        min-width: 16px;
+        height: 16px;
+        padding: 0 4px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Hero Section Mobile Polish */
+      .hero-cinematic {
+        padding: 20px 14px 26px !important;
+      }
+      .hero-container {
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+        text-align: center;
+      }
+      .hero-tag-chip {
+        font-size: 10.5px !important;
+        padding: 4px 10px !important;
+        margin-bottom: 8px !important;
+      }
+      .hero-title-main {
+        font-size: 25px !important;
+        line-height: 1.22 !important;
+        margin-bottom: 8px !important;
+      }
+      .hero-desc {
+        font-size: 13px !important;
+        line-height: 1.45 !important;
+        margin-bottom: 16px !important;
+      }
+      .hero-btn-row {
+        flex-direction: column !important;
+        gap: 8px !important;
+        width: 100% !important;
+      }
+      .hero-btn-row button,
+      .hero-btn-row a {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 12px 18px !important;
+        font-size: 13.5px !important;
+        min-height: 44px !important;
+      }
+      .hero-visual-card {
+        max-width: 100% !important;
+        margin: 0 auto !important;
+      }
+      .hero-slides-viewport {
+        height: 220px !important;
+        border-radius: 14px !important;
+      }
+      .slider-nav-btn {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 12px !important;
+      }
+      .slider-nav-btn.prev { left: 8px !important; }
+      .slider-nav-btn.next { right: 8px !important; }
+      .slider-dots {
+        bottom: 8px !important;
+        padding: 3px 8px !important;
+      }
+      .slider-dot {
+        width: 6px !important;
+        height: 6px !important;
+      }
+      .slider-dot.active {
+        width: 16px !important;
+      }
+
+      /* 2-Column Luxury Category Grid on Home */
+      .pns-category-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+      }
+      .pns-cat-card {
+        aspect-ratio: 1 / 1.05 !important;
+        border-radius: 12px !important;
+      }
+      .pns-cat-overlay {
+        padding: 12px !important;
+      }
+      .pns-cat-overlay h3 {
+        font-size: 15px !important;
+        margin-bottom: 2px !important;
+      }
+      .pns-cat-overlay span {
+        font-size: 10.5px !important;
+      }
+
+      /* Section Spacings & Typography */
+      .section-pns {
+        padding: 24px 12px !important;
+      }
+      .pns-section-head {
+        margin-bottom: 18px !important;
+        text-align: center;
+      }
+      .pns-eyebrow {
+        font-size: 11px !important;
+      }
+      .pns-title {
+        font-size: 21px !important;
+        line-height: 1.25 !important;
+      }
+
+      /* 2-COLUMN APP-GRADE PRODUCT CARDS (PIXEL-PERFECT ALIGNMENT) */
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+      }
+      .product-card {
+        border-radius: 12px !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+      }
+      .card-img-wrap {
+        height: 125px !important;
+      }
+      .badge-float {
+        top: 6px !important;
+        left: 6px !important;
+        font-size: 9px !important;
+        padding: 2px 6px !important;
+        border-radius: 8px !important;
+      }
+      .card-body {
+        padding: 8px 9px 10px !important;
+      }
+      .diet-and-cat {
+        margin-bottom: 3px !important;
+        gap: 4px !important;
+      }
+      .diet-dot {
+        width: 11px !important;
+        height: 11px !important;
+      }
+      .diet-dot::after {
+        width: 5px !important;
+        height: 5px !important;
+      }
+      .card-cat-name {
+        font-size: 9.5px !important;
+      }
+      .card-title {
+        font-size: 13px !important;
+        font-weight: 800 !important;
+        line-height: 1.25 !important;
+        min-height: 32px !important;
+        max-height: 32px !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        margin-bottom: 4px !important;
+      }
+      .card-desc {
+        display: none !important; /* Hide long descriptions in 2-col compact cards for pixel-perfect height uniformity */
+      }
+      .card-footer {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 4px !important;
+        margin-top: auto !important;
+        padding-top: 6px !important;
+        border-top: 1px solid #f1f5f3 !important;
+      }
+      .price-main {
+        font-size: 13.5px !important;
+        font-weight: 800 !important;
+        white-space: nowrap !important;
+      }
+      .price-old {
+        display: none !important;
+      }
+      .btn-add-pns {
+        padding: 5px 9px !important;
+        font-size: 11px !important;
+        font-weight: 800 !important;
+        border-radius: 16px !important;
+        min-height: 28px !important;
+        min-width: 56px !important;
+        white-space: nowrap !important;
+        gap: 3px !important;
+      }
+
+      /* Platters & Outlets Containers on Mobile */
+      #events-platters-container {
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+      }
+      #outlets-container {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+      }
+
+      /* Cart Drawer Mobile Full Width */
+      .cart-drawer {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        right: -100vw !important;
+      }
+      .cart-drawer.active {
+        right: 0 !important;
+      }
+      .cart-drawer-header {
+        padding: 16px 18px !important;
+      }
+      .cart-close-btn {
+        width: 44px !important;
+        height: 44px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      .cart-items-scroll {
+        padding: 12px 16px !important;
+      }
+      .cart-drawer-footer {
+        padding: 16px 18px calc(16px + env(safe-area-inset-bottom, 0px)) !important;
+      }
+      .cart-qty-ctrl button {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 14px !important;
+      }
+
+      /* iOS Safari Safe Form Inputs (16px prevents automatic zoom-in bug) */
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+
+      /* Footer Polish on Mobile */
+      footer {
+        padding: 36px 16px 20px !important;
+        margin-top: 36px !important;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+        text-align: center !important;
+      }
+      .footer-social-links {
+        justify-content: center !important;
+      }
+      .footer-bottom {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 8px !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1567,7 +2096,14 @@
       </div>
 
       <!-- FILTER PILLS IN MENUS TAB -->
-      <div class="filter-pills-bar" id="menu-categories-filter" style="justify-content:center; margin-bottom:32px;"></div>
+      <!-- LIVE SEARCH FOR 228 PRODUCTS -->
+      <div class="menu-search-wrapper">
+        <div class="mobile-search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="menu-search-input" placeholder="Search 228 items (lamprais, pies, rolls, savouries...)" oninput="handleMenuSearch()">
+        </div>
+      </div>
+      <div class="filter-pills-bar" id="menu-categories-filter" style="margin-bottom:24px;"></div>
 
       <div class="product-grid" id="menu-full-grid"></div>
     </section>
@@ -1627,6 +2163,15 @@
         <h2 class="pns-title">Our 12 Outlets & Locations Across Colombo</h2>
       </div>
 
+      <!-- OUTLETS INSTANT SEARCH FILTER -->
+      <div class="outlet-search-wrapper">
+        <div class="mobile-search-box">
+          <i class="fa-solid fa-location-dot"></i>
+          <input type="text" id="outlet-search-input" placeholder="Search outlet by area (e.g. Bambalapitiya, Kotte, Negombo...)" oninput="handleOutletSearch()">
+        </div>
+      </div>
+
+
       <!-- CYRIL'S GREEN CABIN RESTAURANT FEATURE CARD -->
       <div style="margin-bottom:28px; background:linear-gradient(135deg, #00221c 0%, #004d3f 100%); border-radius:var(--radius-lg); padding:28px 32px; color:#ffffff; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px; box-shadow:var(--shadow-md); border:1.5px solid rgba(129, 202, 165, 0.3);">
         <div style="max-width:620px;">
@@ -1668,6 +2213,36 @@
   <!-- ==========================================================================
        CART DRAWER
        ========================================================================== -->
+  
+  <!-- ==========================================================================
+       MOBILE APP LUXURY BOTTOM NAVIGATION BAR (iOS Safari & Android Chrome)
+       ========================================================================== -->
+  <nav class="mobile-bottom-nav" id="mobile-bottom-nav" aria-label="Mobile Bottom App Navigation">
+    <button class="mobile-bottom-nav-item active" id="mob-bot-home" onclick="switchSiteTab('home')" aria-label="Home">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </button>
+    <button class="mobile-bottom-nav-item" id="mob-bot-menus" onclick="switchSiteTab('menus')" aria-label="Bakery Menus">
+      <i class="fa-solid fa-bread-slice"></i>
+      <span>Menu</span>
+    </button>
+    <button class="mobile-bottom-nav-item" id="mob-bot-events" onclick="switchSiteTab('events')" aria-label="Platters">
+      <i class="fa-solid fa-layer-group"></i>
+      <span>Platters</span>
+    </button>
+    <button class="mobile-bottom-nav-item" id="mob-bot-outlets" onclick="switchSiteTab('outlets')" aria-label="12 Outlets">
+      <i class="fa-solid fa-store"></i>
+      <span>Outlets</span>
+    </button>
+    <button class="mobile-bottom-nav-item" id="mob-bot-cart" onclick="toggleCart(true)" aria-label="Shopping Cart">
+      <div class="mob-cart-icon-wrap">
+        <i class="fa-solid fa-basket-shopping"></i>
+        <span class="mobile-cart-badge" id="mobile-cart-badge">0</span>
+      </div>
+      <span>Cart</span>
+    </button>
+  </nav>
+
   <div class="cart-overlay" id="cart-overlay" onclick="toggleCart(false)"></div>
   <div class="cart-drawer" id="cart-drawer">
     <div class="cart-drawer-header">
@@ -5300,9 +5875,14 @@
       const btn = document.getElementById('tab-nav-' + tabName);
       if (btn) btn.classList.add('active');
 
-      // 6. Activate mobile nav button
+      // 6. Activate mobile top nav button
       const mobBtn = document.getElementById('mob-nav-' + tabName);
       if (mobBtn) mobBtn.classList.add('active');
+
+      // 6b. Activate mobile bottom app nav button
+      document.querySelectorAll('.mobile-bottom-nav-item').forEach(b => b.classList.remove('active'));
+      const mobBotBtn = document.getElementById('mob-bot-' + tabName);
+      if (mobBotBtn) mobBotBtn.classList.add('active');
 
       // 7. Scroll smoothly to top if requested
       if (shouldScrollTop) {
@@ -5673,6 +6253,8 @@
         if (storeData) storeData.outlets = outlets;
       }
 
+      renderOutletsFiltered(outlets);
+      return;
       container.innerHTML = outlets.map(o => `
         <div style="background:#fff; border:1px solid var(--border-color); border-radius:var(--radius-md); padding:22px; box-shadow:var(--shadow-sm);">
           <h4 style="font-family:var(--font-brand); font-size:18px; font-weight:800; color:var(--primary-dark); margin-bottom:12px;"><i class="fa-solid fa-store" style="color:var(--primary-color); margin-right:8px;"></i> ${o.name}</h4>
@@ -5696,7 +6278,75 @@
       return found ? found.name : catId;
     }
 
-    function handleSearch() {
+    
+    function handleMenuSearch() {
+      const query = (document.getElementById('menu-search-input')?.value || '').toLowerCase().trim();
+      let list = currentMenuCategory === 'all' 
+        ? storeData.products 
+        : storeData.products.filter(p => p.category === currentMenuCategory);
+      if (query) {
+        list = list.filter(p => 
+          p.name.toLowerCase().includes(query) || 
+          (p.desc && p.desc.toLowerCase().includes(query))
+        );
+      }
+      renderFullMenus(list);
+    }
+
+    function handleOutletSearch() {
+      const query = (document.getElementById('outlet-search-input')?.value || '').toLowerCase().trim();
+      let outlets = (storeData && Array.isArray(storeData.outlets)) ? storeData.outlets : DEFAULT_STORE_DATA.outlets;
+      if (!outlets || outlets.length < 12) outlets = DEFAULT_STORE_DATA.outlets;
+      if (query) {
+        outlets = outlets.filter(o => 
+          o.name.toLowerCase().includes(query) || 
+          o.address.toLowerCase().includes(query)
+        );
+      }
+      renderOutletsFiltered(outlets);
+    }
+
+    function renderOutletsFiltered(outletsList) {
+      const container = document.getElementById('outlets-container');
+      if (!container) return;
+      if (outletsList.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 36px; color: #64748b;">
+            <i class="fa-solid fa-map-location-dot" style="font-size: 36px; margin-bottom: 12px; color: var(--secondary-color);"></i>
+            <h4>No outlets match your search</h4>
+            <p>Try searching another area like Bambalapitiya, Colpetty, Negombo, or Rajagiriya.</p>
+          </div>
+        `;
+        return;
+      }
+      container.innerHTML = outletsList.map(o => `
+        <div class="outlet-card">
+          <h4 style="font-family:var(--font-brand); font-size:17.5px; font-weight:800; color:var(--primary-dark); margin-bottom:10px;">
+            <i class="fa-solid fa-store" style="color:var(--primary-color); margin-right:8px;"></i> ${o.name}
+          </h4>
+          <div style="font-size:13px; color:#475569; margin-bottom:8px; line-height:1.4;">
+            <i class="fa-solid fa-location-dot" style="color:var(--primary-color); margin-right:8px;"></i> ${o.address}
+          </div>
+          <div style="font-size:13px; color:#475569; margin-bottom:8px;">
+            <i class="fa-solid fa-phone" style="color:var(--primary-color); margin-right:8px;"></i> 
+            <a href="tel:${o.phone.replace(/[^0-9+]/g,'')}" style="color:var(--primary-color); font-weight:700; text-decoration:none;">${o.phone}</a>
+          </div>
+          <div style="font-size:13px; color:#475569; margin-bottom:16px;">
+            <i class="fa-solid fa-clock" style="color:var(--primary-color); margin-right:8px;"></i> ${o.hours}
+          </div>
+          <div style="display:flex; gap:10px; margin-top:auto;">
+            <a href="${o.mapLink || '#'}" target="_blank" rel="noopener noreferrer" class="outlet-btn-map" style="flex:1;">
+              <i class="fa-solid fa-map-location-dot"></i> Map View
+            </a>
+            <a href="tel:${o.phone.replace(/[^0-9+]/g,'')}" class="outlet-btn-call" style="flex:1;">
+              <i class="fa-solid fa-phone"></i> Call
+            </a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+function handleSearch() {
       switchSiteTab('home');
       const query = document.getElementById('search-input').value.toLowerCase().trim();
       let filtered = storeData.products;
@@ -5776,6 +6426,8 @@
     function updateCartUI() {
       const count = cart.reduce((sum, i) => sum + i.qty, 0);
       document.getElementById('cart-badge').textContent = count;
+      const mobCartBadge = document.getElementById('mobile-cart-badge');
+      if (mobCartBadge) mobCartBadge.textContent = count;
       const container = document.getElementById('cart-items-container');
       const curr = storeData.settings.currency || 'Rs.';
 
