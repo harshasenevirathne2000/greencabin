@@ -3084,6 +3084,255 @@
       reader.readAsDataURL(file);
     }
 
+    
+    // =========================================================================
+    // HEADER & NAVIGATION BUTTONS CONTROLLER
+    // =========================================================================
+    const DEFAULT_NAVIGATION = [
+      { id: "nav-home", label: "Home", type: "tab", target: "home", icon: "fa-house", isHighlight: false, newTab: false, active: true },
+      { id: "nav-menus", label: "Bakery Menus", type: "tab", target: "menus", icon: "fa-bread-slice", isHighlight: false, newTab: false, active: true },
+      { id: "nav-catering", label: "Catering", type: "tab", target: "catering", icon: "fa-bell-concierge", isHighlight: false, newTab: false, active: true },
+      { id: "nav-events", label: "Platters", type: "tab", target: "events", icon: "fa-layer-group", isHighlight: false, newTab: false, active: true },
+      { id: "nav-outlets", label: "Outlets", type: "tab", target: "outlets", icon: "fa-store", isHighlight: false, newTab: false, active: true },
+      { id: "nav-about", label: "Heritage", type: "tab", target: "about", icon: "fa-landmark", isHighlight: false, newTab: false, active: true },
+      { id: "nav-restaurants", label: "Restaurants", type: "link", url: "https://www.cyrilsgreencabin.com/", icon: "fa-utensils", isHighlight: true, newTab: true, active: true }
+    ];
+
+    function getAdminNavigation() {
+      if (storeData.navigation && Array.isArray(storeData.navigation) && storeData.navigation.length > 0) {
+        return storeData.navigation;
+      }
+      storeData.navigation = JSON.parse(JSON.stringify(DEFAULT_NAVIGATION));
+      return storeData.navigation;
+    }
+
+    function renderNavigationTable() {
+      const items = getAdminNavigation();
+      const tbody = document.getElementById('navigation-table-body');
+      if (!tbody) return;
+
+      tbody.innerHTML = items.map((item, idx) => {
+        const isExt = item.type === 'link';
+        const destDisplay = isExt 
+          ? `<a href="${item.url || '#'}" target="_blank" style="color:var(--admin-primary); font-weight:700;"><i class="fa-solid fa-arrow-up-right-from-square"></i> ${item.url || '#'}</a>` 
+          : `<span class="badge" style="background:#e0f2fe; color:#0369a1;"><i class="fa-solid fa-window-maximize"></i> Tab: ${item.target}</span>`;
+        const styleDisplay = item.isHighlight 
+          ? '<span class="badge" style="background:#dcfce7; color:#15803d;"><i class="fa-solid fa-sparkles"></i> Mint Highlight</span>' 
+          : '<span class="badge" style="background:#f1f5f9; color:#475569;">Standard</span>';
+        const statusBadge = item.active !== false 
+          ? '<span class="badge" style="background:#dcfce7; color:#15803d;"><i class="fa-solid fa-check"></i> Active</span>' 
+          : '<span class="badge" style="background:#fee2e2; color:#b91c1c;"><i class="fa-solid fa-eye-slash"></i> Hidden</span>';
+        const targetWindow = (isExt && item.newTab) 
+          ? '<span style="font-size:12px; color:var(--admin-muted);">New Tab (<code>_blank</code>)</span>' 
+          : '<span style="font-size:12px; color:var(--admin-muted);">Same Tab</span>';
+
+        return `
+          <tr style="${item.active === false ? 'opacity:0.6;' : ''}">
+            <td style="text-align:center;">
+              <button class="btn-tbl-action" onclick="moveNavigation('${item.id}', -1)" title="Move Up" ${idx === 0 ? 'disabled style="opacity:0.3;cursor:not-allowed;"' : ''}><i class="fa-solid fa-arrow-up"></i></button>
+              <button class="btn-tbl-action" onclick="moveNavigation('${item.id}', 1)" title="Move Down" ${idx === items.length - 1 ? 'disabled style="opacity:0.3;cursor:not-allowed;"' : ''}><i class="fa-solid fa-arrow-down"></i></button>
+            </td>
+            <td>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <i class="fa-solid ${item.icon || 'fa-link'}" style="font-size:16px; color:var(--admin-primary); width:20px; text-align:center;"></i>
+                <strong>${item.label}</strong>
+              </div>
+            </td>
+            <td>${destDisplay}</td>
+            <td><code>${item.type.toUpperCase()}</code></td>
+            <td>${targetWindow}</td>
+            <td>${styleDisplay}</td>
+            <td>${statusBadge}</td>
+            <td>
+              <button class="btn-tbl-action" onclick="openNavigationModal('${item.id}')" title="Edit Button"><i class="fa-solid fa-pen"></i></button>
+              <button class="btn-tbl-action" onclick="toggleNavActive('${item.id}')" title="Toggle Visible">${item.active !== false ? '<i class="fa-solid fa-eye-slash"></i>' : '<i class="fa-solid fa-eye"></i>'}</button>
+              <button class="btn-tbl-action delete" onclick="deleteNavigation('${item.id}')" title="Delete Button"><i class="fa-solid fa-trash"></i></button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      renderHeaderPreview();
+    }
+
+    function toggleNavTypeFields(type) {
+      const tabWrap = document.getElementById('nm-tab-target-wrap');
+      const urlWrap = document.getElementById('nm-link-url-wrap');
+      if (!tabWrap || !urlWrap) return;
+      if (type === 'link') {
+        tabWrap.style.display = 'none';
+        urlWrap.style.display = 'block';
+      } else {
+        tabWrap.style.display = 'block';
+        urlWrap.style.display = 'none';
+      }
+    }
+
+    function setNavIcon(icon) {
+      const inp = document.getElementById('nm-icon');
+      if (inp) inp.value = icon;
+    }
+
+    function openNavigationModal(id = null) {
+      const items = getAdminNavigation();
+      const modal = document.getElementById('navigation-modal');
+      const title = document.getElementById('navigation-modal-title');
+      if (!modal) return;
+
+      if (id) {
+        const item = items.find(i => i.id === id);
+        if (!item) return;
+        if (title) title.innerHTML = '<i class="fa-solid fa-compass"></i> Edit Navigation Button: <strong>' + item.label + '</strong>';
+        document.getElementById('nm-id').value = item.id;
+        document.getElementById('nm-label').value = item.label;
+        document.getElementById('nm-type').value = item.type || 'tab';
+        document.getElementById('nm-target').value = item.target || 'home';
+        document.getElementById('nm-url').value = item.url || '';
+        document.getElementById('nm-icon').value = item.icon || '';
+        document.getElementById('nm-style').value = item.isHighlight ? 'highlight' : 'standard';
+        document.getElementById('nm-newtab').checked = item.newTab !== false;
+        document.getElementById('nm-active').checked = item.active !== false;
+        toggleNavTypeFields(item.type || 'tab');
+      } else {
+        if (title) title.innerHTML = '<i class="fa-solid fa-compass"></i> Add New Navigation Button';
+        document.getElementById('nm-id').value = '';
+        document.getElementById('nm-label').value = '';
+        document.getElementById('nm-type').value = 'tab';
+        document.getElementById('nm-target').value = 'home';
+        document.getElementById('nm-url').value = '';
+        document.getElementById('nm-icon').value = 'fa-tag';
+        document.getElementById('nm-style').value = 'standard';
+        document.getElementById('nm-newtab').checked = true;
+        document.getElementById('nm-active').checked = true;
+        toggleNavTypeFields('tab');
+      }
+
+      modal.classList.add('active');
+    }
+
+    function closeNavigationModal() {
+      const modal = document.getElementById('navigation-modal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    function saveNavigationModal() {
+      const labelInp = document.getElementById('nm-label');
+      if (!labelInp) return;
+      const label = labelInp.value.trim();
+      if (!label) return alert("Please enter a button label (e.g. Offers, Menu, Platters)!");
+
+      const id = document.getElementById('nm-id').value;
+      const type = document.getElementById('nm-type').value;
+      const target = document.getElementById('nm-target').value;
+      const url = document.getElementById('nm-url').value.trim();
+      const icon = document.getElementById('nm-icon').value.trim();
+      const isHighlight = document.getElementById('nm-style').value === 'highlight';
+      const newTab = document.getElementById('nm-newtab').checked;
+      const active = document.getElementById('nm-active').checked;
+
+      const items = getAdminNavigation();
+
+      if (id) {
+        const item = items.find(i => i.id === id);
+        if (item) {
+          item.label = label;
+          item.type = type;
+          item.target = target;
+          item.url = url;
+          item.icon = icon;
+          item.isHighlight = isHighlight;
+          item.newTab = newTab;
+          item.active = active;
+        }
+      } else {
+        const newId = 'nav-' + Date.now();
+        items.push({
+          id: newId,
+          label: label,
+          type: type,
+          target: target,
+          url: url,
+          icon: icon,
+          isHighlight: isHighlight,
+          newTab: newTab,
+          active: active
+        });
+      }
+
+      saveAllChanges(false);
+      renderNavigationTable();
+      closeNavigationModal();
+    }
+
+    function moveNavigation(id, dir) {
+      const items = getAdminNavigation();
+      const idx = items.findIndex(i => i.id === id);
+      if (idx === -1) return;
+      const targetIdx = idx + dir;
+      if (targetIdx < 0 || targetIdx >= items.length) return;
+
+      const temp = items[idx];
+      items[idx] = items[targetIdx];
+      items[targetIdx] = temp;
+
+      saveAllChanges(false);
+      renderNavigationTable();
+    }
+
+    function toggleNavActive(id) {
+      const items = getAdminNavigation();
+      const item = items.find(i => i.id === id);
+      if (!item) return;
+      item.active = item.active === false ? true : false;
+      saveAllChanges(false);
+      renderNavigationTable();
+    }
+
+    function deleteNavigation(id) {
+      const items = getAdminNavigation();
+      const item = items.find(i => i.id === id);
+      if (!item) return;
+      if (confirm(`Delete navigation button "${item.label}"?`)) {
+        storeData.navigation = items.filter(i => i.id !== id);
+        saveAllChanges(false);
+        renderNavigationTable();
+      }
+    }
+
+    function renderHeaderPreview() {
+      const preview = document.getElementById('admin-header-preview');
+      if (!preview) return;
+      const items = getAdminNavigation().filter(i => i.active !== false);
+      const brandTitle = (storeData.settings && storeData.settings.brandName) || 'GREEN CABIN';
+      const brandSub = (storeData.settings && storeData.settings.brandSub) || 'SERVING SINCE 1884';
+
+      preview.innerHTML = `
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <img src="logo.png" style="width:48px; height:48px; border-radius:50%; border:2px solid #81caa5; background:#fff;" alt="Logo">
+            <div>
+              <div style="font-family:'Cocon Regular', Nunito, sans-serif; font-size:20px; font-weight:800; color:#003b31; line-height:1;">${brandTitle}</div>
+              <div style="font-size:10px; font-weight:800; color:#006f5b; letter-spacing:1.5px; margin-top:3px;">${brandSub}</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            ${items.map(i => {
+              const icon = i.icon ? `<i class="fa-solid ${i.icon}" style="font-size:11px;"></i> ` : '';
+              const ext = i.type === 'link' && i.newTab ? ' <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:9px;"></i>' : '';
+              if (i.isHighlight) {
+                return `<span style="background:rgba(0,111,91,0.08); color:#006f5b; border:1px solid rgba(129,202,165,0.45); padding:6px 14px; border-radius:20px; font-size:13px; font-weight:700; display:inline-flex; align-items:center; gap:5px;">${icon}${i.label}${ext}</span>`;
+              }
+              return `<span style="color:#0f172a; padding:6px 12px; font-size:13px; font-weight:700; display:inline-flex; align-items:center; gap:5px;">${icon}${i.label}${ext}</span>`;
+            }).join('')}
+          </div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span style="background:#006f5b; color:#fff; padding:7px 16px; border-radius:20px; font-size:13px; font-weight:800;"><i class="fa-solid fa-basket-shopping"></i> Cart (0)</span>
+          </div>
+        </div>
+      `;
+    }
+
+
     // PRODUCTS TABLE
     let adminProductSearchQuery = '';
     let adminProductCatFilter = 'all';
@@ -3855,7 +4104,39 @@
       a.click();
     }
 
-    window.addEventListener('DOMContentLoaded', initUI);
+    
+    // LIVE CATALOG SYNC ENGINE
+    async function forceSyncFromLiveSite(silent = false) {
+      if (!silent) showAdminToast('Fetching live products from data/store_data.json...', 'info');
+      try {
+        const res = await fetch('data/store_data.json?t=' + Date.now());
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const liveData = await res.json();
+        if (liveData && Array.isArray(liveData.products) && liveData.products.length > 0) {
+          storeData = liveData;
+          localStorage.setItem('greencabin_store_data', JSON.stringify(storeData));
+          localStorage.setItem('greencabin_catalog_version', 'v77_exact_ordernow_20261103_live');
+          initUI();
+          if (!silent) showAdminToast('✓ Successfully loaded ' + liveData.products.length + ' products & platters from live site!');
+          console.log('✓ Successfully synced ' + liveData.products.length + ' products from live store_data.json');
+          return;
+        }
+      } catch (err) {
+        console.warn('Could not fetch data/store_data.json, falling back to INITIAL_DATA:', err.message);
+        storeData = JSON.parse(JSON.stringify(INITIAL_DATA));
+        localStorage.setItem('greencabin_store_data', JSON.stringify(storeData));
+        localStorage.setItem('greencabin_catalog_version', 'v77_exact_ordernow_20261103_live');
+        initUI();
+        if (!silent) showAdminToast('✓ Loaded ' + INITIAL_DATA.products.length + ' products from store catalog!');
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initUI();
+      initGitHubUI();
+      forceSyncFromLiveSite(true);
+    });
+  
   
     // ==========================================================================
     // TAB SWITCHING ARCHITECTURE
