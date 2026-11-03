@@ -1840,8 +1840,8 @@
   <!-- TOP HOTLINE BAR -->
   <div class="top-bar">
     <div class="info-group">
-      <div class="info-item"><i class="fa-solid fa-phone"></i> Hotline: <a id="tb-phone" href="tel:+94112588811">+94 11 258 8811</a></div>
-      <div class="info-item"><i class="fa-brands fa-whatsapp"></i> WhatsApp: <a id="tb-whatsapp" href="https://wa.me/94771234567" target="_blank">+94 77 123 4567</a></div>
+      <div class="info-item"><i class="fa-solid fa-phone"></i> Hotline: <a id="tb-phone" href="tel:+94777886161">+94 77 788 6161</a></div>
+      <div class="info-item"><i class="fa-brands fa-whatsapp"></i> WhatsApp: <a id="tb-whatsapp" href="https://wa.me/94777886161" target="_blank">+94 77 788 6161</a></div>
     </div>
     <div class="info-group">
       <div class="info-item"><i class="fa-solid fa-truck-fast"></i> <span id="tb-delivery-notice">Colombo & Suburbs Delivery Available</span></div>
@@ -1921,7 +1921,7 @@
           <p class="hero-desc" id="hero-sub">Freshly baked traditional meat pies, flaky savouries, celebratory gateaux, and authentic Dutch lamprais delivered right to your doorstep.</p>
           <div class="hero-btn-row">
             <button class="btn-hero-primary" id="hero-btn-primary" onclick="scrollToProducts()"><i class="fa-solid fa-basket-shopping"></i> <span id="hero-btn-text">Order Online</span></button>
-            <a class="btn-hero-outline" id="hero-whatsapp-btn" href="https://wa.me/94771234567" target="_blank"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+            <a class="btn-hero-outline" id="hero-whatsapp-btn" href="https://wa.me/94777886161" target="_blank"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
             <button class="btn-hero-outline" onclick="switchSiteTab('catering')"><i class="fa-solid fa-bell-concierge"></i> Catering Inquiry</button>
           </div>
         </div>
@@ -2127,7 +2127,7 @@
         <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:20px;">Submit your requirements and our Catering Director will reach out with the customized menu options.</p>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
           <div><label style="font-size:12.5px; font-weight:700;">Your Name</label><input type="text" id="inq-name" style="width:100%; padding:10px; border:1.5px solid var(--border-color); border-radius:8px;" placeholder="Kasun Rodrigo"></div>
-          <div><label style="font-size:12.5px; font-weight:700;">Contact Phone</label><input type="text" id="inq-phone" style="width:100%; padding:10px; border:1.5px solid var(--border-color); border-radius:8px;" placeholder="+94 77 123 4567"></div>
+          <div><label style="font-size:12.5px; font-weight:700;">Contact Phone</label><input type="text" id="inq-phone" style="width:100%; padding:10px; border:1.5px solid var(--border-color); border-radius:8px;" placeholder="+94 77 788 6161"></div>
         </div>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
           <div><label style="font-size:12.5px; font-weight:700;">Event Date</label><input type="date" id="inq-date" style="width:100%; padding:10px; border:1.5px solid var(--border-color); border-radius:8px;"></div>
@@ -2281,7 +2281,7 @@
         <div class="footer-social-links">
           <a href="https://facebook.com" target="_blank" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
           <a href="https://instagram.com" target="_blank" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://wa.me/94771234567" target="_blank" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://wa.me/94777886161" target="_blank" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
       </div>
       <div class="footer-col">
@@ -2308,8 +2308,8 @@
       <div class="footer-col">
         <h4>Customer Care</h4>
         <ul>
-          <li><i class="fa-solid fa-phone" style="color:var(--secondary-color); margin-right:8px;"></i> <span id="ft-phone">+94 11 258 8811</span></li>
-          <li><i class="fa-brands fa-whatsapp" style="color:var(--secondary-color); margin-right:8px;"></i> <span id="ft-whatsapp">+94 77 123 4567</span></li>
+          <li><i class="fa-solid fa-phone" style="color:var(--secondary-color); margin-right:8px;"></i> <span id="ft-phone">+94 77 788 6161</span></li>
+          <li><i class="fa-brands fa-whatsapp" style="color:var(--secondary-color); margin-right:8px;"></i> <span id="ft-whatsapp">+94 77 788 6161</span></li>
           <li><i class="fa-solid fa-envelope" style="color:var(--secondary-color); margin-right:8px;"></i> <span id="ft-email">orders@greencabin.lk</span></li>
           <li><i class="fa-solid fa-clock" style="color:var(--secondary-color); margin-right:8px;"></i> <span id="ft-hours">8:00 AM - 9:00 PM Daily</span></li>
         </ul>
@@ -2330,8 +2330,8 @@
         brandName: "GREEN CABIN",
         brandSub: "SERVING SINCE 1884",
         logoImage: "logo.png",
-        phone: "+94 11 258 8811",
-        whatsapp: "+94 77 123 4567",
+        phone: "+94 77 788 6161",
+        whatsapp: "+94 77 788 6161",
         email: "orders@greencabin.lk",
         address: "400 Galle Road, Colombo 03, Sri Lanka",
         deliveryNotice: "Colombo & Islandwide Delivery Available",
@@ -5736,6 +5736,16 @@
               storeData.outlets = DEFAULT_STORE_DATA.outlets;
               try { localStorage.setItem('greencabin_store_data', JSON.stringify(storeData)); } catch(e){}
             }
+            // Auto-migrate hotline and whatsapp to official 0777886161 if old numbers exist
+            if (storeData.settings) {
+              if (!storeData.settings.phone || storeData.settings.phone.includes('258 8811')) {
+                storeData.settings.phone = DEFAULT_STORE_DATA.settings.phone;
+              }
+              if (!storeData.settings.whatsapp || storeData.settings.whatsapp.includes('123 4567')) {
+                storeData.settings.whatsapp = DEFAULT_STORE_DATA.settings.whatsapp;
+              }
+              try { localStorage.setItem('greencabin_store_data', JSON.stringify(storeData)); } catch(e){}
+            }
           }
         } catch(e) {}
       }
@@ -6375,13 +6385,13 @@ function handleSearch() {
 
       if (!name || !phone) return alert("Please enter your Name and Phone!");
 
-      const cleanWa = (storeData.settings.whatsapp || '94771234567').replace(/[^0-9]/g, '');
+      const cleanWa = (storeData.settings.whatsapp || '94777886161').replace(/[^0-9]/g, '');
       let msg = `*NEW CATERING INQUIRY - GREEN CABIN LK*\n----------------------------------\n👤 Name: ${name}\n📞 Phone: ${phone}\n📅 Date: ${date || 'Not specified'}\n👥 Guests: ${guests || 'Not specified'}\n🍱 Package: ${pkg}\n📍 Location: ${location || 'Not specified'}\n----------------------------------\nPlease send menu details and quotation.`;
       window.open(`https://wa.me/${cleanWa}?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
     function orderPlatterDirect(name, price) {
-      const cleanWa = (storeData.settings.whatsapp || '94771234567').replace(/[^0-9]/g, '');
+      const cleanWa = (storeData.settings.whatsapp || '94777886161').replace(/[^0-9]/g, '');
       const msg = `*PLATTER ORDER - GREEN CABIN LK*\n\nHello, I would like to order: *${name}* (${price}). Please let me know preparation time.`;
       window.open(`https://wa.me/${cleanWa}?text=${encodeURIComponent(msg)}`, '_blank');
     }
@@ -6495,7 +6505,7 @@ function handleSearch() {
         msg += `${idx + 1}. ${i.name} x ${i.qty} = ${curr} ${tot.toLocaleString()}\n`;
       });
       msg += `------------------------\n*Total: ${curr} ${total.toLocaleString()}*\n\nPlease confirm delivery.`;
-      const cleanWa = (storeData.settings.whatsapp || '94771234567').replace(/[^0-9]/g, '');
+      const cleanWa = (storeData.settings.whatsapp || '94777886161').replace(/[^0-9]/g, '');
       window.open(`https://wa.me/${cleanWa}?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
