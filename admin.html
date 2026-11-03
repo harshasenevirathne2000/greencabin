@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <link rel="icon" type="image/png" href="logo.png">
   <title>Green Cabin | High-End Store Manager & Wix CMS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -587,6 +590,9 @@
     <header class="top-header">
       <h1 id="tab-title">Store Dashboard</h1>
       <div class="header-actions">
+        <button class="btn-secondary" onclick="forceSyncFromLiveSite(false)" title="Pull and load all 77 products from live site" style="background:#e0f2fe; color:#0369a1; border-color:#bae6fd; font-weight:700;">
+          <i class="fa-solid fa-arrows-rotate"></i> Load Live Products (77)
+        </button>
         <button class="btn-secondary" onclick="exportDataJSON()"><i class="fa-solid fa-download"></i> Backup JSON</button>
         <button class="btn-secondary" onclick="document.getElementById('import-file').click()"><i class="fa-solid fa-upload"></i> Restore</button>
         <input type="file" id="import-file" style="display:none;" onchange="importDataJSON(event)" accept=".json">
@@ -602,6 +608,24 @@
 
       <!-- ==================== TAB 1: DASHBOARD ==================== -->
       <div id="tab-dashboard" class="tab-content active">
+        <!-- LIVE CATALOG SYNC BANNER -->
+        <div class="card" style="margin-bottom: 20px; background:#f0fdf4; border:1px solid #bbf7d0; padding:16px 20px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+            <div style="display:flex; align-items:center; gap:12px;">
+              <div style="width:38px; height:38px; border-radius:50%; background:#dcfce7; display:flex; align-items:center; justify-content:center; color:#15803d; font-size:18px;">
+                <i class="fa-solid fa-cloud-arrow-down"></i>
+              </div>
+              <div>
+                <h4 style="margin:0 0 2px 0; color:#166534; font-size:15px; font-weight:800;">Live Storefront Catalog Active</h4>
+                <p style="margin:0; font-size:12.5px; color:#15803d;">All 77 products & 4 party platters are loaded with live WooCommerce IDs and ordernow prices.</p>
+              </div>
+            </div>
+            <button class="btn-secondary" onclick="forceSyncFromLiveSite(false)" style="background:#ffffff; border-color:#86efac; color:#166534; font-weight:700; font-size:12px; padding:6px 14px;">
+              <i class="fa-solid fa-rotate"></i> Force Sync Live Catalog
+            </button>
+          </div>
+        </div>
+
         <div class="grid-3" style="margin-bottom: 24px;">
           <div class="card" style="margin-bottom:0;">
             <div style="font-size:13px; color:var(--admin-muted); font-weight:700;">TOTAL PRODUCTS</div>
@@ -3965,7 +3989,7 @@
         owner: (localStorage.getItem('gc_gh_owner') || 'harshasenevirathne2000').trim(),
         repo: (localStorage.getItem('gc_gh_repo') || 'greencabin').trim(),
         branch: (localStorage.getItem('gc_gh_branch') || 'gh-pages').trim(),
-        autoPush: localStorage.getItem('gc_gh_autopush') === 'true'
+        autoPush: localStorage.getItem('gc_gh_autopush') !== 'false'
       };
     }
 
@@ -4045,7 +4069,7 @@
       const cleanToken = (config.token || '').replace(/^Bearer\s+/i, '').replace(/^token\s+/i, '').trim();
       const res = await fetch(url, {
         headers: {
-          'Authorization': `Bearer ${cleanToken}`,
+          'Authorization': `token ${cleanToken}`,
           'Accept': 'application/vnd.github+json',
           'X-GitHub-Api-Version': '2022-11-28'
         }
@@ -4073,7 +4097,7 @@
       const res = await fetch(url, {
         method: 'PUT',
         headers: {
-          'Authorization': `Bearer ${cleanToken}`,
+          'Authorization': `token ${cleanToken}`,
           'Accept': 'application/vnd.github+json',
           'Content-Type': 'application/json',
           'X-GitHub-Api-Version': '2022-11-28'
