@@ -476,6 +476,48 @@
       object-fit: cover;
       display: none;
     }
+  
+    /* GITHUB LIVE DEPLOY BUTTON & UI */
+    .btn-github-deploy {
+      background: linear-gradient(135deg, #0e2e25, #004d3f);
+      color: #81caa5;
+      border: 1.5px solid #81caa5;
+      padding: 9px 18px;
+      border-radius: 20px;
+      font-family: var(--font-admin);
+      font-size: 13.5px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 14px rgba(0, 77, 63, 0.3);
+    }
+    .btn-github-deploy:hover {
+      background: var(--admin-accent);
+      color: #00221c;
+      border-color: var(--admin-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(129, 202, 165, 0.5);
+    }
+    .btn-github-deploy:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+    .status-dot {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #94a3b8;
+    }
+    .status-dot.active {
+      background: #10b981;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
+    }
+
   </style>
 </head>
 <body>
@@ -527,6 +569,9 @@
       <button class="nav-btn" onclick="switchTab('preview')">
         <i class="fa-solid fa-eye"></i> Live Interactive Preview
       </button>
+      <button class="nav-btn" id="nav-btn-github" onclick="switchTab('github')" style="color:#81caa5; font-weight:800;">
+        <i class="fa-brands fa-github"></i> GitHub Live Deploy
+      </button>
     </div>
 
     <div class="sidebar-footer">
@@ -545,7 +590,10 @@
         <button class="btn-secondary" onclick="exportDataJSON()"><i class="fa-solid fa-download"></i> Backup JSON</button>
         <button class="btn-secondary" onclick="document.getElementById('import-file').click()"><i class="fa-solid fa-upload"></i> Restore</button>
         <input type="file" id="import-file" style="display:none;" onchange="importDataJSON(event)" accept=".json">
-        <button class="btn-accent" onclick="saveAllChanges()"><i class="fa-solid fa-floppy-disk"></i> Save All Changes</button>
+        <button class="btn-accent" onclick="saveAllChanges()"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+        <button class="btn-github-deploy" id="btn-quick-github" onclick="deployToGitHubLive()" title="Push changes directly to GitHub Live">
+          <i class="fa-brands fa-github"></i> <span id="btn-gh-text">Push to GitHub Live</span>
+        </button>
       </div>
     </header>
 
@@ -1090,6 +1138,120 @@
           <iframe id="preview-iframe" class="preview-frame" src="index.html"></iframe>
         </div>
       </div>
+
+      <!-- ==================== TAB 13: GITHUB LIVE DEPLOY ==================== -->
+      <div id="tab-github" class="tab-content">
+        <div class="card" style="background: linear-gradient(135deg, #002b23 0%, #004437 100%); color:#ffffff; border: 1.5px solid rgba(129,202,165,0.4); margin-bottom: 24px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
+            <div>
+              <h2 style="font-family:var(--font-cocon); font-size:24px; font-weight:800; color:#81caa5; margin-bottom:8px; display:flex; align-items:center; gap:10px;">
+                <i class="fa-brands fa-github"></i> GitHub Live Deployment & Cloud Sync
+              </h2>
+              <p style="font-size:14px; color:#cbd5e1; max-width:700px; line-height:1.5;">
+                Publish your bakery products, prices, locations, platters, and hotlines directly to the live website on <strong>GitHub Pages</strong> with 1-click. No terminal or git commands required!
+              </p>
+            </div>
+            <div id="gh-status-pill" style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); padding:7px 18px; border-radius:20px; font-size:13px; font-weight:700; color:#cbd5e1; display:flex; align-items:center; gap:8px;">
+              <span class="status-dot" id="gh-status-dot"></span> <span id="gh-status-text">Not Connected</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <!-- GITHUB CONFIGURATION -->
+          <div class="card">
+            <div class="card-title" style="display:flex; align-items:center; gap:8px;">
+              <i class="fa-solid fa-key" style="color:var(--admin-primary);"></i> GitHub Access Credentials
+            </div>
+            
+            <div class="form-group">
+              <label>GitHub Personal Access Token (PAT) <span style="color:#ef4444;">*</span></label>
+              <div style="display:flex; gap:8px;">
+                <input type="password" id="gh-token" class="form-control" placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxx" style="font-family:monospace;">
+                <button type="button" class="btn-secondary" onclick="toggleTokenVisibility()" style="padding:0 14px;" title="Show/Hide Token"><i class="fa-solid fa-eye" id="gh-eye-icon"></i></button>
+              </div>
+              <small style="color:var(--admin-muted); font-size:12px; margin-top:4px; display:block;">
+                Stored safely in your browser only. Never shared or committed publicly.
+              </small>
+            </div>
+
+            <div class="grid-2">
+              <div class="form-group">
+                <label>Repository Owner</label>
+                <input type="text" id="gh-owner" class="form-control" value="harshasenevirathne2000">
+              </div>
+              <div class="form-group">
+                <label>Repository Name</label>
+                <input type="text" id="gh-repo" class="form-control" value="greencabin">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Deployment Branch</label>
+              <input type="text" id="gh-branch" class="form-control" value="gh-pages">
+              <small style="color:var(--admin-muted); font-size:12px; margin-top:4px; display:block;">
+                Changes are deployed directly to <code>gh-pages</code> to automatically build GitHub Pages without touching main!
+              </small>
+            </div>
+
+            <div class="form-group" style="margin-top:16px; background:#f8fafc; padding:12px 14px; border-radius:8px; border:1px solid #e2e8f0;">
+              <label style="display:flex; align-items:center; gap:10px; cursor:pointer; font-weight:700; color:var(--admin-text); font-size:13.5px;">
+                <input type="checkbox" id="gh-autopush" style="width:18px; height:18px;">
+                <span>Automatically push to GitHub whenever clicking "Save Changes"</span>
+              </label>
+            </div>
+
+            <div style="display:flex; gap:12px; margin-top:20px; align-items:center; flex-wrap:wrap;">
+              <button class="btn-primary" onclick="testGitHubConnection()"><i class="fa-solid fa-plug"></i> Test Connection & Save</button>
+              <div id="gh-test-status" style="font-size:13px; font-weight:700;"></div>
+            </div>
+
+            <!-- INSTRUCTIONS ACCORDION -->
+            <div style="margin-top:24px; padding:16px; background:#f1f7f4; border-radius:8px; border:1px solid #d0e4db; font-size:13px; line-height:1.6;">
+              <strong style="color:var(--admin-primary); display:block; margin-bottom:6px;"><i class="fa-solid fa-circle-info"></i> Token එකක් සාදා ගන්නා ආකාරය (How to create a GitHub Token):</strong>
+              <ol style="margin-left:20px; color:#334155;">
+                <li>GitHub ගිණුමට ලොග් වී <strong>Settings &rarr; Developer Settings &rarr; Personal Access Tokens &rarr; Tokens (classic)</strong> වෙත යන්න.</li>
+                <li><strong>"Generate new token (classic)"</strong> click කරන්න.</li>
+                <li>Note එකට <em>"Green Cabin Admin"</em> දී, <strong>repo</strong> (Full control of repositories) tick කර token එක generate කරගන්න.</li>
+                <li>Generate වුන <code>ghp_...</code> token එක copy කර මෙහි paste කර <strong>"Test Connection & Save"</strong> ඔබන්න!</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- PUSH & LIVE STATUS -->
+          <div class="card" style="display:flex; flex-direction:column;">
+            <div class="card-title" style="display:flex; align-items:center; gap:8px;">
+              <i class="fa-solid fa-cloud-arrow-up" style="color:var(--admin-primary);"></i> Live Deployment Controls
+            </div>
+            
+            <p style="font-size:13.5px; color:var(--admin-muted); margin-bottom:18px; line-height:1.5;">
+              You can push all your current edits (products, prices, locations, platters, photos) directly to the live GitHub repository. GitHub Pages will automatically publish the changes in ~30 seconds.
+            </p>
+
+            <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:20px;">
+              <button class="btn-accent" onclick="deployToGitHubLive()" style="padding:14px 24px; font-size:15px; font-weight:800; justify-content:center;">
+                <i class="fa-brands fa-github"></i> 🚀 PUSH & DEPLOY TO LIVE SITE NOW
+              </button>
+              <button class="btn-secondary" onclick="pullFromGitHub()" style="justify-content:center;">
+                <i class="fa-solid fa-cloud-arrow-down"></i> Pull Latest Catalog from GitHub
+              </button>
+            </div>
+
+            <div class="card-title" style="font-size:14px; margin-bottom:8px; margin-top:10px;">Deployment Log & Status</div>
+            <div id="gh-deploy-log" style="background:#0e1726; color:#94a3b8; padding:16px; border-radius:8px; font-family:monospace; font-size:12.5px; min-height:170px; max-height:280px; overflow-y:auto; line-height:1.6;">
+              <div>Ready to deploy. Click "PUSH & DEPLOY TO LIVE SITE NOW" to publish changes to GitHub.</div>
+            </div>
+
+            <div style="margin-top:auto; padding-top:18px; border-top:1px solid var(--admin-border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+              <span style="font-size:13px; color:var(--admin-muted);">Live Website:</span>
+              <a href="https://harshasenevirathne2000.github.io/greencabin/" target="_blank" style="color:var(--admin-primary); font-weight:700; text-decoration:none; font-size:13px; display:inline-flex; align-items:center; gap:6px;">
+                harshasenevirathne2000.github.io/greencabin/ <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
     </div>
   </div>
@@ -5736,6 +5898,462 @@
     }
 
     window.addEventListener('DOMContentLoaded', initUI);
+  
+    // ==========================================================================
+    // TAB SWITCHING ARCHITECTURE
+    // ==========================================================================
+    function switchTab(tabId) {
+      // 1. Hide all tab contents
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+
+      // 2. Remove active from all nav buttons
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+      // 3. Show target tab content
+      const target = document.getElementById('tab-' + tabId);
+      if (target) target.classList.add('active');
+
+      // 4. Highlight matching nav button
+      const navBtn = Array.from(document.querySelectorAll('.nav-btn')).find(b => b.getAttribute('onclick')?.includes("'" + tabId + "'"));
+      if (navBtn) navBtn.classList.add('active');
+
+      // 5. Update header title
+      const titleMap = {
+        'dashboard': 'Store Dashboard',
+        'navigation': 'Header & Navigation Bar',
+        'hero': 'Hero & Photo Banners',
+        'products': 'Products & Meat Pies',
+        'categories': 'Product Categories',
+        'catering': 'Catering Services',
+        'platters': 'Events & Platters',
+        'outlets': 'Outlets & Locations',
+        'footer': 'Footer & Social Links',
+        'contacts': 'Hotlines & Info',
+        'branding': 'Colors & Cocon Font',
+        'preview': 'Live Interactive Preview',
+        'github': 'GitHub Live Deployment & Cloud Sync'
+      };
+      const titleEl = document.getElementById('tab-title');
+      if (titleEl) titleEl.textContent = titleMap[tabId] || 'Store Dashboard';
+
+      // 6. If opening github tab, refresh status
+      if (tabId === 'github') {
+        initGitHubUI();
+      }
+    }
+
+    // ==========================================================================
+    // SAVE ALL CHANGES TO LOCAL CACHE & AUTO-PUSH
+    // ==========================================================================
+    function saveAllChanges(notify = true) {
+      if (!storeData || !storeData.settings) return;
+
+      // 1. Gather active settings input values
+      const cfgName = document.getElementById('cfg-name');
+      if (cfgName && cfgName.value) storeData.settings.brandName = cfgName.value.trim();
+      const cfgSub = document.getElementById('cfg-sub');
+      if (cfgSub && cfgSub.value) storeData.settings.brandSub = cfgSub.value.trim();
+      const cfgPhone = document.getElementById('cfg-phone');
+      if (cfgPhone && cfgPhone.value) storeData.settings.phone = cfgPhone.value.trim();
+      const cfgWa = document.getElementById('cfg-whatsapp');
+      if (cfgWa && cfgWa.value) storeData.settings.whatsapp = cfgWa.value.trim();
+      const cfgEmail = document.getElementById('cfg-email');
+      if (cfgEmail && cfgEmail.value) storeData.settings.email = cfgEmail.value.trim();
+      const cfgAddr = document.getElementById('cfg-address');
+      if (cfgAddr && cfgAddr.value) storeData.settings.address = cfgAddr.value.trim();
+      const cfgDelivery = document.getElementById('cfg-delivery-notice');
+      if (cfgDelivery && cfgDelivery.value) storeData.settings.deliveryNotice = cfgDelivery.value.trim();
+      const cfgHours = document.getElementById('cfg-hours-notice');
+      if (cfgHours && cfgHours.value) storeData.settings.hoursNotice = cfgHours.value.trim();
+      const cfgCurr = document.getElementById('cfg-currency');
+      if (cfgCurr && cfgCurr.value) storeData.settings.currency = cfgCurr.value.trim();
+      const cfgPrimary = document.getElementById('cfg-primary-color');
+      if (cfgPrimary && cfgPrimary.value) storeData.settings.primaryColor = cfgPrimary.value.trim();
+      const cfgSecondary = document.getElementById('cfg-secondary-color');
+      if (cfgSecondary && cfgSecondary.value) storeData.settings.secondaryColor = cfgSecondary.value.trim();
+      const cfgDark = document.getElementById('cfg-dark-color');
+      if (cfgDark && cfgDark.value) storeData.settings.darkColor = cfgDark.value.trim();
+
+      // 2. Save to browser localStorage
+      try {
+        localStorage.setItem('greencabin_store_data', JSON.stringify(storeData));
+      } catch (e) {
+        console.error('LocalStorage save error:', e);
+      }
+
+      // 3. Update dashboard counts
+      updateDashboardCounts();
+
+      // 4. If auto-push is enabled and token exists, trigger background push
+      const autoPush = localStorage.getItem('gc_gh_autopush') === 'true';
+      const token = localStorage.getItem('gc_gh_token');
+      if (autoPush && token) {
+        deployToGitHubLive(true);
+        return;
+      }
+
+      if (notify) {
+        showAdminToast('✓ All changes saved to local storage!');
+      }
+    }
+
+    // ==========================================================================
+    // FLOATING TOAST NOTIFICATION SYSTEM
+    // ==========================================================================
+    function showAdminToast(msg, type = 'success') {
+      let toast = document.getElementById('admin-toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'admin-toast';
+        toast.style.cssText = 'position:fixed; bottom:24px; right:24px; z-index:99999; padding:12px 24px; border-radius:10px; font-weight:700; font-size:14px; box-shadow:0 8px 24px rgba(0,0,0,0.3); display:flex; align-items:center; gap:10px; transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1); transform:translateY(100px); opacity:0; pointer-events:none;';
+        document.body.appendChild(toast);
+      }
+      toast.style.background = type === 'error' ? '#ef4444' : (type === 'info' ? '#006f5b' : '#003b31');
+      toast.style.color = '#ffffff';
+      toast.style.border = '1px solid rgba(129, 202, 165, 0.5)';
+      const icon = type === 'error' ? '<i class="fa-solid fa-triangle-exclamation" style="color:#fca5a5;"></i>' : (type === 'info' ? '<i class="fa-solid fa-spinner fa-spin" style="color:#81caa5;"></i>' : '<i class="fa-solid fa-circle-check" style="color:#81caa5;"></i>');
+      toast.innerHTML = `${icon} <span>${msg}</span>`;
+      toast.style.transform = 'translateY(0)';
+      toast.style.opacity = '1';
+      clearTimeout(window._toastTimeout);
+      window._toastTimeout = setTimeout(() => {
+        toast.style.transform = 'translateY(100px)';
+        toast.style.opacity = '0';
+      }, 4000);
+    }
+
+    // ==========================================================================
+    // GITHUB DEPLOYMENT & REST API ENGINE
+    // ==========================================================================
+    function getGitHubConfig() {
+      return {
+        token: (localStorage.getItem('gc_gh_token') || '').trim(),
+        owner: (localStorage.getItem('gc_gh_owner') || 'harshasenevirathne2000').trim(),
+        repo: (localStorage.getItem('gc_gh_repo') || 'greencabin').trim(),
+        branch: (localStorage.getItem('gc_gh_branch') || 'gh-pages').trim(),
+        autoPush: localStorage.getItem('gc_gh_autopush') === 'true'
+      };
+    }
+
+    function saveGitHubConfig(token, owner, repo, branch, autoPush) {
+      if (token !== undefined) localStorage.setItem('gc_gh_token', token.trim());
+      if (owner !== undefined) localStorage.setItem('gc_gh_owner', owner.trim());
+      if (repo !== undefined) localStorage.setItem('gc_gh_repo', repo.trim());
+      if (branch !== undefined) localStorage.setItem('gc_gh_branch', branch.trim());
+      localStorage.setItem('gc_gh_autopush', autoPush ? 'true' : 'false');
+    }
+
+    function initGitHubUI() {
+      const cfg = getGitHubConfig();
+      const tokenInput = document.getElementById('gh-token');
+      if (tokenInput && cfg.token) tokenInput.value = cfg.token;
+      const ownerInput = document.getElementById('gh-owner');
+      if (ownerInput && cfg.owner) ownerInput.value = cfg.owner;
+      const repoInput = document.getElementById('gh-repo');
+      if (repoInput && cfg.repo) repoInput.value = cfg.repo;
+      const branchInput = document.getElementById('gh-branch');
+      if (branchInput && cfg.branch) branchInput.value = cfg.branch;
+      const autoPushCb = document.getElementById('gh-autopush');
+      if (autoPushCb) autoPushCb.checked = cfg.autoPush;
+
+      updateGitHubStatusBadge(!!cfg.token);
+    }
+
+    function updateGitHubStatusBadge(isConnected) {
+      const dot = document.getElementById('gh-status-dot');
+      const text = document.getElementById('gh-status-text');
+      const cfg = getGitHubConfig();
+      if (dot) dot.classList.toggle('active', isConnected);
+      if (text) {
+        text.textContent = isConnected ? `Connected (${cfg.owner}/${cfg.repo}:${cfg.branch})` : 'Not Connected';
+      }
+    }
+
+    function toggleTokenVisibility() {
+      const inp = document.getElementById('gh-token');
+      const icon = document.getElementById('gh-eye-icon');
+      if (!inp) return;
+      if (inp.type === 'password') {
+        inp.type = 'text';
+        if (icon) icon.className = 'fa-solid fa-eye-slash';
+      } else {
+        inp.type = 'password';
+        if (icon) icon.className = 'fa-solid fa-eye';
+      }
+    }
+
+    function toggleModalTokenVisibility() {
+      const inp = document.getElementById('modal-gh-token');
+      const icon = document.getElementById('modal-eye-icon');
+      if (!inp) return;
+      if (inp.type === 'password') {
+        inp.type = 'text';
+        if (icon) icon.className = 'fa-solid fa-eye-slash';
+      } else {
+        inp.type = 'password';
+        if (icon) icon.className = 'fa-solid fa-eye';
+      }
+    }
+
+    // Unicode-safe UTF-8 to Base64 (Essential for Sinhala text and emojis)
+    function utf8ToBase64(str) {
+      const bytes = new TextEncoder().encode(str);
+      let binary = '';
+      const len = bytes.byteLength;
+      for (let i = 0; i < len; i++) {
+        binary += String.fromCharCode(bytes[i]);
+      }
+      return window.btoa(binary);
+    }
+
+    async function getFileSha(filePath, config) {
+      const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${filePath}?ref=${config.branch}&t=${Date.now()}`;
+      const res = await fetch(url, {
+        headers: {
+          'Authorization': `Bearer ${config.token}`,
+          'Accept': 'application/vnd.github+json',
+          'X-GitHub-Api-Version': '2022-11-28'
+        }
+      });
+      if (res.status === 404) return null;
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.message || `Failed to get ${filePath} SHA (${res.status})`);
+      }
+      const data = await res.json();
+      return data.sha;
+    }
+
+    async function commitFileToGitHub(filePath, contentStr, message, config) {
+      const sha = await getFileSha(filePath, config);
+      const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${filePath}`;
+      const payload = {
+        message: message,
+        content: utf8ToBase64(contentStr),
+        branch: config.branch
+      };
+      if (sha) payload.sha = sha;
+
+      const res = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${config.token}`,
+          'Accept': 'application/vnd.github+json',
+          'Content-Type': 'application/json',
+          'X-GitHub-Api-Version': '2022-11-28'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.message || `Failed to commit ${filePath} (${res.status})`);
+      }
+      return await res.json();
+    }
+
+    async function testGitHubConnection() {
+      const token = document.getElementById('gh-token').value.trim();
+      const owner = document.getElementById('gh-owner').value.trim() || 'harshasenevirathne2000';
+      const repo = document.getElementById('gh-repo').value.trim() || 'greencabin';
+      const branch = document.getElementById('gh-branch').value.trim() || 'gh-pages';
+      const autoPush = document.getElementById('gh-autopush')?.checked;
+      const statusEl = document.getElementById('gh-test-status');
+
+      if (!token) {
+        statusEl.innerHTML = '<span style="color:#ef4444;"><i class="fa-solid fa-circle-xmark"></i> Please enter your GitHub Token!</span>';
+        return;
+      }
+
+      statusEl.innerHTML = '<span style="color:#3b82f6;"><i class="fa-solid fa-spinner fa-spin"></i> Connecting to GitHub API...</span>';
+
+      try {
+        const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/branches/${branch}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/vnd.github+json'
+          }
+        });
+
+        if (res.ok) {
+          saveGitHubConfig(token, owner, repo, branch, autoPush);
+          statusEl.innerHTML = `<span style="color:#10b981;"><i class="fa-solid fa-circle-check"></i> Connected successfully to ${owner}/${repo} (${branch})!</span>`;
+          updateGitHubStatusBadge(true);
+          showAdminToast('✓ GitHub Connection Verified and Saved!');
+        } else {
+          const err = await res.json().catch(() => ({}));
+          statusEl.innerHTML = `<span style="color:#ef4444;"><i class="fa-solid fa-circle-xmark"></i> Error: ${err.message || 'Access Denied'}</span>`;
+          updateGitHubStatusBadge(false);
+        }
+      } catch (e) {
+        statusEl.innerHTML = `<span style="color:#ef4444;"><i class="fa-solid fa-triangle-exclamation"></i> Network error: ${e.message}</span>`;
+      }
+    }
+
+    function openGitHubDeployModal() {
+      const cfg = getGitHubConfig();
+      const inp = document.getElementById('modal-gh-token');
+      if (inp) inp.value = cfg.token;
+      const ownerInp = document.getElementById('modal-gh-owner');
+      if (ownerInp) ownerInp.value = cfg.owner;
+      const branchInp = document.getElementById('modal-gh-branch');
+      if (branchInp) branchInp.value = cfg.branch;
+      document.getElementById('github-deploy-modal').classList.add('active');
+    }
+
+    function closeGitHubDeployModal() {
+      document.getElementById('github-deploy-modal').classList.remove('active');
+    }
+
+    async function saveAndDeployFromModal() {
+      const token = document.getElementById('modal-gh-token').value.trim();
+      const owner = document.getElementById('modal-gh-owner').value.trim() || 'harshasenevirathne2000';
+      const branch = document.getElementById('modal-gh-branch').value.trim() || 'gh-pages';
+      if (!token) return alert("Please enter your GitHub Personal Access Token!");
+
+      saveGitHubConfig(token, owner, 'greencabin', branch, true);
+      closeGitHubDeployModal();
+      initGitHubUI();
+      deployToGitHubLive(false);
+    }
+
+    async function deployToGitHubLive(silent = false) {
+      const config = getGitHubConfig();
+      if (!config.token) {
+        openGitHubDeployModal();
+        return;
+      }
+
+      const btn = document.getElementById('btn-quick-github');
+      const btnText = document.getElementById('btn-gh-text');
+      const origText = btnText ? btnText.textContent : 'Push to GitHub Live';
+
+      if (btn) btn.disabled = true;
+      if (btnText) btnText.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Pushing...';
+      if (!silent) showAdminToast('Connecting to GitHub API...', 'info');
+
+      const logEl = document.getElementById('gh-deploy-log');
+      const addLog = (line) => {
+        if (!logEl) return;
+        const div = document.createElement('div');
+        div.innerHTML = line;
+        logEl.appendChild(div);
+        logEl.scrollTop = logEl.scrollHeight;
+      };
+
+      if (logEl) logEl.innerHTML = '';
+      addLog(`<div>[1/4] Authenticating with GitHub repository <strong>${config.owner}/${config.repo}</strong> (branch: <code>${config.branch}</code>)...</div>`);
+
+      try {
+        // 1. Save all latest changes first
+        saveAllChanges(false);
+
+        // 2. Generate updated index.html
+        addLog(`<div>[2/4] Generating updated <strong>index.html</strong> with full catalog and settings...</div>`);
+        const updatedHtml = generateStandaloneWixHTML();
+
+        // 3. Generate updated data/store_data.json
+        addLog(`<div>[3/4] Preparing raw <strong>data/store_data.json</strong> catalog backup...</div>`);
+        const updatedJson = JSON.stringify(storeData, null, 2);
+
+        const now = new Date();
+        const timestamp = now.toLocaleDateString() + ' ' + now.toLocaleTimeString();
+        const commitMsg = `Storefront update from Admin Dashboard [${timestamp}]`;
+
+        // 4. Commit index.html
+        addLog(`<div>[4/4] Uploading to GitHub: <code>contents/index.html</code>...</div>`);
+        const indexResult = await commitFileToGitHub('index.html', updatedHtml, commitMsg, config);
+
+        // 5. Commit data/store_data.json
+        await commitFileToGitHub('data/store_data.json', updatedJson, `Update store_data.json backup [${timestamp}]`, config);
+
+        const shaShort = indexResult.commit?.sha?.substring(0, 7) || 'latest';
+        addLog(`<div style="color:#10b981; font-weight:700; margin-top:8px;">✓ Deployment Successful! Commit: ${shaShort}</div>`);
+        addLog(`<div style="color:#81caa5; margin-top:4px;">🚀 GitHub Pages is now rebuilding! Live at <a href="https://harshasenevirathne2000.github.io/greencabin/" target="_blank" style="color:#ffffff; text-decoration:underline;">https://harshasenevirathne2000.github.io/greencabin/</a> in ~30 seconds.</div>`);
+
+        if (btnText) btnText.innerHTML = '<i class="fa-solid fa-check"></i> Deployed!';
+        showAdminToast('🎉 Successfully pushed to GitHub Live! Live in ~30s');
+
+        setTimeout(() => {
+          if (btn) btn.disabled = false;
+          if (btnText) btnText.innerHTML = origText;
+        }, 4000);
+
+      } catch (err) {
+        console.error('GitHub deploy error:', err);
+        addLog(`<div style="color:#ef4444; font-weight:700; margin-top:8px;">✗ Deployment Error: ${err.message}</div>`);
+        if (btn) btn.disabled = false;
+        if (btnText) btnText.innerHTML = origText;
+        showAdminToast('Deployment failed: ' + err.message, 'error');
+        alert("GitHub Live Deployment Error:\n\n" + err.message + "\n\nPlease make sure your GitHub Personal Access Token has 'repo' or 'contents:write' permission.");
+      }
+    }
+
+    async function pullFromGitHub() {
+      const config = getGitHubConfig();
+      if (!confirm("Pull latest catalog from GitHub? This will update your local admin data with the latest version committed on GitHub.")) return;
+
+      showAdminToast('Fetching latest catalog from GitHub...', 'info');
+      try {
+        const url = `https://raw.githubusercontent.com/${config.owner}/${config.repo}/${config.branch}/data/store_data.json?t=${Date.now()}`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("Could not find data/store_data.json on GitHub");
+        const remoteData = await res.json();
+        if (remoteData && remoteData.products) {
+          storeData = remoteData;
+          localStorage.setItem('greencabin_store_data', JSON.stringify(storeData));
+          initUI();
+          showAdminToast('✓ Successfully synced latest catalog from GitHub!');
+        }
+      } catch (e) {
+        showAdminToast('Sync failed: ' + e.message, 'error');
+        alert("Sync error: " + e.message);
+      }
+    }
+
   </script>
+
+  <!-- GITHUB QUICK SETUP MODAL -->
+  <div class="modal-overlay" id="github-deploy-modal">
+    <div class="modal-card" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3 style="display:flex; align-items:center; gap:8px;"><i class="fa-brands fa-github"></i> Connect GitHub for Live Deploy</h3>
+        <button class="modal-close" onclick="closeGitHubDeployModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:13.5px; color:var(--admin-muted); margin-bottom:16px; line-height:1.5;">
+          To push your updates directly to <strong>GitHub Pages</strong> from your browser, please enter your GitHub Personal Access Token once. It will be stored safely in your browser only.
+        </p>
+
+        <div class="form-group">
+          <label>GitHub Personal Access Token (PAT)</label>
+          <div style="display:flex; gap:8px;">
+            <input type="password" id="modal-gh-token" class="form-control" placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxx" style="font-family:monospace;">
+            <button type="button" class="btn-secondary" onclick="toggleModalTokenVisibility()" style="padding:0 12px;"><i class="fa-solid fa-eye" id="modal-eye-icon"></i></button>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Repo Owner</label>
+            <input type="text" id="modal-gh-owner" class="form-control" value="harshasenevirathne2000">
+          </div>
+          <div class="form-group">
+            <label>Branch</label>
+            <input type="text" id="modal-gh-branch" class="form-control" value="gh-pages">
+          </div>
+        </div>
+
+        <div style="margin-top:14px; padding:12px; background:#f1f7f4; border-radius:8px; font-size:12.5px; line-height:1.5;">
+          <strong>Quick Tip:</strong> Create a token on <code>github.com &rarr; Settings &rarr; Developer Settings &rarr; Personal access tokens &rarr; Tokens (classic)</code> with <strong>repo</strong> scope.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeGitHubDeployModal()">Cancel</button>
+        <button class="btn-accent" onclick="saveAndDeployFromModal()"><i class="fa-solid fa-cloud-arrow-up"></i> Save & Deploy Live Now</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
