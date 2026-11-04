@@ -55,7 +55,7 @@
       --shadow-md: 0 10px 30px rgba(0, 59, 49, 0.09);
       --shadow-lg: 0 20px 45px rgba(0, 59, 49, 0.16);
       --font-brand: 'Cocon Regular', 'Cocon', 'Nunito', sans-serif;
-      --font-body: 'Cocon Regular', 'Cocon', 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
 
     * {
@@ -76,19 +76,24 @@
     .top-bar {
       background: var(--primary-dark);
       color: #e2ede8;
-      font-size: 12.5px;
-      padding: 8px 24px;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+      font-size: 13px;
+      padding: 9px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 14px;
       border-bottom: 1px solid rgba(129, 202, 165, 0.2);
+    }
+    .top-bar a, .top-bar span, .top-bar .info-item {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     }
     .top-bar a {
       color: var(--secondary-color);
       text-decoration: none;
-      font-weight: 700;
+      font-weight: 800;
+      letter-spacing: 0.5px;
     }
     .top-bar .info-group {
       display: flex;
@@ -283,56 +288,29 @@
       margin-right: 8px;
     }
 
-    /* HEADER HOTLINE BUTTON & RIGHT ACTIONS */
-    .hdr-hotline-btn {
+    /* HEADER QUICK CALL & RIGHT ACTIONS */
+    .hdr-call-btn {
+      width: 42px !important;
+      height: 42px !important;
+      border-radius: 50% !important;
+      background: #eef7f2 !important;
+      border: 1.5px solid #81caa5 !important;
+      color: #006f5b !important;
       display: inline-flex !important;
       align-items: center !important;
-      gap: 8px !important;
-      padding: 8px 16px !important;
-      background: #eef7f2 !important;
-      color: #003b31 !important;
-      border: 1.5px solid #81caa5 !important;
-      border-radius: 30px !important;
-      font-family: var(--font-brand) !important;
-      font-size: 13.5px !important;
-      font-weight: 800 !important;
+      justify-content: center !important;
+      font-size: 15px !important;
       text-decoration: none !important;
       transition: all 0.25s ease !important;
-      white-space: nowrap !important;
       flex-shrink: 0 !important;
-      line-height: 1 !important;
-      box-shadow: 0 2px 8px rgba(0, 59, 49, 0.06) !important;
+      box-shadow: 0 2px 8px rgba(0, 59, 49, 0.08) !important;
     }
-    .hdr-hotline-btn i {
-      color: #006f5b !important;
-      font-size: 13px !important;
-    }
-    .hdr-hotline-btn .hdr-hotline-text {
-      white-space: nowrap !important;
-      display: inline-block !important;
-      letter-spacing: 0.3px !important;
-    }
-    .hdr-hotline-btn:hover {
+    .hdr-call-btn:hover {
       background: #006f5b !important;
       color: #ffffff !important;
       border-color: #006f5b !important;
-      transform: translateY(-1px) !important;
+      transform: scale(1.08) !important;
       box-shadow: 0 4px 14px rgba(0, 111, 91, 0.28) !important;
-    }
-    .hdr-hotline-btn:hover i {
-      color: #ffffff !important;
-    }
-    @media (max-width: 1024px) {
-      .hdr-hotline-btn .hdr-hotline-text {
-        display: none !important;
-      }
-      .hdr-hotline-btn {
-        padding: 9px !important;
-        width: 38px !important;
-        height: 38px !important;
-        border-radius: 50% !important;
-        justify-content: center !important;
-      }
     }
 
     /* HEADER RIGHT ACTIONS */
@@ -1922,14 +1900,14 @@
   <div class="top-bar">
     <div class="info-group">
       <div class="info-item">
-        <i class="fa-solid fa-phone" style="color:var(--secondary-color);"></i>
-        <span class="tb-label">Hotline:</span>
-        <a id="tb-phone" href="tel:0777886161">0777 886 161</a>
+        <i class="fa-solid fa-phone" style="color:#81caa5;"></i>
+        <span class="tb-label" style="font-weight:700; color:#e2ede8;">Hotline:</span>
+        <a id="tb-phone" href="tel:0777886161" style="font-weight:800; color:#81caa5; font-size:13.5px;">0777 886 161</a>
       </div>
       <div class="info-item">
         <i class="fa-brands fa-whatsapp" style="color:#25d366;"></i>
-        <span class="tb-label">WhatsApp:</span>
-        <a id="tb-whatsapp" href="https://wa.me/94777886161" target="_blank">0777 886 161</a>
+        <span class="tb-label" style="font-weight:700; color:#e2ede8;">WhatsApp:</span>
+        <a id="tb-whatsapp" href="https://wa.me/94777886161" target="_blank" style="font-weight:800; color:#81caa5; font-size:13.5px;">0777 886 161</a>
       </div>
     </div>
     <div class="info-group">
@@ -1971,11 +1949,10 @@
         </div>
       </div>
 
-      <!-- CART & HOTLINE -->
+      <!-- CART & QUICK CALL -->
       <div class="header-actions">
-        <a href="tel:0777886161" class="hdr-hotline-btn" title="Call Hotline: 0777 886 161">
+        <a href="tel:0777886161" class="hdr-call-btn" title="Call Hotline: 0777 886 161" aria-label="Call Hotline">
           <i class="fa-solid fa-phone"></i>
-          <span class="hdr-hotline-text">0777 886 161</span>
         </a>
         <button class="btn-cart-nav" onclick="toggleCart(true)">
           <i class="fa-solid fa-basket-shopping"></i>
