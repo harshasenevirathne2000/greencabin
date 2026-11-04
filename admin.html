@@ -1017,11 +1017,11 @@
           <div class="grid-2">
             <div class="form-group">
               <label>General Hotline Phone Number</label>
-              <input type="text" id="cfg-phone" class="form-control" placeholder="+94 77 788 6161">
+              <input type="text" id="cfg-phone" class="form-control" placeholder="0777 886 161">
             </div>
             <div class="form-group">
               <label>WhatsApp Orders Hotline Number</label>
-              <input type="text" id="cfg-whatsapp" class="form-control" placeholder="+94 77 788 6161">
+              <input type="text" id="cfg-whatsapp" class="form-control" placeholder="0777 886 161">
             </div>
             <div class="form-group">
               <label>Delivery Announcement / Notice</label>
@@ -1546,7 +1546,7 @@
         <div class="grid-2">
           <div class="form-group">
             <label>Phone Number</label>
-            <input type="text" id="out-phone" class="form-control" placeholder="+94 77 788 6161">
+            <input type="text" id="out-phone" class="form-control" placeholder="0777 886 161">
           </div>
           <div class="form-group">
             <label>Opening Hours</label>
@@ -1601,8 +1601,8 @@
         brandName: "GREEN CABIN",
         brandSub: "SERVING SINCE 1884",
         logoImage: "logo.png",
-        phone: "+94 77 788 6161",
-        whatsapp: "+94 77 788 6161",
+        phone: '0777 886 161',
+        whatsapp: '0777 886 161',
         email: "orders@greencabin.lk",
         address: "400 Galle Road, Colombo 03, Sri Lanka",
         deliveryNotice: "Colombo & Islandwide Delivery Available",
@@ -3454,7 +3454,18 @@
       if (!name) return alert("Please enter a product name!");
 
       const idx = storeData.products.findIndex(p => p.id === id);
-      const obj = { id, name, category, badge, price, oldPrice, desc, image };
+      const obj = { id, wooId, name, category, badge, price, oldPrice, desc, image };
+      if (Array.isArray(storeData.eventsPlatters)) {
+        const epIdx = storeData.eventsPlatters.findIndex(p => p.id === id || String(p.wooId) === String(wooId) || p.name.toLowerCase() === name.toLowerCase());
+        if (epIdx > -1) {
+          storeData.eventsPlatters[epIdx].name = name;
+          storeData.eventsPlatters[epIdx].price = price;
+          storeData.eventsPlatters[epIdx].priceTag = (storeData.settings.currency || 'Rs.') + ' ' + Number(price).toLocaleString();
+          if (badge) storeData.eventsPlatters[epIdx].badge = badge;
+          if (desc) storeData.eventsPlatters[epIdx].desc = desc;
+          if (image) storeData.eventsPlatters[epIdx].img = image;
+        }
+      }
 
       if (idx > -1) storeData.products[idx] = obj;
       else storeData.products.unshift(obj);
@@ -3947,7 +3958,7 @@
         document.getElementById('out-idx').value = -1;
         document.getElementById('out-name').value = '';
         document.getElementById('out-address').value = '';
-        document.getElementById('out-phone').value = '+94 77 788 6161';
+        document.getElementById('out-phone').value = '0777 886 161';
         document.getElementById('out-hours').value = '8:00 AM - 9:00 PM Daily';
         document.getElementById('out-map').value = 'https://maps.google.com';
       }
@@ -4216,6 +4227,7 @@
       // 2. Save to browser localStorage
       try {
         localStorage.setItem('greencabin_store_data', JSON.stringify(storeData));
+        localStorage.setItem('greencabin_catalog_version', 'v77_exact_ordernow_20261103_live');
       } catch (e) {
         console.error('LocalStorage save error:', e);
       }

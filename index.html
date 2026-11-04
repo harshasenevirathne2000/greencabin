@@ -1439,15 +1439,43 @@
         padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
       }
 
-      /* Compact Top Bar */
+      /* Compact High-Visibility Mobile Top Bar (Never Cuts Off) */
       .top-bar {
-        padding: 5px 12px;
-        font-size: 11px;
-        justify-content: center;
-        gap: 10px;
+        padding: 6px 8px !important;
+        font-size: 12px !important;
+        justify-content: center !important;
+        display: flex !important;
+        width: 100% !important;
+      }
+      .top-bar .info-group {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 14px !important;
+        width: 100% !important;
+        flex-wrap: nowrap !important;
       }
       .top-bar .info-group:nth-child(2) {
         display: none !important;
+      }
+      .top-bar .info-item {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 5px !important;
+        white-space: nowrap !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.2px !important;
+      }
+      @media (max-width: 390px) {
+        .top-bar .tb-label {
+          display: none !important;
+        }
+        .top-bar {
+          font-size: 12.5px !important;
+        }
+        .top-bar .info-group {
+          gap: 16px !important;
+        }
       }
 
       /* Compact Header */
@@ -1840,8 +1868,16 @@
   <!-- TOP HOTLINE BAR -->
   <div class="top-bar">
     <div class="info-group">
-      <div class="info-item"><i class="fa-solid fa-phone"></i> Hotline: <a id="tb-phone" href="tel:+94777886161">+94 77 788 6161</a></div>
-      <div class="info-item"><i class="fa-brands fa-whatsapp"></i> WhatsApp: <a id="tb-whatsapp" href="https://wa.me/94777886161" target="_blank">+94 77 788 6161</a></div>
+      <div class="info-item">
+        <i class="fa-solid fa-phone" style="color:var(--secondary-color);"></i>
+        <span class="tb-label">Hotline:</span>
+        <a id="tb-phone" href="tel:0777886161">0777 886 161</a>
+      </div>
+      <div class="info-item">
+        <i class="fa-brands fa-whatsapp" style="color:#25d366;"></i>
+        <span class="tb-label">WhatsApp:</span>
+        <a id="tb-whatsapp" href="https://wa.me/94777886161" target="_blank">0777 886 161</a>
+      </div>
     </div>
     <div class="info-group">
       <div class="info-item"><i class="fa-solid fa-truck-fast"></i> <span id="tb-delivery-notice">Colombo & Suburbs Delivery Available</span></div>
@@ -1884,6 +1920,10 @@
 
       <!-- CART & HOTLINE -->
       <div class="header-actions">
+        <a href="tel:0777886161" class="hdr-hotline-btn" title="Call Hotline: 0777 886 161">
+          <i class="fa-solid fa-phone"></i>
+          <span class="hdr-hotline-text">0777 886 161</span>
+        </a>
         <button class="btn-cart-nav" onclick="toggleCart(true)">
           <i class="fa-solid fa-basket-shopping"></i>
           <span>Cart</span>
@@ -2127,7 +2167,7 @@
         <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:20px;">Submit your requirements and our Catering Director will reach out with the customized menu options.</p>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
           <div><label style="font-size:12.5px; font-weight:700;">Your Name</label><input type="text" id="inq-name" style="width:100%; padding:10px; border:1.5px solid var(--border-color); border-radius:8px;" placeholder="Kasun Rodrigo"></div>
-          <div><label style="font-size:12.5px; font-weight:700;">Contact Phone</label><input type="text" id="inq-phone" style="width:100%; padding:10px; border:1.5px solid var(--border-color); border-radius:8px;" placeholder="+94 77 788 6161"></div>
+          <div><label style="font-size:12.5px; font-weight:700;">Contact Phone</label><input type="text" id="inq-phone" style="width:100%; padding:10px; border:1.5px solid var(--border-color); border-radius:8px;" placeholder="0777 886 161"></div>
         </div>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
           <div><label style="font-size:12.5px; font-weight:700;">Event Date</label><input type="date" id="inq-date" style="width:100%; padding:10px; border:1.5px solid var(--border-color); border-radius:8px;"></div>
@@ -2308,8 +2348,8 @@
       <div class="footer-col">
         <h4>Customer Care</h4>
         <ul>
-          <li><i class="fa-solid fa-phone" style="color:var(--secondary-color); margin-right:8px;"></i> <span id="ft-phone">+94 77 788 6161</span></li>
-          <li><i class="fa-brands fa-whatsapp" style="color:var(--secondary-color); margin-right:8px;"></i> <span id="ft-whatsapp">+94 77 788 6161</span></li>
+          <li><i class="fa-solid fa-phone" style="color:var(--secondary-color); margin-right:8px;"></i> <span id="ft-phone">0777 886 161</span></li>
+          <li><i class="fa-brands fa-whatsapp" style="color:var(--secondary-color); margin-right:8px;"></i> <span id="ft-whatsapp">0777 886 161</span></li>
           <li><i class="fa-solid fa-envelope" style="color:var(--secondary-color); margin-right:8px;"></i> <span id="ft-email">orders@greencabin.lk</span></li>
           <li><i class="fa-solid fa-clock" style="color:var(--secondary-color); margin-right:8px;"></i> <span id="ft-hours">8:00 AM - 9:00 PM Daily</span></li>
         </ul>
@@ -2330,8 +2370,8 @@
         brandName: "GREEN CABIN",
         brandSub: "SERVING SINCE 1884",
         logoImage: "logo.png",
-        phone: "+94 77 788 6161",
-        whatsapp: "+94 77 788 6161",
+        phone: '0777 886 161',
+        whatsapp: '0777 886 161',
         email: "orders@greencabin.lk",
         address: "400 Galle Road, Colombo 03, Sri Lanka",
         deliveryNotice: "Colombo & Islandwide Delivery Available",
@@ -3651,17 +3691,18 @@
       renderEvents();
       renderOutlets();
       document.getElementById('current-year').textContent = new Date().getFullYear();
+      syncCatalogFromLiveSite();
     }
 
     function loadSavedData() {
-      const CATALOG_VERSION = 'v77_exact_ordernow_20261103';
+      const CATALOG_VERSION = 'v77_exact_ordernow_20261103_live';
       const saved = localStorage.getItem('greencabin_store_data');
       const savedVersion = localStorage.getItem('greencabin_catalog_version');
 
-      if (saved && savedVersion === CATALOG_VERSION) {
+      if (saved && (savedVersion === CATALOG_VERSION || savedVersion === 'v77_exact_ordernow_20261103')) {
         try {
           const parsed = JSON.parse(saved);
-          if (parsed && Array.isArray(parsed.products) && parsed.products.length === 77) {
+          if (parsed && Array.isArray(parsed.products) && parsed.products.length > 0) {
             storeData = parsed;
             return;
           }
@@ -3674,6 +3715,34 @@
         localStorage.setItem('greencabin_store_data', JSON.stringify(storeData));
         localStorage.setItem('greencabin_catalog_version', CATALOG_VERSION);
       } catch(e) {}
+    }
+
+    // LIVE CATALOG AUTO-SYNC ENGINE (ALWAYS REFLECTS ADMIN/DATA UPDATES)
+    async function syncCatalogFromLiveSite() {
+      try {
+        const res = await fetch('data/store_data.json?t=' + Date.now());
+        if (!res.ok) return;
+        const liveData = await res.json();
+        if (liveData && Array.isArray(liveData.products) && liveData.products.length > 0) {
+          storeData = liveData;
+          try {
+            localStorage.setItem('greencabin_store_data', JSON.stringify(storeData));
+            localStorage.setItem('greencabin_catalog_version', 'v77_exact_ordernow_20261103_live');
+          } catch(e) {}
+          applySettings();
+          renderDynamicHeaderNav();
+          renderDynamicMobileNav();
+          renderQuickCategories();
+          renderProducts();
+          renderFullMenus();
+          renderCatering();
+          renderEvents();
+          renderOutlets();
+          console.log('✓ Storefront live sync completed: ' + liveData.products.length + ' products loaded.');
+        }
+      } catch (e) {
+        console.warn('Live catalog sync fallback:', e.message);
+      }
     }
 
     function applySettings() {
@@ -3689,15 +3758,29 @@
       document.documentElement.style.setProperty('--primary-dark', s.darkColor || '#003b31');
       document.documentElement.style.setProperty('--secondary-color', s.secondaryColor || '#81caa5');
       if (s.phone) {
-        document.getElementById('tb-phone').textContent = s.phone;
-        document.getElementById('tb-phone').href = 'tel:' + s.phone.replace(/[^0-9+]/g, '');
-        document.getElementById('ft-phone').textContent = s.phone;
+        const cleanPhone = s.phone.replace(/[^0-9+]/g, '');
+        const displayPhone = s.phone.trim();
+        const tbPhone = document.getElementById('tb-phone');
+        if (tbPhone) {
+          tbPhone.textContent = displayPhone;
+          tbPhone.href = 'tel:' + (cleanPhone.startsWith('0') ? cleanPhone : ('+' + cleanPhone.replace(/^\+/, '')));
+        }
+        const ftPhone = document.getElementById('ft-phone');
+        if (ftPhone) ftPhone.textContent = displayPhone;
       }
       if (s.whatsapp) {
-        document.getElementById('tb-whatsapp').textContent = s.whatsapp;
-        document.getElementById('tb-whatsapp').href = 'https://wa.me/' + s.whatsapp.replace(/[^0-9]/g, '');
-        document.getElementById('hero-whatsapp-btn').href = 'https://wa.me/' + s.whatsapp.replace(/[^0-9]/g, '');
-        document.getElementById('ft-whatsapp').textContent = s.whatsapp;
+        const cleanWa = s.whatsapp.replace(/[^0-9]/g, '');
+        const fullWa = cleanWa.startsWith('0') ? ('94' + cleanWa.substring(1)) : cleanWa;
+        const displayWa = s.whatsapp.trim();
+        const tbWa = document.getElementById('tb-whatsapp');
+        if (tbWa) {
+          tbWa.textContent = displayWa;
+          tbWa.href = 'https://wa.me/' + fullWa;
+        }
+        const heroWa = document.getElementById('hero-whatsapp-btn');
+        if (heroWa) heroWa.href = 'https://wa.me/' + fullWa;
+        const ftWa = document.getElementById('ft-whatsapp');
+        if (ftWa) ftWa.textContent = displayWa;
       }
       if (s.brandName) {
         document.getElementById('hdr-brand-title').textContent = s.brandName;
