@@ -283,11 +283,64 @@
       margin-right: 8px;
     }
 
+    /* HEADER HOTLINE BUTTON & RIGHT ACTIONS */
+    .hdr-hotline-btn {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      padding: 8px 16px !important;
+      background: #eef7f2 !important;
+      color: #003b31 !important;
+      border: 1.5px solid #81caa5 !important;
+      border-radius: 30px !important;
+      font-family: var(--font-brand) !important;
+      font-size: 13.5px !important;
+      font-weight: 800 !important;
+      text-decoration: none !important;
+      transition: all 0.25s ease !important;
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
+      line-height: 1 !important;
+      box-shadow: 0 2px 8px rgba(0, 59, 49, 0.06) !important;
+    }
+    .hdr-hotline-btn i {
+      color: #006f5b !important;
+      font-size: 13px !important;
+    }
+    .hdr-hotline-btn .hdr-hotline-text {
+      white-space: nowrap !important;
+      display: inline-block !important;
+      letter-spacing: 0.3px !important;
+    }
+    .hdr-hotline-btn:hover {
+      background: #006f5b !important;
+      color: #ffffff !important;
+      border-color: #006f5b !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 14px rgba(0, 111, 91, 0.28) !important;
+    }
+    .hdr-hotline-btn:hover i {
+      color: #ffffff !important;
+    }
+    @media (max-width: 1024px) {
+      .hdr-hotline-btn .hdr-hotline-text {
+        display: none !important;
+      }
+      .hdr-hotline-btn {
+        padding: 9px !important;
+        width: 38px !important;
+        height: 38px !important;
+        border-radius: 50% !important;
+        justify-content: center !important;
+      }
+    }
+
     /* HEADER RIGHT ACTIONS */
     .header-actions {
       display: flex;
       align-items: center;
       gap: 12px;
+      flex-shrink: 0;
     }
     .btn-cart-nav {
       background: var(--primary-color);
@@ -2022,7 +2075,7 @@
       <div class="pns-category-grid">
         <!-- 1. Legendary Meat Pies -->
         <div class="pns-cat-card" onclick="selectCategory('pies')">
-          <div class="pns-cat-media"><img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=600&q=80" alt="Legendary Meat Pies"></div>
+          <div class="pns-cat-media"><img src="images/meat-pies.jpg" alt="Legendary Meat Pies"></div>
           <div class="pns-cat-overlay">
             <h3>Meat Pies</h3>
             <p>Golden flaky puff pastry stuffed with slow-cooked spiced chicken and beef fillings.</p>
@@ -2401,7 +2454,7 @@
         heroSlides: [
           {
             id: "s1",
-            image: "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=1400&q=80",
+            image: "images/meat-pies.jpg",
             tag: "Est. 1884 · Ceylon's Foremost Baker & Caterer",
             title: "Sri Lanka's <span>Iconic Taste</span> Since 1884",
             desc: "Freshly baked traditional meat pies, flaky savouries, celebratory gateaux, and authentic Dutch lamprais delivered right to your doorstep.",
