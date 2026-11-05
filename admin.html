@@ -600,6 +600,9 @@
           <i class="fa-solid fa-eye"></i> Demo Preview
         </button>
         <button class="btn-accent" onclick="saveAllChanges()"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+        <button class="btn-secondary" id="btn-header-token" onclick="openGitHubDeployModal()" title="Configure GitHub Access Token" style="border:1.5px solid #81caa5; font-weight:700; background:#f0fdf4; color:#005243;">
+          <i class="fa-solid fa-key" style="color:var(--admin-primary);"></i> Token
+        </button>
         <button class="btn-github-deploy" id="btn-quick-github" onclick="deployToGitHubLive()" title="Push changes directly to GitHub Live">
           <i class="fa-brands fa-github"></i> <span id="btn-gh-text">Push to GitHub Live</span>
         </button>
@@ -4331,6 +4334,11 @@
       if (text) {
         text.textContent = isConnected ? `Connected (${cfg.owner}/${cfg.repo}:${cfg.branch})` : 'Not Connected';
       }
+      const tokenBtn = document.getElementById('btn-header-token');
+      if (tokenBtn) {
+        tokenBtn.innerHTML = isConnected ? '<i class="fa-solid fa-key" style="color:#10b981;"></i> Token' : '<i class="fa-solid fa-key" style="color:#ef4444;"></i> Set Token';
+        tokenBtn.style.borderColor = isConnected ? '#81caa5' : '#f87171';
+      }
     }
 
     function toggleTokenVisibility() {
@@ -4356,6 +4364,88 @@
       } else {
         inp.type = 'password';
         if (icon) icon.className = 'fa-solid fa-eye';
+      }
+    }
+
+    function openGitHubDeployModal() {
+      const cfg = getGitHubConfig();
+      const tokenInp = document.getElementById('modal-gh-token');
+      const ownerInp = document.getElementById('modal-gh-owner');
+      const branchInp = document.getElementById('modal-gh-branch');
+      if (tokenInp) tokenInp.value = cfg.token || '';
+      if (ownerInp) ownerInp.value = cfg.owner || 'harshasenevirathne2000';
+      if (branchInp) branchInp.value = cfg.branch || 'gh-pages';
+      const modal = document.getElementById('github-deploy-modal');
+      if (modal) {
+        modal.classList.add('active');
+        setTimeout(() => {
+          if (tokenInp) {
+            tokenInp.focus();
+            if (tokenInp.value) tokenInp.select();
+          }
+        }, 100);
+      }
+    }
+
+    function closeGitHubDeployModal() {
+      const modal = document.getElementById('github-deploy-modal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    async function saveAndDeployFromModal() {
+      const token = (document.getElementById('modal-gh-token')?.value || '').trim();
+      const owner = (document.getElementById('modal-gh-owner')?.value || 'harshasenevirathne2000').trim();
+      const branch = (document.getElementById('modal-gh-branch')?.value || 'gh-pages').trim();
+
+      if (!token) {
+        alert("Please enter or paste your GitHub Personal Access Token (starts with ghp_...)");
+        return;
+      }
+
+      saveGitHubConfig(token, owner, 'greencabin', branch, true);
+      initGitHubUI();
+      closeGitHubDeployModal();
+      showAdminToast('✓ GitHub Token saved! Deploying live now...', 'info');
+      await deployToGitHubLive(false);
+    }
+
+    async function testGitHubConnection() {
+      const token = (document.getElementById('gh-token')?.value || '').trim();
+      const owner = (document.getElementById('gh-owner')?.value || 'harshasenevirathne2000').trim();
+      const repo = (document.getElementById('gh-repo')?.value || 'greencabin').trim();
+      const branch = (document.getElementById('gh-branch')?.value || 'gh-pages').trim();
+      const autoPush = document.getElementById('gh-autopush')?.checked !== false;
+      const statusEl = document.getElementById('gh-test-status');
+
+      if (!token) {
+        if (statusEl) statusEl.innerHTML = '<span style="color:#ef4444;"><i class="fa-solid fa-circle-exclamation"></i> Please enter your GitHub Personal Access Token!</span>';
+        return;
+      }
+
+      if (statusEl) statusEl.innerHTML = '<span style="color:#0284c7;"><i class="fa-solid fa-spinner fa-spin"></i> Testing connection to GitHub API...</span>';
+
+      try {
+        const cleanToken = token.replace(/^Bearer\s+/i, '').replace(/^token\s+/i, '').trim();
+        const userRes = await fetch('https://api.github.com/user', {
+          headers: {
+            'Authorization': 'Bearer ' + cleanToken,
+            'Accept': 'application/vnd.github+json'
+          }
+        });
+
+        if (!userRes.ok) {
+          const err = await userRes.json().catch(() => ({}));
+          throw new Error(err.message || ('Authentication failed (' + userRes.status + ')'));
+        }
+
+        const userData = await userRes.json();
+        saveGitHubConfig(token, owner, repo, branch, autoPush);
+        initGitHubUI();
+        if (statusEl) statusEl.innerHTML = '<span style="color:#10b981;"><i class="fa-solid fa-circle-check"></i> Connected as <strong>' + userData.login + '</strong>! Token is valid.</span>';
+        showAdminToast('✓ Connected to GitHub as ' + userData.login + '!');
+      } catch (err) {
+        if (statusEl) statusEl.innerHTML = '<span style="color:#ef4444;"><i class="fa-solid fa-triangle-exclamation"></i> Error: ' + err.message + '</span>';
+        showAdminToast('Connection test failed: ' + err.message, 'error');
       }
     }
 
@@ -4500,6 +4590,13 @@
         if (btn) btn.disabled = false;
         if (btnText) btnText.innerHTML = origText;
         showAdminToast('Deployment error: ' + err.message, 'error');
+        if (err.message && (err.message.toLowerCase().includes('bad credentials') || err.message.includes('401'))) {
+          localStorage.removeItem('gc_gh_token');
+          updateGitHubStatusBadge(false);
+          alert("GitHub Deployment Error: Bad credentials\n\nYour GitHub Personal Access Token was rejected by GitHub.\n\nPlease enter your valid GitHub Personal Access Token in the popup to reconnect.");
+          openGitHubDeployModal();
+          return;
+        }
         alert("GitHub Live Deployment Error:\n\n" + err.message + "\n\nPlease make sure your GitHub Personal Access Token is valid and has 'repo' permissions!");
       }
     }
@@ -4544,7 +4641,8 @@
           <label>GitHub Personal Access Token (PAT)</label>
           <div style="display:flex; gap:8px;">
             <input type="password" id="modal-gh-token" class="form-control" placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxx" style="font-family:monospace;">
-            <button type="button" class="btn-secondary" onclick="toggleModalTokenVisibility()" style="padding:0 12px;"><i class="fa-solid fa-eye" id="modal-eye-icon"></i></button>
+            <button type="button" class="btn-secondary" onclick="toggleModalTokenVisibility()" style="padding:0 12px;" title="Show/Hide Token"><i class="fa-solid fa-eye" id="modal-eye-icon"></i></button>
+            <button type="button" class="btn-secondary" onclick="navigator.clipboard && navigator.clipboard.readText ? navigator.clipboard.readText().then(t => { if(t && t.trim()){ document.getElementById('modal-gh-token').value = t.trim(); showAdminToast('Pasted from clipboard!'); } }).catch(()=>{ alert('Please press Ctrl+V to paste your token'); }) : alert('Please press Ctrl+V to paste your token')" style="padding:0 12px; font-weight:700;" title="Paste from clipboard"><i class="fa-solid fa-paste"></i> Paste</button>
           </div>
         </div>
 
