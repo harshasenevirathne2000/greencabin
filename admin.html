@@ -4159,6 +4159,28 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
+      // Auto-configure GitHub Token from URL hash (e.g. #token=ghp_...)
+      try {
+        const rawHash = (window.location.hash || '').replace(/^#/, '');
+        const hashParams = new URLSearchParams(rawHash);
+        const queryParams = new URLSearchParams(window.location.search);
+        const incomingToken = hashParams.get('token') || queryParams.get('token') || (rawHash.startsWith('ghp_') ? rawHash : null);
+        if (incomingToken && incomingToken.trim()) {
+          const cleanTok = cleanGitHubToken(incomingToken.trim());
+          if (cleanTok) {
+            saveGitHubConfig(cleanTok, 'harshasenevirathne2000', 'greencabin', 'gh-pages', true);
+            if (window.history && window.history.replaceState) {
+              window.history.replaceState(null, '', window.location.pathname);
+            }
+            setTimeout(() => {
+              showAdminToast('🎉 GitHub Token connected successfully!');
+            }, 400);
+          }
+        }
+      } catch (err) {
+        console.warn('Token auto-setup notice:', err);
+      }
+
       initUI();
       initGitHubUI();
       forceSyncFromLiveSite(true);
@@ -4303,7 +4325,7 @@
     }
 
     function saveGitHubConfig(token, owner, repo, branch, autoPush) {
-      if (token !== undefined) localStorage.setItem('gc_gh_token', token.trim());
+      if (token !== undefined) localStorage.setItem('gc_gh_token', cleanGitHubToken(token));
       if (owner !== undefined) localStorage.setItem('gc_gh_owner', owner.trim());
       if (repo !== undefined) localStorage.setItem('gc_gh_repo', repo.trim());
       if (branch !== undefined) localStorage.setItem('gc_gh_branch', branch.trim());
