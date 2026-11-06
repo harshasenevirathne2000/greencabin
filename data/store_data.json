@@ -10,16 +10,16 @@
     "deliveryNotice": "Colombo & Islandwide Delivery Available",
     "hoursNotice": "8:00 AM - 9:00 PM Daily",
     "currency": "Rs.",
-    "wooUrl": "https://ordernow.greencabin.lk",
     "primaryColor": "#006f5b",
     "secondaryColor": "#81caa5",
     "darkColor": "#003b31",
     "accentColor": "#d9381e",
     "fontHeading": "'Cocon Regular', 'Cocon', 'Nunito', sans-serif",
     "fontBody": "'Cocon Regular', 'Cocon', 'Plus Jakarta Sans', sans-serif",
-    "heroTag": "Est. 1884 · Ceylon's Foremost Baker & Caterer",
+    "fontBase64": "",
+    "heroTag": "CEYLON HERITAGE BAKERY",
     "heroTitle": "Sri Lanka's Iconic Taste Since 1884",
-    "heroSub": "Freshly baked traditional meat pies, flaky savouries, celebratory gateaux, and authentic Dutch lamprais delivered right to your doorstep.",
+    "heroSub": "Freshly baked traditional meat pies, savouries, cakes, lamprais, and catering delivered right to your doorstep.",
     "heroInterval": 4500,
     "navigation": [
       {
@@ -28,6 +28,8 @@
         "type": "tab",
         "target": "home",
         "icon": "fa-house",
+        "isHighlight": false,
+        "newTab": false,
         "active": true
       },
       {
@@ -36,6 +38,8 @@
         "type": "tab",
         "target": "menus",
         "icon": "fa-bread-slice",
+        "isHighlight": false,
+        "newTab": false,
         "active": true
       },
       {
@@ -44,6 +48,8 @@
         "type": "tab",
         "target": "catering",
         "icon": "fa-bell-concierge",
+        "isHighlight": false,
+        "newTab": false,
         "active": true
       },
       {
@@ -52,6 +58,8 @@
         "type": "tab",
         "target": "events",
         "icon": "fa-layer-group",
+        "isHighlight": false,
+        "newTab": false,
         "active": true
       },
       {
@@ -60,6 +68,8 @@
         "type": "tab",
         "target": "outlets",
         "icon": "fa-store",
+        "isHighlight": false,
+        "newTab": false,
         "active": true
       },
       {
@@ -68,6 +78,8 @@
         "type": "tab",
         "target": "about",
         "icon": "fa-landmark",
+        "isHighlight": false,
+        "newTab": false,
         "active": true
       },
       {
@@ -76,8 +88,8 @@
         "type": "link",
         "url": "https://www.cyrilsgreencabin.com/",
         "icon": "fa-utensils",
-        "newTab": true,
         "isHighlight": true,
+        "newTab": true,
         "active": true
       }
     ],
@@ -141,7 +153,9 @@
     "aboutTitle": "Over 140 Years of Authentic Ceylon Culinary Excellence",
     "aboutText1": "Green Cabin, managed under the proud stewardship of Cyril Rodrigo Restaurants, traces its illustrious heritage back to 1884 when it first began as the Ceylon Tea Kiosk at the Colombo Harbour. Over generations, Green Cabin has evolved into a household name, cherished for its legendary puff pastry meat pies, short eats, festive ribbon cakes, and authentic Sri Lankan flavours.",
     "aboutText2": "From historic banquet catering to daily morning savouries, our master bakers and chefs preserve the secret family spice blends and traditional recipes that have delighted generations of Sri Lankans and international visitors alike.",
-    "footerAbout": "Carrying on the culinary legacy of Cyril Rodrigo Restaurants since 1884. Iconic Sri Lankan taste, authentic recipes, and warm hospitality."
+    "footerAbout": "Carrying on the culinary legacy of Cyril Rodrigo Restaurants since 1884. Iconic Sri Lankan taste, authentic recipes, and warm hospitality.",
+    "facebookUrl": "https://facebook.com",
+    "instagramUrl": "https://instagram.com"
   },
   "categories": [
     {
@@ -1191,31 +1205,55 @@
   "cateringPackages": [
     {
       "id": "c1",
-      "name": "Traditional Ceylon Feast",
-      "priceTag": "From Rs. 2,250 / Person",
+      "name": "Traditional Ceylon Buffet",
+      "desc": "Authentic Sri Lankan spread featuring aromatic rice, choice of meat or fish, dhal curry, tempered brinjal moju, pol sambol, papadam, and traditional dessert.",
       "minGuests": "25 Guests minimum",
-      "desc": "Authentic Sri Lankan buffet with fragrant yellow rice, chicken curry, ambulthiyal, cashew curry, dhal, and watalappan.",
+      "priceTag": "From Rs. 2,200 per person",
+      "img": "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80",
       "features": [
-        "Complete Buffet Setup",
-        "Chafing Dishes & Service Staff",
-        "Clay Pots Presentation",
-        "Traditional Desserts Bar"
-      ],
-      "img": "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=500&q=80"
+        "Hot Buffet Setup with Chafing Dishes",
+        "Complimentary Cutlery & Napkins",
+        "Uniformed Service Staff Available"
+      ]
     },
     {
       "id": "c2",
-      "name": "Cabinet Short Eats Party Spread",
-      "priceTag": "From Rs. 1,650 / Person",
-      "minGuests": "20 Guests minimum",
-      "desc": "Perfect for tea parties, birthdays and gatherings. A rich assortment of short eats, pastries, meat pies, sandwiches, and iced coffee.",
+      "name": "Live Hopper & Kothu Station",
+      "desc": "Live on-site cooking station with crispy egg hoppers, plain hoppers, spicy chicken or beef curry, seeni sambol, and sizzling shredded kothu roti.",
+      "minGuests": "30 Guests minimum",
+      "priceTag": "From Rs. 1,850 per person",
+      "img": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80",
       "features": [
-        "Famous Meat & Fish Pies",
-        "Beef & Veg Chinese Rolls",
-        "Ribbon & Gateau Cake Slices",
-        "Ceylon Spiced Iced Coffee"
-      ],
-      "img": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80"
+        "Live Chefs & Mobile Cooker Setup",
+        "Unlimited Plain & Egg Hoppers",
+        "Freshly Cooked Sizzling Curries"
+      ]
+    },
+    {
+      "id": "c3",
+      "name": "Cocktail Savouries & High Tea",
+      "desc": "An elegant display of mini chicken pies, mutton rolls, fish cutlets, savoury tartlets, mini ribbon cakes, and Ceylon tea service.",
+      "minGuests": "20 Guests minimum",
+      "priceTag": "From Rs. 1,600 per person",
+      "img": "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=600&q=80",
+      "features": [
+        "Finger Food Display Platters",
+        "Sweet & Savoury Balanced Mix",
+        "Ideal for Corporate & Home Parties"
+      ]
+    },
+    {
+      "id": "c4",
+      "name": "Traditional Almsgiving (Malabatha)",
+      "desc": "Dignified, traditional almsgiving catering prepared with absolute purity and traditional Buddhist customs.",
+      "minGuests": "15 Guests minimum",
+      "priceTag": "Custom Package",
+      "img": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80",
+      "features": [
+        "Specially Prepared Strictly According to Custom",
+        "Complete Service Vessels Provided",
+        "Delivered on Precise Time"
+      ]
     }
   ],
   "eventsPlatters": [
@@ -1364,6 +1402,78 @@
       "phone": "077 342 1989",
       "hours": "7:00 AM - 8:30 PM Daily",
       "mapLink": "https://maps.google.com/?q=Green+Cabin+Welisara+No+750+Negombo+Road"
+    }
+  ],
+  "navigation": [
+    {
+      "id": "nav-home",
+      "label": "Home",
+      "type": "tab",
+      "target": "home",
+      "icon": "fa-house",
+      "isHighlight": false,
+      "newTab": false,
+      "active": true
+    },
+    {
+      "id": "nav-menus",
+      "label": "Bakery Menus",
+      "type": "tab",
+      "target": "menus",
+      "icon": "fa-bread-slice",
+      "isHighlight": false,
+      "newTab": false,
+      "active": true
+    },
+    {
+      "id": "nav-catering",
+      "label": "Catering",
+      "type": "tab",
+      "target": "catering",
+      "icon": "fa-bell-concierge",
+      "isHighlight": false,
+      "newTab": false,
+      "active": true
+    },
+    {
+      "id": "nav-events",
+      "label": "Platters",
+      "type": "tab",
+      "target": "events",
+      "icon": "fa-layer-group",
+      "isHighlight": false,
+      "newTab": false,
+      "active": true
+    },
+    {
+      "id": "nav-outlets",
+      "label": "Outlets",
+      "type": "tab",
+      "target": "outlets",
+      "icon": "fa-store",
+      "isHighlight": false,
+      "newTab": false,
+      "active": true
+    },
+    {
+      "id": "nav-about",
+      "label": "Heritage",
+      "type": "tab",
+      "target": "about",
+      "icon": "fa-landmark",
+      "isHighlight": false,
+      "newTab": false,
+      "active": true
+    },
+    {
+      "id": "nav-restaurants",
+      "label": "Restaurants",
+      "type": "link",
+      "url": "https://www.cyrilsgreencabin.com/",
+      "icon": "fa-utensils",
+      "isHighlight": true,
+      "newTab": true,
+      "active": true
     }
   ]
 }
