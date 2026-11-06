@@ -4211,7 +4211,7 @@
     // ==========================================================================
     // SAVE ALL CHANGES TO LOCAL CACHE & AUTO-PUSH
     // ==========================================================================
-    function saveAllChanges(notify = true) {
+    function saveAllChanges(notify = true, triggerDeploy = false) {
       if (!storeData || !storeData.settings) return;
 
       // 1. Gather active settings input values
@@ -4254,7 +4254,7 @@
       // 4. If auto-push is enabled and token exists, trigger background push
       const autoPush = localStorage.getItem('gc_gh_autopush') === 'true';
       const token = localStorage.getItem('gc_gh_token');
-      if (autoPush && token) {
+      if (triggerDeploy && autoPush && token && !isDeployingLive) {
         deployToGitHubLive(true);
         return;
       }
@@ -4425,7 +4425,7 @@
       if (statusEl) statusEl.innerHTML = '<span style="color:#0284c7;"><i class="fa-solid fa-spinner fa-spin"></i> Testing connection to GitHub API...</span>';
 
       try {
-        const cleanToken = token.replace(/^Bearer\s+/i, '').replace(/^token\s+/i, '').trim();
+        const cleanToken = cleanGitHubToken(token);
         const userRes = await fetch('https://api.github.com/user', {
           headers: {
             'Authorization': 'Bearer ' + cleanToken,
@@ -4462,7 +4462,7 @@
 
     async function getFileSha(filePath, config) {
       const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${filePath}?ref=${config.branch}&t=${Date.now()}`;
-      const cleanToken = (config.token || '').replace(/^Bearer\s+/i, '').replace(/^token\s+/i, '').trim();
+      const cleanToken = cleanGitHubToken(config.token);
       const res = await fetch(url, {
         cache: 'no-store',
         headers: {
@@ -4482,7 +4482,7 @@
 
     async function commitFileToGitHub(filePath, contentStr, message, config, retries = 2) {
       const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${filePath}`;
-      const cleanToken = (config.token || '').replace(/^Bearer\s+/i, '').replace(/^token\s+/i, '').trim();
+      const cleanToken = cleanGitHubToken(config.token);
 
       for (let attempt = 0; attempt <= retries; attempt++) {
         let sha = await getFileSha(filePath, config);
@@ -4520,9 +4520,25 @@
       }
     }
 
+    let isDeployingLive = false;
+
+    function cleanGitHubToken(rawToken) {
+      if (!rawToken || typeof rawToken !== 'string') return '';
+      let t = rawToken.trim();
+      if (t.toLowerCase().startsWith('bearer ')) t = t.substring(7).trim();
+      if (t.toLowerCase().startsWith('token ')) t = t.substring(6).trim();
+      return t;
+    }
+
     async function deployToGitHubLive(silent = false) {
+      if (isDeployingLive) {
+        console.warn('Deployment already in progress, skipping concurrent call.');
+        return;
+      }
+      isDeployingLive = true;
       const config = getGitHubConfig();
       if (!config.token) {
+        isDeployingLive = false;
         openGitHubDeployModal();
         return;
       }
@@ -4548,8 +4564,8 @@
       addLog(`<div>[1/4] Authenticating with GitHub repository <strong>${config.owner}/${config.repo}</strong> (branch: <code>${config.branch}</code>)...</div>`);
 
       try {
-        // 1. Save all latest changes first
-        saveAllChanges(false);
+        // 1. Save all latest changes first (without triggering recursive deploy)
+        saveAllChanges(false, false);
 
         const now = new Date();
         const timestamp = now.toLocaleDateString() + ' ' + now.toLocaleTimeString();
@@ -4598,6 +4614,8 @@
           return;
         }
         alert("GitHub Live Deployment Error:\n\n" + err.message + "\n\nPlease make sure your GitHub Personal Access Token is valid and has 'repo' permissions!");
+      } finally {
+        isDeployingLive = false;
       }
     }
 
