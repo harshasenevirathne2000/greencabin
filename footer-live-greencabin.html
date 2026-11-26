@@ -1,0 +1,237 @@
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  footer.gc-footer {
+    background: #006f5b; /* Header eke exact Green Cabin green color eka */
+    color: #f8fafc;
+    padding: 60px 24px 30px;
+    margin-top: 60px;
+    border-top: 3px solid #81caa5;
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    box-sizing: border-box;
+  }
+  footer.gc-footer * {
+    box-sizing: border-box;
+  }
+  .gc-footer .footer-grid {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.3fr 1.1fr 1.2fr 1fr;
+    gap: 36px;
+    margin-bottom: 40px;
+  }
+  .gc-footer .footer-col h4 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 18px;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  .gc-footer .footer-col p {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #e2e8f0;
+    margin-bottom: 14px;
+  }
+  .gc-footer .footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .gc-footer .footer-col ul li {
+    margin-bottom: 9px;
+    font-size: 13px;
+    color: #e2e8f0;
+    line-height: 1.5;
+  }
+  .gc-footer .footer-col ul li a {
+    color: #f1f5f9;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .gc-footer .footer-col ul li a:hover {
+    color: #81caa5;
+    text-decoration: underline;
+  }
+  .gc-footer .footer-social-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .gc-footer .social-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+  .gc-footer .social-btn:hover {
+    background: #81caa5;
+    color: #004d3e;
+    transform: translateY(-2px);
+    border-color: #81caa5;
+  }
+  .gc-footer .badge-hiring {
+    background: #d9381e;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: 6px;
+  }
+  .gc-footer .footer-bottom {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 12.5px;
+    color: #cbd5e1;
+  }
+
+  /* Responsive Mobile Layout */
+  @media (max-width: 992px) {
+    .gc-footer .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+  }
+  @media (max-width: 600px) {
+    footer.gc-footer {
+      padding: 36px 16px 20px;
+      margin-top: 36px;
+    }
+    .gc-footer .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      text-align: center;
+    }
+    .gc-footer .footer-social-links {
+      justify-content: center;
+    }
+    .gc-footer .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+      gap: 8px;
+    }
+  }
+</style>
+
+<footer class="gc-footer">
+  <div class="footer-grid">
+    
+    <!-- COLUMN 1: BRAND & HEAD OFFICE -->
+    <div class="footer-col">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+        <img src="https://harshasenevirathne2000.github.io/greencabin/logo.png" style="width:48px; height:48px; border-radius:50%; border:2px solid #81caa5; background:#fff;" alt="Green Cabin Logo">
+        <h4 style="margin-bottom:0;">GREEN CABIN</h4>
+      </div>
+      <p>Carrying on the culinary legacy of Cyril Rodrigo Restaurants since 1884. Iconic Sri Lankan taste, authentic recipes, and warm hospitality.</p>
+      
+      <!-- Clickable Google Maps Location Link -->
+      <p>
+        <a href="https://maps.google.com/?q=No+85+Pepiliyana+Rd+Nugegoda+Sri+Lanka" target="_blank" rel="noopener noreferrer" style="color:#ffffff; font-weight:600; text-decoration:none;">
+          <i class="fa-solid fa-location-dot" style="color:#81caa5; margin-right:6px;"></i> No 85, Pepiliyana Rd, Nugegoda, Sri Lanka
+        </a>
+      </p>
+
+      <!-- Clickable Official Social Links -->
+      <div class="footer-social-links">
+        <a href="https://www.facebook.com/greencabin.lk/" target="_blank" rel="noopener noreferrer" class="social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/greencabin.lk/?hl=en" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://wa.me/94777886161?text=Hello%20Green%20Cabin,%20I%20would%20like%20to%20place%20an%20order" target="_blank" rel="noopener noreferrer" class="social-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+
+    <!-- COLUMN 2: LIVE HEADINGS (Exact Headings from www.greencabin.lk) -->
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="https://www.greencabin.lk" target="_top">Home</a></li>
+        <li><a href="https://ordernow.greencabin.lk" target="_blank" rel="noopener noreferrer" style="color:#ffffff; font-weight:800; background:rgba(255,255,255,0.15); padding:3px 10px; border-radius:15px; display:inline-block; margin-bottom:4px;"><i class="fa-solid fa-cart-shopping" style="color:#81caa5; font-size:11px; margin-right:4px;"></i> Order Now!</a></li>
+        <li><a href="https://www.greencabin.lk/menu-s" target="_top">Cakes</a></li>
+        <li><a href="https://www.greencabin.lk/platter-menu" target="_top">Platters</a></li>
+        <li><a href="https://www.greencabin.lk/cakes" target="_top">Banquets</a></li>
+        <li><a href="https://www.greencabin.lk/catering" target="_top">Catering</a></li>
+        <li><a href="https://www.greencabin.lk/locations" target="_top">Locations</a></li>
+        <li><a href="https://www.greencabin.lk/our-story" target="_top">About Us</a></li>
+        <li>
+          <a href="https://www.greencabin.lk/careers" target="_top" style="color:#ffffff; font-weight:700;">
+            <i class="fa-solid fa-briefcase" style="color:#81caa5; font-size:11px; margin-right:4px;"></i> Careers <span class="badge-hiring">We're Hiring</span>
+          </a>
+        </li>
+        <li style="margin-top:6px;">
+          <a href="https://www.cyrilsgreencabin.com/" target="_blank" rel="noopener noreferrer" style="color:#ffffff; font-weight:700;">
+            <i class="fa-solid fa-utensils" style="color:#81caa5; margin-right:6px;"></i> Restaurant <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px; margin-left:3px; opacity:0.8;"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- COLUMN 3: OUR OUTLETS (Direct Click-to-Call Phone Numbers - Sorted Alphabetically A to Z) -->
+    <div class="footer-col">
+      <h4>Our Outlets</h4>
+      <ul>
+        <li><a href="tel:0772933287" title="Call Boralesgamuwa Outlet"><i class="fa-solid fa-store" style="color:#81caa5; margin-right:6px; font-size:11px;"></i> Boralesgamuwa Outlet (0772 933 287)</a></li>
+        <li><a href="tel:0773786147" title="Call Chatham Street Outlet"><i class="fa-solid fa-store" style="color:#81caa5; margin-right:6px; font-size:11px;"></i> Chatham Street Outlet (0773 786 147)</a></li>
+        <li><a href="tel:0777748824" title="Call Colpetty Flagship"><i class="fa-solid fa-store" style="color:#81caa5; margin-right:6px; font-size:11px;"></i> Colpetty Outlet (0777 748 824)</a></li>
+        <li><a href="tel:0774264020" title="Call Delkanda Outlet"><i class="fa-solid fa-store" style="color:#81caa5; margin-right:6px; font-size:11px;"></i> Delkanda Outlet (0774 264 020)</a></li>
+        <li><a href="tel:0772384505" title="Call Finlay Outlet"><i class="fa-solid fa-store" style="color:#81caa5; margin-right:6px; font-size:11px;"></i> Vauxhall Street Outlet (0772 384 505)</a></li>
+        <li><a href="tel:0742907620" title="Call Kottawa Outlet"><i class="fa-solid fa-store" style="color:#81caa5; margin-right:6px; font-size:11px;"></i> Kottawa Outlet (0742 907 620)</a></li>
+        <li><a href="tel:0772384506" title="Call Kotte Outlet"><i class="fa-solid fa-store" style="color:#81caa5; margin-right:6px; font-size:11px;"></i> Kotte Outlet (0772 384 506)</a></li>
+        <li><a href="tel:0772384507" title="Call Nawala Outlet"><i class="fa-solid fa-store" style="color:#81caa5; margin-right:6px; font-size:11px;"></i> Nawala Outlet (0772 384 507)</a></li>
+        <li><a href="tel:0766123848" title="Call One Galle Face Outlet"><i class="fa-solid fa-store" style="color:#81caa5; margin-right:6px; font-size:11px;"></i> One Galle Face Outlet (0766 123 848)</a></li>
+        <li><a href="tel:0772384508" title="Call Pepiliyana Outlet"><i class="fa-solid fa-store" style="color:#81caa5; margin-right:6px; font-size:11px;"></i> Pepiliyana Outlet (0772 384 508)</a></li>
+        <li><a href="tel:0772384509" title="Call Rajagiriya Outlet"><i class="fa-solid fa-store" style="color:#81caa5; margin-right:6px; font-size:11px;"></i> Rajagiriya Outlet (0772 384 509)</a></li>
+        <li><a href="tel:0773421989" title="Call Welisara Outlet"><i class="fa-solid fa-store" style="color:#81caa5; margin-right:6px; font-size:11px;"></i> Welisara Outlet (077 342 1989)</a></li>
+      </ul>
+    </div>
+
+    <!-- COLUMN 4: CUSTOMER CARE -->
+    <div class="footer-col">
+      <h4>Customer Care</h4>
+      <ul>
+        <li>
+          <i class="fa-solid fa-phone" style="color:#81caa5; margin-right:8px;"></i>
+          <a href="tel:0777886161" style="font-weight:800; color:#ffffff;">0777 886 161</a>
+        </li>
+        <li>
+          <i class="fa-solid fa-envelope" style="color:#81caa5; margin-right:8px;"></i>
+          <a href="mailto:hello@greencabin.lk" style="color:#ffffff;">hello@greencabin.lk</a>
+        </li>
+        <li>
+          <i class="fa-solid fa-clock" style="color:#81caa5; margin-right:8px;"></i>
+          <span style="color:#e2e8f0;">7:00 AM - 7:00 PM Daily</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- FOOTER BOTTOM -->
+  <div class="footer-bottom">
+    <div>&copy; 2026 Green Cabin (Cyril Rodrigo Restaurants). All Rights Reserved.</div>
+    <div>Designed By Cyril Rodrigo Restaurants IT </div>
+  </div>
+</footer>

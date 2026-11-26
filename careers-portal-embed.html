@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green Cabin Careers Portal | Join Our Heritage Team</title>
+  
+  <!-- FontAwesome & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #005243;
+      --primary-dark: #002b23;
+      --primary-light: #00705c;
+      --secondary: #81caa5;
+      --accent: #d9381e;
+      --bg: #f8faf9;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      --shadow-hover: 0 12px 30px rgba(0, 82, 67, 0.12);
+      --font-brand: 'Nunito', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 40px;
+    }
+
+    .careers-wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 24px 20px 60px;
+    }
+
+    /* ==========================================================================
+       HERO BANNER
+       ========================================================================== */
+    .careers-hero {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      border-radius: var(--radius-lg);
+      padding: 56px 40px;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 43, 35, 0.2);
+      margin-bottom: 36px;
+      border: 1px solid rgba(129, 202, 165, 0.25);
+    }
+
+    .careers-hero::after {
+      content: "";
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(129, 202, 165, 0.25) 0%, rgba(0,0,0,0) 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(129, 202, 165, 0.18);
+      color: var(--secondary);
+      border: 1px solid rgba(129, 202, 165, 0.35);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      font-family: var(--font-brand);
+      font-size: 38px;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      max-width: 820px;
+    }
+
+    .hero-title span {
+      color: var(--secondary);
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: #cbd5e1;
+      max-width: 760px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    /* HERO PERKS GRID */
+    .perks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .perk-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .perk-card:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .perk-icon {
+      font-size: 20px;
+      color: var(--secondary);
+      margin-top: 2px;
+    }
+
+    .perk-info h4 {
+      font-family: var(--font-brand);
+      font-size: 15px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .perk-info p {
+      font-size: 12.5px;
+      color: #cbd5e1;
+      line-height: 1.4;
+    }
+
+    /* ==========================================================================
+       SEARCH & FILTERS
+       ========================================================================== */
+    .filter-panel {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .search-box-wrap {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-box-wrap i {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 48px;
+      padding: 0 20px 0 48px;
+      border: 1.5px solid var(--border);
+      border-radius: 30px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+    }
+
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .filter-pill {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      color: #475569;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .filter-pill:hover {
+      background: #e2e8f0;
+    }
+
+    .filter-pill.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(0, 82, 67, 0.2);
+    }
+
+    .filter-pill span.count {
+      background: rgba(0, 0, 0, 0.12);
+      padding: 2px 7px;
+      border-radius: 12px;
+      font-size: 11px;
+    }
+
+    .filter-pill.active span.count {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    /* ==========================================================================
+       JOBS GRID
+       ========================================================================== */
+    .jobs-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .jobs-header h3 {
+      font-family: var(--font-brand);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .jobs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .job-card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .job-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(129, 202, 165, 0.5);
+    }
+
+    .job-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      gap: 10px;
+    }
+
+    .dept-badge {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--primary);
+      background: #e6f4ef;
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid #bfe4d4;
+    }
+
+    .urgent-badge {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+      background: var(--accent);
+      padding: 4px 10px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .job-title {
+      font-family: var(--font-brand);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .job-meta-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 18px;
+      margin-bottom: 16px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+
+    .job-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .job-meta-item i {
+      color: var(--primary);
+      font-size: 13px;
+    }
+
+    .job-desc {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .salary-box {
+      background: #f8faf9;
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .salary-box i {
+      color: #10b981;
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .btn-apply {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      border-radius: 30px;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 82, 67, 0.2);
+    }
+
+    .btn-apply:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-wa-apply {
+      background: #25d366;
+      color: #ffffff;
+      border: none;
+      border-radius: 30px;
+      padding: 12px 14px;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-wa-apply:hover {
+      background: #1ebd5a;
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================================
+       OPEN APPLICATION BOX
+       ========================================================================== */
+    .open-application-card {
+      background: linear-gradient(135deg, #f0fdf4 0%, #e6f4ef 100%);
+      border: 1.5px dashed #81caa5;
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .open-app-content h4 {
+      font-family: var(--font-brand);
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+    }
+
+    .open-app-content p {
+      font-size: 14.5px;
+      color: #334155;
+      max-width: 620px;
+      line-height: 1.6;
+    }
+
+    .open-app-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* ==========================================================================
+       APPLY MODAL
+       ========================================================================== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 34, 28, 0.7);
+      backdrop-filter: blur(5px);
+      z-index: 999999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-container {
+      background: #ffffff;
+      width: 100%;
+      max-width: 620px;
+      max-height: 90vh;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      animation: modalSlide 0.25s ease-out;
+    }
+
+    @keyframes modalSlide {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-header {
+      padding: 22px 28px;
+      background: var(--primary-dark);
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .modal-header h3 {
+      font-family: var(--font-brand);
+      font-size: 20px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #ffffff;
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: #cbd5e1;
+      font-size: 26px;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .modal-close:hover {
+      color: #ffffff;
+    }
+
+    .modal-body {
+      padding: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .form-group label span.required {
+      color: var(--accent);
+    }
+
+    .form-control {
+      width: 100%;
+      height: 44px;
+      padding: 0 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+    }
+
+    textarea.form-control {
+      height: 90px;
+      padding: 10px 14px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .modal-footer {
+      padding: 18px 28px;
+      background: #f8fafc;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      position: sticky;
+      bottom: 0;
+    }
+
+    .btn-secondary {
+      background: #e2e8f0;
+      color: #334155;
+      border: none;
+      padding: 11px 20px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      background: #cbd5e1;
+    }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1000000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast.success {
+      background: #005243;
+      border-left: 4px solid var(--secondary);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .careers-hero {
+        padding: 36px 20px;
+      }
+      .hero-title {
+        font-size: 28px;
+      }
+      .jobs-grid {
+        grid-template-columns: 1fr;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .card-actions {
+        grid-template-columns: 1fr;
+      }
+      .open-application-card {
+        flex-direction: column;
+        text-align: center;
+      }
+      .open-app-actions {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="careers-wrapper">
+    
+    <!-- ==================== HERO ==================== -->
+    <div class="careers-hero">
+      <div class="hero-badge">
+        <i class="fa-solid fa-sparkles"></i> Careers at Cyril Rodrigo Restaurants
+      </div>
+      <h1 class="hero-title">
+        Join Ceylon’s Foremost <span>Heritage Bakery &amp; Catering</span> Team
+      </h1>
+      <p class="hero-desc">
+        Since 1884, Green Cabin has nurtured passionate bakers, hospitable service leaders, and dedicated artisans. Build an inspiring, secure career with Sri Lanka’s iconic 140-year culinary household name.
+      </p>
+
+      <div class="perks-grid">
+        <div class="perk-card">
+          <i class="fa-solid fa-shield-halved perk-icon"></i>
+          <div class="perk-info">
+            <h4>140+ Years of Stability</h4>
+            <p>Reliable, respected heritage brand with secure employment.</p>
+          </div>
+        </div>
+        <div class="perk-card">
+          <i class="fa-solid fa-utensils perk-icon"></i>
+          <div class="perk-info">
+            <h4>Free Duty Meals &amp; Uniforms</h4>
+            <p>Nutritious meals and branded uniforms provided on shift.</p>
+          </div>
+        </div>
+        <div class="perk-card">
+          <i class="fa-solid fa-chart-line perk-icon"></i>
+          <div class="perk-info">
+            <h4>Fast-Track Progression</h4>
+            <p>Hands-on master baker training and promotion paths.</p>
+          </div>
+        </div>
+        <div class="perk-card">
+          <i class="fa-solid fa-coins perk-icon"></i>
+          <div class="perk-info">
+            <h4>Competitive Rewards</h4>
+            <p>Attractive salary + service charge + EPF/ETF + bonuses.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SEARCH & FILTERS ==================== -->
+    <div class="filter-panel">
+      <div class="search-box-wrap">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="job-search" class="search-input" placeholder="Search by role title, department, or outlet location..." oninput="handleSearch()">
+      </div>
+
+      <div class="filter-pills" id="department-pills">
+        <button class="filter-pill active" onclick="filterByDept('all', this)">
+          All Vacancies <span class="count" id="count-all">6</span>
+        </button>
+        <button class="filter-pill" onclick="filterByDept('bakery', this)">
+          <i class="fa-solid fa-bread-slice"></i> Bakery &amp; Kitchen <span class="count" id="count-bakery">2</span>
+        </button>
+        <button class="filter-pill" onclick="filterByDept('retail', this)">
+          <i class="fa-solid fa-cash-register"></i> Retail &amp; Outlets <span class="count" id="count-retail">2</span>
+        </button>
+        <button class="filter-pill" onclick="filterByDept('catering', this)">
+          <i class="fa-solid fa-bell-concierge"></i> Catering &amp; Banquets <span class="count" id="count-catering">1</span>
+        </button>
+        <button class="filter-pill" onclick="filterByDept('logistics', this)">
+          <i class="fa-solid fa-motorcycle"></i> Logistics &amp; Riders <span class="count" id="count-logistics">1</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ==================== JOBS LIST ==================== -->
+    <div class="jobs-header">
+      <h3><i class="fa-solid fa-briefcase"></i> Current Available Positions (<span id="visible-jobs-count">6</span>)</h3>
+    </div>
+
+    <div class="jobs-grid" id="jobs-container">
+      <!-- Dynamically populated via JS -->
+    </div>
+
+    <!-- ==================== OPEN APPLICATION BANNER ==================== -->
+    <div class="open-application-card">
+      <div class="open-app-content">
+        <h4>Don’t see the exact role you’re looking for?</h4>
+        <p>
+          We are always eager to meet talented culinary masters, pastry chefs, front-of-house talent, and event coordinators. Submit an open application and we'll reach out when a suitable vacancy opens!
+        </p>
+      </div>
+      <div class="open-app-actions">
+        <button class="btn-apply" onclick="openApplyModal('General Open Application')">
+          <i class="fa-solid fa-file-lines"></i> Send Open Application
+        </button>
+        <a href="https://wa.me/94777886161?text=Hello%20Green%20Cabin%20HR,%20I%20would%20like%20to%20submit%20an%20open%20CV%20for%20future%20vacancies" target="_blank" class="btn-wa-apply">
+          <i class="fa-brands fa-whatsapp"></i> Chat with HR
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ==================== APPLICATION MODAL ==================== -->
+  <div class="modal-overlay" id="apply-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-id-card"></i> Apply for Position</h3>
+        <button class="modal-close" onclick="closeApplyModal()">&times;</button>
+      </div>
+
+      <form id="career-form" onsubmit="submitApplication(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Applying For Position <span class="required">*</span></label>
+            <input type="text" id="app-position" class="form-control" readonly style="background:#f1f5f9; font-weight:700; color:var(--primary-dark);">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name <span class="required">*</span></label>
+              <input type="text" id="app-name" class="form-control" placeholder="e.g. Ruwan Perera" required>
+            </div>
+            <div class="form-group">
+              <label>Mobile Number (WhatsApp) <span class="required">*</span></label>
+              <input type="tel" id="app-phone" class="form-control" placeholder="07X XXX XXXX" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" id="app-email" class="form-control" placeholder="ruwan@example.com">
+            </div>
+            <div class="form-group">
+              <label>Preferred Outlet / Location</label>
+              <select id="app-location" class="form-control">
+                <option value="Any Colombo Outlet">Any Colombo Outlet (Flexible)</option>
+                <option value="Colpetty (Flagship)">Colpetty (Flagship)</option>
+                <option value="Nawala Central Bakery">Nawala Central Bakery</option>
+                <option value="Delkanda Outlet">Delkanda Outlet</option>
+                <option value="One Galle Face">One Galle Face</option>
+                <option value="Pepiliyana Outlet">Pepiliyana Outlet</option>
+                <option value="Outdoor Catering Team">Outdoor Catering Team</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Years of Relevant Experience</label>
+            <select id="app-experience" class="form-control">
+              <option value="School Leaver / Trainee">School Leaver / Trainee (No experience required)</option>
+              <option value="1 - 2 Years">1 - 2 Years</option>
+              <option value="3 - 5 Years">3 - 5 Years</option>
+              <option value="5+ Years (Senior / Supervisor)">5+ Years (Senior / Supervisor)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Resume / CV Link (Google Drive / Dropbox / LinkedIn)</label>
+            <input type="url" id="app-cv-link" class="form-control" placeholder="https://drive.google.com/... or LinkedIn Profile">
+            <small style="color:var(--text-muted); font-size:12px; margin-top:4px; display:block;">
+              Or you can send your CV directly via WhatsApp after submitting!
+            </small>
+          </div>
+
+          <div class="form-group">
+            <label>Brief Introduction / Notes</label>
+            <textarea id="app-notes" class="form-control" placeholder="Tell us a little about your skills, past culinary or retail experience..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" onclick="closeApplyModal()">Cancel</button>
+          <button type="submit" class="btn-apply" id="btn-submit-app">
+            <i class="fa-solid fa-paper-plane"></i> Submit Application
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast success" id="toast-msg">
+    <i class="fa-solid fa-circle-check" style="font-size:18px; color:var(--secondary);"></i>
+    <span id="toast-text">Application submitted successfully!</span>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    const JOBS_DATA = [
+      {
+        id: "job-1",
+        title: "Senior Pastry Baker / Commis",
+        department: "bakery",
+        departmentName: "Bakery & Kitchen",
+        location: "Central Kitchen (Nawala) & Colpetty",
+        type: "Full Time",
+        experience: "2+ Years Pastry Experience",
+        salary: "Attractive Salary + Service Charge + Free Meals",
+        desc: "Prepare Green Cabin's legendary puff pastries, traditional meat pies, Chinese rolls, fish patties, and morning short eats according to original heritage recipes.",
+        urgent: true
+      },
+      {
+        id: "job-2",
+        title: "Cake Decorator & Master Confectioner",
+        department: "bakery",
+        departmentName: "Bakery & Kitchen",
+        location: "Nawala Central Bakery",
+        type: "Full Time",
+        experience: "2+ Years Cake Decorating",
+        salary: "Attractive Remuneration + Performance Bonus",
+        desc: "Craft and decorate celebratory ribbon cakes, chocolate gateaux, Swiss rolls, and custom confectionery with precision icing and authentic styling.",
+        urgent: false
+      },
+      {
+        id: "job-3",
+        title: "Outlet Supervisor / Branch In-Charge",
+        department: "retail",
+        departmentName: "Retail & Operations",
+        location: "Colpetty Flagship & One Galle Face",
+        type: "Full Time",
+        experience: "2+ Years in Food Retail / Restaurant",
+        salary: "Competitive Package + Incentives",
+        desc: "Manage day-to-day outlet operations, front-of-house staff, inventory replenishment, cash management, and maintain five-star guest hospitality.",
+        urgent: true
+      },
+      {
+        id: "job-4",
+        title: "Front-of-House Cashier & Retail Associate",
+        department: "retail",
+        departmentName: "Retail & Operations",
+        location: "Nawala, Delkanda, Colpetty, One Galle Face",
+        type: "Full Time / Shift Basis",
+        experience: "School Leavers Welcome / 1 Year Exp",
+        salary: "Basic + Service Charge + Attendance Bonus",
+        desc: "Warmly greet customers, handle POS cashiering, display fresh bakes enticingly, and ensure an exceptional customer experience.",
+        urgent: false
+      },
+      {
+        id: "job-5",
+        title: "Outdoor Catering & Banquet Steward",
+        department: "catering",
+        departmentName: "Catering & Banquets",
+        location: "Event Venues Across Colombo",
+        type: "Part Time / On-Call",
+        experience: "Hospitality / Banquet Experience",
+        salary: "Per-Event Payment + Duty Meals + Transport",
+        desc: "Deliver refined food and beverage service at high-profile corporate cocktails, diplomatic receptions, weddings, and private high teas.",
+        urgent: true
+      },
+      {
+        id: "job-6",
+        title: "Delivery Rider & Dispatch Courier",
+        department: "logistics",
+        departmentName: "Logistics & Dispatch",
+        location: "Colombo Central Hub",
+        type: "Full Time / Flexible",
+        experience: "Valid Riding License & Clean Record",
+        salary: "Basic + Per Delivery Incentive + Fuel Allowance",
+        desc: "Safely and punctually transport hot bakery orders, celebration cakes, cocktail platters, and Dutch lamprais packs to customer doors.",
+        urgent: false
+      }
+    ];
+
+    let currentDept = 'all';
+    let searchQuery = '';
+
+    function renderJobs() {
+      const container = document.getElementById('jobs-container');
+      if (!container) return;
+
+      const filtered = JOBS_DATA.filter(job => {
+        const matchesDept = (currentDept === 'all' || job.department === currentDept);
+        const matchesSearch = !searchQuery || 
+          job.title.toLowerCase().includes(searchQuery) ||
+          job.location.toLowerCase().includes(searchQuery) ||
+          job.departmentName.toLowerCase().includes(searchQuery) ||
+          job.desc.toLowerCase().includes(searchQuery);
+        return matchesDept && matchesSearch;
+      });
+
+      document.getElementById('visible-jobs-count').textContent = filtered.length;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1/-1; text-align:center; padding:50px 20px; background:#fff; border-radius:16px; border:1px solid #e2e8f0;">
+            <i class="fa-solid fa-briefcase" style="font-size:42px; color:#cbd5e1; margin-bottom:14px;"></i>
+            <h4 style="font-size:18px; color:#1e293b; margin-bottom:6px;">No vacancies match your search criteria</h4>
+            <p style="font-size:14px; color:#64748b; margin-bottom:20px;">Try clearing your filters or send an open application below!</p>
+            <button class="btn-apply" onclick="clearFilters()"><i class="fa-solid fa-rotate-left"></i> Reset Filters</button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(job => {
+        const waMsg = encodeURIComponent(`Hi Green Cabin HR, I am interested in applying for the position: ${job.title} (${job.location}). Could you please share more details?`);
+        return `
+          <div class="job-card">
+            <div class="job-card-top">
+              <span class="dept-badge">${job.departmentName}</span>
+              ${job.urgent ? '<span class="urgent-badge"><i class="fa-solid fa-bolt"></i> Urgently Hiring</span>' : ''}
+            </div>
+
+            <h3 class="job-title">${job.title}</h3>
+
+            <div class="job-meta-list">
+              <div class="job-meta-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>${job.location}</span>
+              </div>
+              <div class="job-meta-item">
+                <i class="fa-solid fa-clock"></i>
+                <span>${job.type}</span>
+              </div>
+              <div class="job-meta-item">
+                <i class="fa-solid fa-user-graduate"></i>
+                <span>${job.experience}</span>
+              </div>
+            </div>
+
+            <p class="job-desc">${job.desc}</p>
+
+            <div class="salary-box">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>${job.salary}</span>
+            </div>
+
+            <div class="card-actions">
+              <button class="btn-apply" onclick="openApplyModal('${job.title.replace(/'/g, "\\'")}')">
+                <i class="fa-solid fa-paper-plane"></i> Apply Online
+              </button>
+              <a href="https://wa.me/94777886161?text=${waMsg}" target="_blank" class="btn-wa-apply">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterByDept(dept, btn) {
+      currentDept = dept;
+      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderJobs();
+    }
+
+    function handleSearch() {
+      searchQuery = document.getElementById('job-search').value.toLowerCase().trim();
+      renderJobs();
+    }
+
+    function clearFilters() {
+      currentDept = 'all';
+      searchQuery = '';
+      document.getElementById('job-search').value = '';
+      const firstPill = document.querySelector('.filter-pill');
+      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      if (firstPill) firstPill.classList.add('active');
+      renderJobs();
+    }
+
+    function openApplyModal(positionTitle) {
+      document.getElementById('app-position').value = positionTitle || 'General Open Application';
+      document.getElementById('apply-modal').classList.add('active');
+    }
+
+    function closeApplyModal() {
+      document.getElementById('apply-modal').classList.remove('active');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast-msg');
+      const text = document.getElementById('toast-text');
+      if (text) text.textContent = msg;
+      if (toast) {
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 4000);
+      }
+    }
+
+    function submitApplication(e) {
+      e.preventDefault();
+      const pos = document.getElementById('app-position').value;
+      const name = document.getElementById('app-name').value;
+      const phone = document.getElementById('app-phone').value;
+      const email = document.getElementById('app-email').value || 'Not provided';
+      const loc = document.getElementById('app-location').value;
+      const exp = document.getElementById('app-experience').value;
+      const cv = document.getElementById('app-cv-link').value || 'Attached on WhatsApp';
+      const notes = document.getElementById('app-notes').value || 'None';
+
+      const appData = {
+        position: pos,
+        name: name,
+        phone: phone,
+        email: email,
+        location: loc,
+        experience: exp,
+        cvLink: cv,
+        notes: notes,
+        date: new Date().toLocaleString()
+      };
+
+      // Save locally
+      try {
+        const existing = JSON.parse(localStorage.getItem('gc_job_applications') || '[]');
+        existing.push(appData);
+        localStorage.setItem('gc_job_applications', JSON.stringify(existing));
+      } catch(err) {}
+
+      closeApplyModal();
+      showToast(`🎉 Application received, ${name}! Redirecting to HR WhatsApp...`);
+
+      // WhatsApp Direct Dispatch
+      const waText = encodeURIComponent(
+        `*NEW JOB APPLICATION - GREEN CABIN*\n` +
+        `-----------------------------------\n` +
+        `*Position:* ${pos}\n` +
+        `*Candidate:* ${name}\n` +
+        `*Phone:* ${phone}\n` +
+        `*Email:* ${email}\n` +
+        `*Preferred Location:* ${loc}\n` +
+        `*Experience:* ${exp}\n` +
+        `*CV Link:* ${cv}\n` +
+        `*Notes:* ${notes}\n` +
+        `-----------------------------------\n` +
+        `Sent via Green Cabin Careers Portal`
+      );
+
+      setTimeout(() => {
+        window.open(`https://wa.me/94777886161?text=${waText}`, '_blank');
+      }, 1000);
+
+      document.getElementById('career-form').reset();
+    }
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderJobs();
+    });
+  </script>
+</body>
+</html>

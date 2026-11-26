@@ -1427,6 +1427,92 @@
     </div>
   </div>
 
+  <!-- NAVIGATION BUTTON MODAL -->
+  <div class="modal-overlay" id="navigation-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="navigation-modal-title"><i class="fa-solid fa-compass"></i> Add / Edit Navigation Button</h3>
+        <button class="modal-close" onclick="closeNavigationModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="nm-id">
+        <div class="form-group">
+          <label>Button Label <span style="color:#ef4444;">*</span></label>
+          <input type="text" id="nm-label" class="form-control" placeholder="e.g. Home, Menu, Heritage, Platters">
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Action / Destination Type</label>
+            <select id="nm-type" class="form-control" onchange="toggleNavTypeFields(this.value)">
+              <option value="tab">Internal Page Tab</option>
+              <option value="link">External Website Link</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Visual Style</label>
+            <select id="nm-style" class="form-control">
+              <option value="standard">Standard Button</option>
+              <option value="highlight">Mint Highlight (Featured)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- TAB TARGET WRAPPER -->
+        <div class="form-group" id="nm-tab-target-wrap">
+          <label>Target Page Tab</label>
+          <select id="nm-target" class="form-control">
+            <option value="home">Home / Bakery Shop</option>
+            <option value="menus">Bakery Menus &amp; Pies</option>
+            <option value="events">Cocktail Platters &amp; Banquets</option>
+            <option value="catering">Outdoor Catering</option>
+            <option value="outlets">Cabin Outlets &amp; Locations</option>
+            <option value="about">Our Heritage &amp; Story (Since 1884)</option>
+            <option value="careers">Careers &amp; Vacancies Portal</option>
+          </select>
+        </div>
+
+        <!-- EXTERNAL LINK WRAPPER -->
+        <div class="form-group" id="nm-link-url-wrap" style="display:none;">
+          <label>Destination Web URL</label>
+          <input type="url" id="nm-url" class="form-control" placeholder="https://www.cyrilsgreencabin.com/">
+          <label style="display:flex; align-items:center; gap:8px; margin-top:8px; cursor:pointer; font-weight:normal; font-size:13px;">
+            <input type="checkbox" id="nm-newtab" checked> Open in New Browser Tab (<code>_blank</code>)
+          </label>
+        </div>
+
+        <!-- ICON SELECTOR -->
+        <div class="form-group">
+          <label>FontAwesome Icon Class</label>
+          <div style="display:flex; gap:8px;">
+            <input type="text" id="nm-icon" class="form-control" placeholder="fa-tag">
+          </div>
+          <div style="margin-top:8px; display:flex; flex-wrap:wrap; gap:6px;">
+            <button type="button" class="btn-secondary" style="padding:4px 8px; font-size:12px;" onclick="setNavIcon('fa-house')"><i class="fa-solid fa-house"></i> Home</button>
+            <button type="button" class="btn-secondary" style="padding:4px 8px; font-size:12px;" onclick="setNavIcon('fa-utensils')"><i class="fa-solid fa-utensils"></i> Menus</button>
+            <button type="button" class="btn-secondary" style="padding:4px 8px; font-size:12px;" onclick="setNavIcon('fa-cake-candles')"><i class="fa-solid fa-cake-candles"></i> Cakes</button>
+            <button type="button" class="btn-secondary" style="padding:4px 8px; font-size:12px;" onclick="setNavIcon('fa-bowl-rice')"><i class="fa-solid fa-bowl-rice"></i> Catering</button>
+            <button type="button" class="btn-secondary" style="padding:4px 8px; font-size:12px;" onclick="setNavIcon('fa-store')"><i class="fa-solid fa-store"></i> Outlets</button>
+            <button type="button" class="btn-secondary" style="padding:4px 8px; font-size:12px;" onclick="setNavIcon('fa-landmark')"><i class="fa-solid fa-landmark"></i> Heritage</button>
+            <button type="button" class="btn-secondary" style="padding:4px 8px; font-size:12px;" onclick="setNavIcon('fa-briefcase')"><i class="fa-solid fa-briefcase"></i> Careers</button>
+            <button type="button" class="btn-secondary" style="padding:4px 8px; font-size:12px;" onclick="setNavIcon('fa-cart-shopping')"><i class="fa-solid fa-cart-shopping"></i> Shop</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-weight:600;">
+            <input type="checkbox" id="nm-active" checked> Button is Active &amp; Visible in Header
+          </label>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary" onclick="closeNavigationModal()">Cancel</button>
+        <button type="button" class="btn-accent" onclick="saveNavigationModal()"><i class="fa-solid fa-check"></i> Save Button</button>
+      </div>
+    </div>
+  </div>
+
   <!-- CATEGORY MODAL -->
   <div class="modal-overlay" id="category-modal">
     <div class="modal-card">
