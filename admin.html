@@ -1734,7 +1734,8 @@
           },
           {
             id: "s2",
-            image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=1400&q=80",
+            image: "",
+            icon: "fa-bowl-rice",
             tag: "Authentic Dutch Burgher Recipe",
             title: "Traditional <span>Dutch Lamprais</span> Feasts",
             desc: "Steamed slow in fresh banana leaf with samba rice, four-meat curry, frikkadel meatballs, spicy blachan, and seeni sambol.",
@@ -1745,7 +1746,8 @@
           },
           {
             id: "s3",
-            image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1400&q=80",
+            image: "",
+            icon: "fa-cake-candles",
             tag: "Sweet Delights & Celebrations",
             title: "Handcrafted <span>Ribbon Cakes & Gateaux</span>",
             desc: "Celebrate special milestones with our signature multi-layered ribbon cakes, decadent chocolate fudge, and fresh gateaux.",
@@ -1756,7 +1758,8 @@
           },
           {
             id: "s4",
-            image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1400&q=80",
+            image: "",
+            icon: "fa-cookie-bite",
             tag: "Crispy & Flaky Short Eats",
             title: "Legendary <span>Chinese Rolls & Savouries</span>",
             desc: "Crispy beef Chinese rolls, spicy fish patties, and savoury mutton pastries — Ceylon's favourite teatime snack since 1884.",
@@ -1767,7 +1770,8 @@
           },
           {
             id: "s5",
-            image: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1400&q=80",
+            image: "",
+            icon: "fa-bell-concierge",
             tag: "Outdoor Catering & Banquets",
             title: "Premier <span>Outdoor Catering</span> Across Colombo",
             desc: "From intimate family functions to grand corporate cocktail gatherings, let Green Cabin take care of the culinary magic.",
@@ -2163,7 +2167,7 @@
                       "veg": false,
                       "desc": "Fragrant samba rice cooked in stock, served with tender spiced fish curry, frikkadel, seeni sambol, and ash plantain wrapped in banana leaf.",
                       "description": "Fragrant samba rice cooked in stock, served with tender spiced fish curry, frikkadel, seeni sambol, and ash plantain wrapped in banana leaf.",
-                      "image": "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80"
+                      "image": ""
               },
               {
                       "id": "17806",
@@ -2836,7 +2840,7 @@
           desc: "Authentic Sri Lankan spread featuring aromatic rice, choice of meat or fish, dhal curry, tempered brinjal moju, pol sambol, papadam, and traditional dessert.",
           minGuests: "25 Guests minimum",
           priceTag: "From Rs. 2,200 per person",
-          img: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80",
+          img: "",
           features: ["Hot Buffet Setup with Chafing Dishes", "Complimentary Cutlery & Napkins", "Uniformed Service Staff Available"]
         },
         {
@@ -2845,7 +2849,7 @@
           desc: "Live on-site cooking station with crispy egg hoppers, plain hoppers, spicy chicken or beef curry, seeni sambol, and sizzling shredded kothu roti.",
           minGuests: "30 Guests minimum",
           priceTag: "From Rs. 1,850 per person",
-          img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80",
+          img: "",
           features: ["Live Chefs & Mobile Cooker Setup", "Unlimited Plain & Egg Hoppers", "Freshly Cooked Sizzling Curries"]
         },
         {
@@ -2854,7 +2858,7 @@
           desc: "An elegant display of mini chicken pies, mutton rolls, fish cutlets, savoury tartlets, mini ribbon cakes, and Ceylon tea service.",
           minGuests: "20 Guests minimum",
           priceTag: "From Rs. 1,600 per person",
-          img: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=600&q=80",
+          img: "",
           features: ["Finger Food Display Platters", "Sweet & Savoury Balanced Mix", "Ideal for Corporate & Home Parties"]
         },
         {
@@ -2863,7 +2867,7 @@
           desc: "Dignified, traditional almsgiving catering prepared with absolute purity and traditional Buddhist customs.",
           minGuests: "15 Guests minimum",
           priceTag: "Custom Package",
-          img: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80",
+          img: "",
           features: ["Specially Prepared Strictly According to Custom", "Complete Service Vessels Provided", "Delivered on Precise Time"]
         }
       ],
@@ -3021,7 +3025,7 @@
     let storeData = JSON.parse(JSON.stringify(INITIAL_DATA));
 
     function loadSavedData() {
-      const CATALOG_VERSION = 'v77_exact_ordernow_20261103';
+      const CATALOG_VERSION = 'v77_exact_ordernow_20261126_clean';
       const saved = localStorage.getItem('greencabin_store_data');
       const savedVersion = localStorage.getItem('greencabin_catalog_version');
 
@@ -3472,7 +3476,7 @@
 
       tbody.innerHTML = filtered.map(p => `
         <tr>
-          <td><img src="${p.image || 'https://via.placeholder.com/60'}" class="table-thumb" alt="${p.name}"></td>
+          <td>${p.image ? `<img src="${p.image}" class="table-thumb" alt="${p.name}">` : `<div class="table-thumb" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#003b31,#006f5b);color:#81caa5;font-size:18px;"><i class="fa-solid fa-utensils"></i></div>`}</td>
           <td><strong>${p.name}</strong> <span style="font-size:11px; background:#e0f2fe; color:#0369a1; padding:2px 6px; border-radius:4px; font-weight:700; margin-left:4px;">ID: ${p.wooId || p.id}</span><br><span style="font-size:12px; color:var(--admin-muted);">${(p.desc || '').substring(0, 50)}...</span></td>
           <td><span class="badge-tag">${getCatName(p.category)}</span></td>
           <td><strong>${curr} ${Number(p.price).toLocaleString()}</strong></td>
@@ -3608,7 +3612,7 @@
       tbody.innerHTML = slides.map((s, idx) => `
         <tr>
           <td>
-            <img src="${s.image || 'https://via.placeholder.com/80'}" class="table-thumb" style="width:70px; height:48px; border-radius:6px; object-fit:cover;" alt="Slide">
+            ${s.image ? `<img src="${s.image}" class="table-thumb" style="width:70px; height:48px; border-radius:6px; object-fit:cover;" alt="Slide">` : `<div style="width:70px; height:48px; border-radius:6px; background:linear-gradient(135deg,#003b31,#006f5b); color:#81caa5; display:flex; align-items:center; justify-content:center; font-size:18px; border:1px solid rgba(129,202,165,0.4);"><i class="fa-solid ${s.icon || 'fa-image'}"></i></div>`}
           </td>
           <td>
             <strong>${(s.title || 'Slide ' + (idx + 1)).replace(/<[^>]*>/g, '')}</strong>
@@ -3693,7 +3697,7 @@
       const badgeTitle = document.getElementById('sm-badge-title').value.trim();
       const badgeSub = document.getElementById('sm-badge-sub').value.trim();
 
-      if (!image) return alert("Please upload or provide an Image URL for this slide!");
+      // Empty image safely renders the Green Cabin gradient + icon card on the storefront
 
       const slides = getAdminHeroSlides();
       const idx = slides.findIndex(s => s.id === id);
@@ -3761,7 +3765,23 @@
       document.getElementById('prev-title').innerHTML = s.title || 'Green Cabin';
       document.getElementById('prev-desc').textContent = s.desc || '';
       document.getElementById('prev-btn').textContent = s.btnText || 'Order Online';
-      document.getElementById('prev-img').src = s.image || '';
+      const prevImgEl = document.getElementById('prev-img');
+      let prevArtEl = document.getElementById('prev-art-fallback');
+      if (s.image && s.image.trim()) {
+        prevImgEl.src = s.image;
+        prevImgEl.style.display = 'block';
+        if (prevArtEl) prevArtEl.style.display = 'none';
+      } else {
+        prevImgEl.style.display = 'none';
+        if (!prevArtEl) {
+          prevArtEl = document.createElement('div');
+          prevArtEl.id = 'prev-art-fallback';
+          prevArtEl.style.cssText = 'width:100%;height:100%;background:linear-gradient(140deg,#00231c,#006f5b);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#81caa5;';
+          prevImgEl.parentNode.insertBefore(prevArtEl, prevImgEl);
+        }
+        prevArtEl.style.display = 'flex';
+        prevArtEl.innerHTML = `<i class="fa-solid ${s.icon || 'fa-utensils'}" style="font-size:44px;"></i><span style="font-size:11px;font-weight:800;letter-spacing:1.2px;color:#d1e5dd;">GRADIENT ICON CARD</span>`;
+      }
       document.getElementById('prev-badge-title').textContent = s.badgeTitle || 'Heritage';
       document.getElementById('prev-badge-sub').textContent = s.badgeSub || 'Ceylon taste';
 
@@ -3866,7 +3886,7 @@
       const tbody = document.getElementById('catering-table-body');
       tbody.innerHTML = (storeData.cateringPackages || []).map(c => `
         <tr>
-          <td><img src="${c.img || 'https://via.placeholder.com/60'}" class="table-thumb" alt="${c.name}"></td>
+          <td>${c.img ? `<img src="${c.img}" class="table-thumb" alt="${c.name}">` : `<div class="table-thumb" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#003b31,#006f5b);color:#81caa5;font-size:18px;"><i class="fa-solid ${c.icon || 'fa-bell-concierge'}"></i></div>`}</td>
           <td><strong>${c.name}</strong><br><span style="font-size:12px; color:var(--admin-muted);">${(c.desc || '').substring(0, 45)}...</span></td>
           <td><strong>${c.priceTag}</strong></td>
           <td>${c.minGuests}</td>
@@ -3912,7 +3932,7 @@
       const priceTag = document.getElementById('catg-price').value.trim();
       const minGuests = document.getElementById('catg-guests').value.trim();
       const desc = document.getElementById('catg-desc').value.trim();
-      const img = document.getElementById('catg-img').value.trim() || 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80';
+      const img = document.getElementById('catg-img').value.trim();
 
       if (!name) return alert("Enter package name!");
 
@@ -3946,7 +3966,7 @@
 
       tbody.innerHTML = platters.map((p, idx) => `
         <tr>
-          <td><img src="${p.img || p.image || 'https://via.placeholder.com/60'}" class="table-thumb" alt="${p.name}"></td>
+          <td>${(p.img || p.image) ? `<img src="${p.img || p.image}" class="table-thumb" alt="${p.name}">` : `<div class="table-thumb" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#003b31,#006f5b);color:#81caa5;font-size:18px;"><i class="fa-solid fa-boxes-stacked"></i></div>`}</td>
           <td><strong>${p.name}</strong><br><span style="font-size:12px; color:var(--admin-muted);">${(p.desc || '').substring(0, 55)}...</span></td>
           <td><strong>Rs. ${Number(p.price || (parseInt(String(p.priceTag || '').replace(/[^0-9]/g, '')) || 0)).toLocaleString()}</strong></td>
           <td>${p.badge ? `<span style="background:#fee2e2; color:#b91c1c; font-size:11px; font-weight:700; padding:2px 6px; border-radius:4px;">${p.badge}</span>` : '-'}</td>
@@ -3988,7 +4008,7 @@
       const name = document.getElementById('plt-name').value.trim();
       const price = document.getElementById('plt-price').value.trim();
       const desc = document.getElementById('plt-desc').value.trim();
-      const img = document.getElementById('plt-img').value.trim() || 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=500&q=80';
+      const img = document.getElementById('plt-img').value.trim();
 
       if (!name) return alert("Enter platter name!");
 

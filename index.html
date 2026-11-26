@@ -358,9 +358,10 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1600&q=80') center/cover;
-      opacity: 0.18;
-      mix-blend-mode: overlay;
+      background-image: radial-gradient(circle at 82% 22%, rgba(129, 202, 165, 0.22) 0%, transparent 52%), radial-gradient(rgba(129, 202, 165, 0.14) 1px, transparent 1px);
+      background-size: 100% 100%, 26px 26px;
+      opacity: 0.9;
+      pointer-events: none;
     }
     .hero-container {
       max-width: 1320px;
@@ -1723,6 +1724,17 @@
         font-size: 10.5px !important;
       }
 
+      .pns-cat-icon-stage { padding-bottom: 40%; }
+      .pns-cat-orb { width: 52px; height: 52px; border-radius: 15px; }
+      .pns-cat-orb i { font-size: 22px; }
+      .pns-cat-watermark { top: 8px; left: 8px; font-size: 8px; padding: 3px 7px; }
+      .hero-slide-art { padding: 14px 14px 32px; }
+      .hero-slide-art-orb { width: 64px; height: 64px; border-radius: 18px; margin-bottom: 8px; }
+      .hero-slide-art-orb i { font-size: 26px; }
+      .hero-slide-art-label { font-size: 14px; }
+      .hero-slide-art-sub { font-size: 9.5px; }
+
+
       /* Section Spacings & Typography */
       .section-pns {
         padding: 24px 12px !important;
@@ -1886,6 +1898,242 @@
     }
 
   
+
+    /* ==========================================================================
+       CLEAN GRADIENT + ICON SHOWCASE CARDS (BRAND PHOTO PLACEHOLDERS)
+       ========================================================================== */
+    .pns-cat-icon-stage {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 24%;
+      overflow: hidden;
+      background: linear-gradient(155deg, #003b31 0%, #005f4e 52%, #0a7a64 100%);
+    }
+    .pns-cat-icon-stage.gc-grad-savouries { background: linear-gradient(155deg, #00382e 0%, #005b4b 55%, #0c7863 100%); }
+    .pns-cat-icon-stage.gc-grad-cakes     { background: linear-gradient(155deg, #002f27 0%, #065748 55%, #128069 100%); }
+    .pns-cat-icon-stage.gc-grad-lamprais  { background: linear-gradient(155deg, #013d32 0%, #006653 55%, #0e7c66 100%); }
+    .pns-cat-icon-stage.gc-grad-sweets    { background: linear-gradient(155deg, #00332b 0%, #046251 55%, #11826b 100%); }
+    .pns-cat-icon-stage.gc-grad-platters  { background: linear-gradient(155deg, #002d25 0%, #005646 55%, #0b735f 100%); }
+    .pns-cat-icon-stage.gc-grad-catering  { background: linear-gradient(155deg, #023f34 0%, #076b58 55%, #13866e 100%); }
+    .pns-cat-icon-stage.gc-grad-outlets   { background: linear-gradient(155deg, #003128 0%, #005a4a 55%, #0d7964 100%); }
+    .pns-cat-icon-stage::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 75% 20%, rgba(129, 202, 165, 0.24) 0%, transparent 55%),
+        radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 100% 100%, 20px 20px;
+      pointer-events: none;
+    }
+    .pns-cat-icon-stage::after {
+      content: '';
+      position: absolute;
+      top: -42px;
+      right: -42px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(129, 202, 165, 0.22);
+      pointer-events: none;
+    }
+    .pns-cat-orb {
+      position: relative;
+      z-index: 1;
+      width: 86px;
+      height: 86px;
+      border-radius: 26px;
+      background: rgba(129, 202, 165, 0.14);
+      border: 1.5px solid rgba(129, 202, 165, 0.42);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      transition: transform 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+    }
+    .pns-cat-orb i {
+      font-size: 36px;
+      color: #81caa5;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
+      transition: transform 0.35s ease, color 0.35s ease;
+    }
+    .pns-cat-card:hover .pns-cat-orb {
+      transform: scale(1.08) translateY(-4px);
+      background: rgba(129, 202, 165, 0.24);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.34);
+    }
+    .pns-cat-card:hover .pns-cat-orb i {
+      color: #b4eed0;
+      transform: scale(1.05);
+    }
+    .pns-cat-watermark {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 2;
+      font-size: 9.5px;
+      font-weight: 800;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      color: rgba(129, 202, 165, 0.85);
+      background: rgba(0, 28, 22, 0.45);
+      border: 1px solid rgba(129, 202, 165, 0.25);
+      padding: 4px 9px;
+      border-radius: 20px;
+    }
+    .hero-slide-art {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(140deg, #00231c 0%, #004f40 52%, #006f5b 100%);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 24px 48px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-slide-art::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 78% 22%, rgba(129, 202, 165, 0.25) 0%, transparent 55%),
+        radial-gradient(rgba(129, 202, 165, 0.14) 1px, transparent 1px);
+      background-size: 100% 100%, 22px 22px;
+      pointer-events: none;
+    }
+    .hero-slide-art-orb {
+      position: relative;
+      z-index: 1;
+      width: 96px;
+      height: 96px;
+      border-radius: 28px;
+      background: rgba(129, 202, 165, 0.14);
+      border: 1.5px solid rgba(129, 202, 165, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+    .hero-slide-art-orb i {
+      font-size: 40px;
+      color: #81caa5;
+    }
+    .hero-slide-art-label {
+      position: relative;
+      z-index: 1;
+      font-family: var(--font-brand);
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 0.3px;
+    }
+    .hero-slide-art-sub {
+      position: relative;
+      z-index: 1;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #81caa5;
+      margin-top: 4px;
+    }
+    .gc-icon-banner {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(145deg, #00352b 0%, #006150 55%, #0a7a64 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    .gc-icon-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(rgba(129, 202, 165, 0.14) 1px, transparent 1px);
+      background-size: 18px 18px;
+      pointer-events: none;
+    }
+    .gc-icon-banner-orb {
+      position: relative;
+      z-index: 1;
+      width: 68px;
+      height: 68px;
+      border-radius: 20px;
+      background: rgba(129, 202, 165, 0.15);
+      border: 1.5px solid rgba(129, 202, 165, 0.42);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #81caa5;
+      font-size: 28px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+    }
+    .gc-icon-banner-tag {
+      position: relative;
+      z-index: 1;
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #d1e5dd;
+    }
+    .gc-prod-art {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(150deg, #003b31 0%, #006f5b 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #81caa5;
+    }
+    .gc-prod-art-orb {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      background: rgba(129, 202, 165, 0.14);
+      border: 1.5px solid rgba(129, 202, 165, 0.38);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      color: #81caa5;
+    }
+    .gc-prod-art span {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #d1e5dd;
+    }
+    .cart-item-thumb-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 10px;
+      background: linear-gradient(145deg, #003b31, #006f5b);
+      color: #81caa5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
     /* ==========================================================================
        MODAL OVERLAY (CAREER APPLICATION & POPUPS)
        ========================================================================== */
@@ -2105,7 +2353,7 @@
       </div>
 
       <div class="pns-category-grid">
-        <!-- 1. Legendary Meat Pies -->
+        <!-- 1. Legendary Meat Pies (Real Photo Kept) -->
         <div class="pns-cat-card" onclick="selectCategory('pies')">
           <div class="pns-cat-media"><img src="images/meat-pies.jpg" alt="Legendary Meat Pies"></div>
           <div class="pns-cat-overlay">
@@ -2115,9 +2363,14 @@
           </div>
         </div>
 
-        <!-- 2. Savouries & Short Eats -->
+        <!-- 2. Savouries & Short Eats (Clean Gradient + Icon Card) -->
         <div class="pns-cat-card" onclick="selectCategory('savouries')">
-          <div class="pns-cat-media"><img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80" alt="Savouries & Short Eats"></div>
+          <div class="pns-cat-media">
+            <div class="pns-cat-icon-stage gc-grad-savouries">
+              <span class="pns-cat-watermark">GREEN CABIN</span>
+              <div class="pns-cat-orb"><i class="fa-solid fa-cookie-bite"></i></div>
+            </div>
+          </div>
           <div class="pns-cat-overlay">
             <h3>Savouries & Short Eats</h3>
             <p>Crispy beef Chinese rolls, spicy fish patties, and savoury puff pastries.</p>
@@ -2125,9 +2378,14 @@
           </div>
         </div>
 
-        <!-- 3. Cakes & Gateaux -->
+        <!-- 3. Cakes & Gateaux (Clean Gradient + Icon Card) -->
         <div class="pns-cat-card" onclick="selectCategory('cakes')">
-          <div class="pns-cat-media"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" alt="Cakes & Gateaux"></div>
+          <div class="pns-cat-media">
+            <div class="pns-cat-icon-stage gc-grad-cakes">
+              <span class="pns-cat-watermark">SINCE 1884</span>
+              <div class="pns-cat-orb"><i class="fa-solid fa-cake-candles"></i></div>
+            </div>
+          </div>
           <div class="pns-cat-overlay">
             <h3>Cakes & Gateaux</h3>
             <p>Signature rich ribbon cakes, chocolate mud slices, and pineapple gateaux.</p>
@@ -2135,9 +2393,14 @@
           </div>
         </div>
 
-        <!-- 4. Dutch Lamprais & Meals -->
+        <!-- 4. Dutch Lamprais & Meals (Clean Gradient + Icon Card) -->
         <div class="pns-cat-card" onclick="selectCategory('traditional')">
-          <div class="pns-cat-media"><img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80" alt="Dutch Lamprais"></div>
+          <div class="pns-cat-media">
+            <div class="pns-cat-icon-stage gc-grad-lamprais">
+              <span class="pns-cat-watermark">CEYLON HERITAGE</span>
+              <div class="pns-cat-orb"><i class="fa-solid fa-bowl-rice"></i></div>
+            </div>
+          </div>
           <div class="pns-cat-overlay">
             <h3>Dutch Lamprais</h3>
             <p>Steamed in banana leaf with mixed meat curry, frikkadel, blachan, and brinjal moju.</p>
@@ -2145,9 +2408,14 @@
           </div>
         </div>
 
-        <!-- 5. Desserts & Sweets -->
+        <!-- 5. Desserts & Sweets (Clean Gradient + Icon Card) -->
         <div class="pns-cat-card" onclick="selectCategory('sweets')">
-          <div class="pns-cat-media"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" alt="Desserts & Sweets"></div>
+          <div class="pns-cat-media">
+            <div class="pns-cat-icon-stage gc-grad-sweets">
+              <span class="pns-cat-watermark">FRESH DAILY</span>
+              <div class="pns-cat-orb"><i class="fa-solid fa-ice-cream"></i></div>
+            </div>
+          </div>
           <div class="pns-cat-overlay">
             <h3>Desserts & Swiss Rolls</h3>
             <p>Malted Milo swiss rolls, lemon meringue tarts, and freshly baked muffins.</p>
@@ -2155,9 +2423,14 @@
           </div>
         </div>
 
-        <!-- 6. Party Platters -->
+        <!-- 6. Party Platters (Clean Gradient + Icon Card) -->
         <div class="pns-cat-card" onclick="switchSiteTab('events')">
-          <div class="pns-cat-media"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Party Platters"></div>
+          <div class="pns-cat-media">
+            <div class="pns-cat-icon-stage gc-grad-platters">
+              <span class="pns-cat-watermark">PARTY PACKS</span>
+              <div class="pns-cat-orb"><i class="fa-solid fa-boxes-stacked"></i></div>
+            </div>
+          </div>
           <div class="pns-cat-overlay">
             <h3>Cocktail Platters</h3>
             <p>Artisanal bite-sized short eat platters crafted for home parties and corporate events.</p>
@@ -2165,9 +2438,14 @@
           </div>
         </div>
 
-        <!-- 7. Catering Services -->
+        <!-- 7. Catering Services (Clean Gradient + Icon Card) -->
         <div class="pns-cat-card" onclick="switchSiteTab('catering')">
-          <div class="pns-cat-media"><img src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=600&q=80" alt="Catering Services"></div>
+          <div class="pns-cat-media">
+            <div class="pns-cat-icon-stage gc-grad-catering">
+              <span class="pns-cat-watermark">EVENTS & BANQUETS</span>
+              <div class="pns-cat-orb"><i class="fa-solid fa-bell-concierge"></i></div>
+            </div>
+          </div>
           <div class="pns-cat-overlay">
             <h3>Outdoor Catering</h3>
             <p>Customized buffet setups, family gatherings, and wedding banquets.</p>
@@ -2175,12 +2453,17 @@
           </div>
         </div>
 
-        <!-- 8. Our Outlets -->
+        <!-- 8. Our Outlets (Clean Gradient + Icon Card) -->
         <div class="pns-cat-card" onclick="switchSiteTab('outlets')">
-          <div class="pns-cat-media"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80" alt="Outlets"></div>
+          <div class="pns-cat-media">
+            <div class="pns-cat-icon-stage gc-grad-outlets">
+              <span class="pns-cat-watermark">12 OUTLETS</span>
+              <div class="pns-cat-orb"><i class="fa-solid fa-store"></i></div>
+            </div>
+          </div>
           <div class="pns-cat-overlay">
             <h3>Cabin Outlets</h3>
-            <p>Visit us at Bambalapitiya, Nawala, Delkanda, and One Galle Face.</p>
+            <p>Visit us at Colpetty, Nawala, Delkanda, and One Galle Face.</p>
             <span class="pns-cat-arrow">Find an Outlet <i class="fa-solid fa-arrow-right"></i></span>
           </div>
         </div>
@@ -2602,7 +2885,8 @@
           },
           {
             id: "s2",
-            image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=1400&q=80",
+            image: "",
+            icon: "fa-bowl-rice",
             tag: "Authentic Dutch Burgher Recipe",
             title: "Traditional <span>Dutch Lamprais</span> Feasts",
             desc: "Steamed slow in fresh banana leaf with samba rice, four-meat curry, frikkadel meatballs, spicy blachan, and seeni sambol.",
@@ -2613,7 +2897,8 @@
           },
           {
             id: "s3",
-            image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1400&q=80",
+            image: "",
+            icon: "fa-cake-candles",
             tag: "Sweet Delights & Celebrations",
             title: "Handcrafted <span>Ribbon Cakes & Gateaux</span>",
             desc: "Celebrate special milestones with our signature multi-layered ribbon cakes, decadent chocolate fudge, and fresh gateaux.",
@@ -2624,7 +2909,8 @@
           },
           {
             id: "s4",
-            image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1400&q=80",
+            image: "",
+            icon: "fa-cookie-bite",
             tag: "Crispy & Flaky Short Eats",
             title: "Legendary <span>Chinese Rolls & Savouries</span>",
             desc: "Crispy beef Chinese rolls, spicy fish patties, and savoury mutton pastries — Ceylon's favourite teatime snack since 1884.",
@@ -2635,7 +2921,8 @@
           },
           {
             id: "s5",
-            image: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1400&q=80",
+            image: "",
+            icon: "fa-bell-concierge",
             tag: "Outdoor Catering & Banquets",
             title: "Premier <span>Outdoor Catering</span> Across Colombo",
             desc: "From intimate family functions to grand corporate cocktail gatherings, let Green Cabin take care of the culinary magic.",
@@ -3029,7 +3316,7 @@
                       "veg": false,
                       "desc": "Fragrant samba rice cooked in stock, served with tender spiced fish curry, frikkadel, seeni sambol, and ash plantain wrapped in banana leaf.",
                       "description": "Fragrant samba rice cooked in stock, served with tender spiced fish curry, frikkadel, seeni sambol, and ash plantain wrapped in banana leaf.",
-                      "image": "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80"
+                      "image": ""
               },
               {
                       "id": "17806",
@@ -3703,7 +3990,8 @@
           minGuests: "25 Guests minimum",
           desc: "Authentic Sri Lankan buffet with fragrant yellow rice, chicken curry, ambulthiyal, cashew curry, dhal, and watalappan.",
           features: ["Complete Buffet Setup", "Chafing Dishes & Service Staff", "Clay Pots Presentation", "Traditional Desserts Bar"],
-          img: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=500&q=80"
+          img: "",
+          icon: "fa-utensils"
         },
         {
           id: "c2",
@@ -3712,7 +4000,8 @@
           minGuests: "20 Guests minimum",
           desc: "Perfect for tea parties, birthdays and gatherings. A rich assortment of short eats, pastries, meat pies, sandwiches, and iced coffee.",
           features: ["Famous Meat & Fish Pies", "Beef & Veg Chinese Rolls", "Ribbon & Gateau Cake Slices", "Ceylon Spiced Iced Coffee"],
-          img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80"
+          img: "",
+          icon: "fa-champagne-glasses"
         }
       ],
       eventsPlatters: [
@@ -3899,7 +4188,7 @@
     }
 
     function loadSavedData() {
-      const CATALOG_VERSION = 'v77_exact_ordernow_20261103_live';
+      const CATALOG_VERSION = 'v77_exact_ordernow_20261126_clean';
       const saved = localStorage.getItem('greencabin_store_data');
       const savedVersion = localStorage.getItem('greencabin_catalog_version');
 
@@ -3931,11 +4220,11 @@
           storeData = liveData;
           try {
             localStorage.setItem('greencabin_store_data', JSON.stringify(storeData));
-            localStorage.setItem('greencabin_catalog_version', 'v77_exact_ordernow_20261103_live');
+            localStorage.setItem('greencabin_catalog_version', 'v77_exact_ordernow_20261126_clean');
           } catch(e) {}
           applySettings();
-          renderDynamicHeaderNav();
-          renderDynamicMobileNav();
+          renderNavigation();
+          initHeroSlider();
           renderQuickCategories();
           renderProducts();
           renderFullMenus();
@@ -4155,11 +4444,23 @@
       const dotsContainer = document.getElementById('hero-slider-dots');
       if (!container || slides.length === 0) return;
 
-      container.innerHTML = slides.map((s, idx) => `
-        <div class="hero-slide ${idx === 0 ? 'active' : ''}" data-index="${idx}">
-          <img src="${s.image}" alt="${(s.title || 'Green Cabin').replace(/<[^>]*>/g, '')}" loading="${idx === 0 ? 'eager' : 'lazy'}">
-        </div>
-      `).join('');
+      const fallbackSlideIcons = ['fa-chart-pie', 'fa-bowl-rice', 'fa-cake-candles', 'fa-cookie-bite', 'fa-bell-concierge'];
+      container.innerHTML = slides.map((s, idx) => {
+        const cleanTitle = (s.title || 'Green Cabin').replace(/<[^>]*>/g, '');
+        const slideIcon = s.icon || fallbackSlideIcons[idx % fallbackSlideIcons.length];
+        const mediaHtml = (s.image && s.image.trim())
+          ? `<img src="${s.image}" alt="${cleanTitle}" loading="${idx === 0 ? 'eager' : 'lazy'}">`
+          : `<div class="hero-slide-art">
+               <div class="hero-slide-art-orb"><i class="fa-solid ${slideIcon}"></i></div>
+               <div class="hero-slide-art-label">${cleanTitle}</div>
+               <div class="hero-slide-art-sub">${s.badgeTitle || 'Green Cabin Heritage · Est. 1884'}</div>
+             </div>`;
+        return `
+          <div class="hero-slide ${idx === 0 ? 'active' : ''}" data-index="${idx}">
+            ${mediaHtml}
+          </div>
+        `;
+      }).join('');
 
       if (dotsContainer) {
         dotsContainer.innerHTML = slides.map((_, idx) => `
@@ -4296,6 +4597,12 @@
       document.getElementById('products-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
+
+    function getCategoryIconName(catId) {
+      const map = { pies: 'fa-chart-pie', savouries: 'fa-cookie-bite', cakes: 'fa-cake-candles', traditional: 'fa-bowl-rice', sweets: 'fa-ice-cream', beverages: 'fa-mug-hot', platters: 'fa-boxes-stacked' };
+      return map[catId] || 'fa-utensils';
+    }
+
     // P&S PRODUCT CARDS
     function renderProducts(filteredList = null) {
       const grid = document.getElementById('product-grid');
@@ -4324,7 +4631,7 @@
         <div class="product-card">
           ${item.badge ? `<span class="badge-float">${item.badge}</span>` : ''}
           <div class="card-img-wrap">
-            <img src="${item.image || 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=600&q=80'}" alt="${item.name}" loading="lazy">
+            ${item.image ? `<img src="${item.image}" alt="${item.name}" loading="lazy">` : `<div class="gc-prod-art"><div class="gc-prod-art-orb"><i class="fa-solid ${getCategoryIconName(item.category)}"></i></div><span>Green Cabin</span></div>`}
           </div>
           <div class="card-body">
             <div class="diet-and-cat">
@@ -4379,7 +4686,7 @@
         <div class="product-card">
           ${item.badge ? `<span class="badge-float">${item.badge}</span>` : ''}
           <div class="card-img-wrap">
-            <img src="${item.image || 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=600&q=80'}" alt="${item.name}" loading="lazy">
+            ${item.image ? `<img src="${item.image}" alt="${item.name}" loading="lazy">` : `<div class="gc-prod-art"><div class="gc-prod-art-orb"><i class="fa-solid ${getCategoryIconName(item.category)}"></i></div><span>Green Cabin</span></div>`}
           </div>
           <div class="card-body">
             <div class="diet-and-cat">
@@ -4406,7 +4713,7 @@
       const pkgs = storeData.cateringPackages || DEFAULT_STORE_DATA.cateringPackages;
       container.innerHTML = pkgs.map(pkg => `
         <div style="background:#fff; border:1px solid var(--border-color); border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-sm); display:flex; flex-direction:column;">
-          <img src="${pkg.img}" style="width:100%; height:200px; object-fit:cover;" alt="${pkg.name}">
+          ${pkg.img ? `<img src="${pkg.img}" style="width:100%; height:200px; object-fit:cover;" alt="${pkg.name}">` : `<div class="gc-icon-banner"><div class="gc-icon-banner-orb"><i class="fa-solid ${pkg.icon || 'fa-bell-concierge'}"></i></div><span class="gc-icon-banner-tag">Green Cabin Catering</span></div>`}
           <div style="padding:22px; display:flex; flex-direction:column; flex:1;">
             <h3 style="font-family:var(--font-brand); font-size:20px; font-weight:800; color:var(--primary-dark); margin-bottom:4px;">${pkg.name}</h3>
             <div style="font-weight:800; color:var(--primary-color); font-size:15px; margin-bottom:12px;">${pkg.priceTag} • <span style="color:var(--text-muted); font-size:12px;">${pkg.minGuests}</span></div>
@@ -4432,12 +4739,12 @@
 
       container.innerHTML = platters.map(p => {
         const numPrice = Number(p.price || (parseInt(String(p.priceTag || '').replace(/[^0-9]/g, '')) || 0));
-        const imgSrc = p.img || p.image || 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80';
+        const imgSrc = p.img || p.image || '';
         return `
           <div class="product-card" style="display:flex; flex-direction:column; height:100%;">
             ${p.badge ? `<span class="badge-float">${p.badge}</span>` : ''}
             <div class="card-img-wrap" style="height:210px;">
-              <img src="${imgSrc}" alt="${p.name}" loading="lazy">
+              ${imgSrc ? `<img src="${imgSrc}" alt="${p.name}" loading="lazy">` : `<div class="gc-prod-art"><div class="gc-prod-art-orb"><i class="fa-solid fa-boxes-stacked"></i></div><span>Green Cabin</span></div>`}
             </div>
             <div class="card-body" style="display:flex; flex-direction:column; flex:1; padding:20px;">
               <div class="diet-and-cat" style="margin-bottom:8px;">
@@ -4671,7 +4978,7 @@ function handleSearch() {
         subtotal += itemTot;
         return `
           <div class="cart-item-row">
-            <img src="${item.image || 'https://via.placeholder.com/80'}" class="cart-item-thumb" alt="${item.name}">
+            ${item.image ? `<img src="${item.image}" class="cart-item-thumb" alt="${item.name}">` : `<div class="cart-item-thumb-icon"><i class="fa-solid ${getCategoryIconName(item.category)}"></i></div>`}
             <div class="cart-item-details">
               <div class="cart-item-title">${item.name}</div>
               <div class="cart-item-price">${curr} ${Number(item.price).toLocaleString()}</div>

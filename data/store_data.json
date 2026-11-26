@@ -99,51 +99,56 @@
         "btnText": "Order Online",
         "btnAction": "scrollToProducts()",
         "badgeTitle": "Over 140 Years of Heritage",
-        "badgeSub": "Preserving original family recipes"
+        "badgeSub": "Preserving original family recipes",
+        "icon": "fa-chart-pie"
       },
       {
         "id": "s2",
-        "image": "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=1400&q=80",
+        "image": "",
         "tag": "Authentic Dutch Burgher Recipe",
         "title": "Traditional <span>Dutch Lamprais</span> Feasts",
         "desc": "Steamed slow in fresh banana leaf with samba rice, four-meat curry, frikkadel meatballs, spicy blachan, and seeni sambol.",
         "btnText": "Order Lamprais Now",
         "btnAction": "selectCategory('traditional')",
         "badgeTitle": "Authentic Dutch Lamprais",
-        "badgeSub": "Slow-steamed in banana leaf"
+        "badgeSub": "Slow-steamed in banana leaf",
+        "icon": "fa-bowl-rice"
       },
       {
         "id": "s3",
-        "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1400&q=80",
+        "image": "",
         "tag": "Sweet Delights & Celebrations",
         "title": "Handcrafted <span>Ribbon Cakes & Gateaux</span>",
         "desc": "Celebrate special milestones with our signature multi-layered ribbon cakes, decadent chocolate fudge, and fresh gateaux.",
         "btnText": "Explore Celebration Cakes",
         "btnAction": "selectCategory('cakes')",
         "badgeTitle": "Freshly Baked Daily",
-        "badgeSub": "Signature cakes & swiss rolls"
+        "badgeSub": "Signature cakes & swiss rolls",
+        "icon": "fa-cake-candles"
       },
       {
         "id": "s4",
-        "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1400&q=80",
+        "image": "",
         "tag": "Crispy & Flaky Short Eats",
         "title": "Legendary <span>Chinese Rolls & Savouries</span>",
         "desc": "Crispy beef Chinese rolls, spicy fish patties, and savoury mutton pastries — Ceylon's favourite teatime snack since 1884.",
         "btnText": "Order Savouries & Short Eats",
         "btnAction": "selectCategory('savouries')",
         "badgeTitle": "Piping Hot Short Eats",
-        "badgeSub": "Ceylon's favourite teatime snacks"
+        "badgeSub": "Ceylon's favourite teatime snacks",
+        "icon": "fa-cookie-bite"
       },
       {
         "id": "s5",
-        "image": "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1400&q=80",
+        "image": "",
         "tag": "Outdoor Catering & Banquets",
         "title": "Premier <span>Outdoor Catering</span> Across Colombo",
         "desc": "From intimate family functions to grand corporate cocktail gatherings, let Green Cabin take care of the culinary magic.",
         "btnText": "Catering Quotation",
         "btnAction": "switchSiteTab('catering')",
         "badgeTitle": "Islandwide Catering",
-        "badgeSub": "Full buffet setup & service"
+        "badgeSub": "Full buffet setup & service",
+        "icon": "fa-bell-concierge"
       }
     ],
     "aboutTitle": "Over 140 Years of Authentic Ceylon Culinary Excellence",
@@ -530,7 +535,7 @@
       "veg": false,
       "desc": "Fragrant samba rice cooked in stock, served with tender spiced fish curry, frikkadel, seeni sambol, and ash plantain wrapped in banana leaf.",
       "description": "Fragrant samba rice cooked in stock, served with tender spiced fish curry, frikkadel, seeni sambol, and ash plantain wrapped in banana leaf.",
-      "image": "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80"
+      "image": ""
     },
     {
       "id": "17806",
@@ -1209,7 +1214,8 @@
         "Clay Pots Presentation",
         "Traditional Desserts Bar"
       ],
-      "img": "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=500&q=80"
+      "img": "",
+      "icon": "fa-utensils"
     },
     {
       "id": "c2",
@@ -1223,7 +1229,8 @@
         "Ribbon & Gateau Cake Slices",
         "Ceylon Spiced Iced Coffee"
       ],
-      "img": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80"
+      "img": "",
+      "icon": "fa-champagne-glasses"
     }
   ],
   "eventsPlatters": [
